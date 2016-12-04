@@ -13,17 +13,22 @@
 
   <div ng-controller="firstCtrl">
       <!-- <input ng-model="project.completed" type="checkbox"> -->
-      <input ng-model="project.title" ng-hide="editing" type="text" placeholder="Project Title">
-      <label ng-show="editing">{{ project.title }}</label>
 
-      <input ng-model="project.time" type="text" placeholder="Project Time">
-      <label ng-bind="project.time">{{ project.time }}</label>
+      <div ng-repeat="field in fields">
+          <input ng-change="field.edited = true" ng-model="field.name" ng-show="editing" ng-blur="editing = false;" ng-class="{'edited': field.edited}" type="text" placeholder="field.name">
+          <label ng-hide="editing">{{ field.name }}</label>
 
-      <div class='actions'>
-          <a href="" ng-click="editing = !editing">Edit</a>
-          <a href="">Save</a>
-          <a href="" ng-click="helloWorld()">Press Me</a>
+          <!-- <input ng-model="project.time" type="text" placeholder="Project Time">
+          <label ng-bind="project.time">{{ project.time }}</label> -->
+
+          <div class='actions'>
+              <a href="" ng-click="editing = !editing">Edit</a>
+              <a href="">Save</a>
+              <a href="" ng-click="helloWorld()">Press Me</a>
+          </div>
       </div>
+
+      {{fields}}
   </div>
 
   <script src="vendor/angular.js" type="text/javascript"></script>

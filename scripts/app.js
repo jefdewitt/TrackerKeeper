@@ -1,9 +1,17 @@
-angular.module('angularApp', []).config(function($interpolateProvider){
-    $interpolateProvider.startSymbol('{[{').endSymbol('}]}');
-})
+// angular.module('angularApp', []).config(function($interpolateProvider){
+//     $interpolateProvider.startSymbol('{[{').endSymbol('}]}');
+// })
 
-.controller('firstCtrl', function($scope, $parse) {
-    $scope.helloWorld = function() {
-        console.log('You just pressed the button.');
+angular.module('angularApp', [])
+
+.controller('firstCtrl', function($scope) {
+    $scope.learningNgChange = function() {
+        console.log('A change has occurred!');
     };
+
+    $scope.fields = [
+        {'name': 'title'},
+        {'name': 'time'}
+    ]
+
 });
