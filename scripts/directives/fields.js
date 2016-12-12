@@ -4,6 +4,6 @@ angular.module('angularApp')
     return {
         templateUrl: 'templates/fields.html',
         controller: 'firstCtrl',
-        //replace: true
+        replace: true
     }
 })

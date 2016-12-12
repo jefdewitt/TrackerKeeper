@@ -1,25 +1,25 @@
-<div first-element></div>
-<second-element></second-element>
 
-<div>
+<div class="field__container">
+    <!-- <div first-element></div>
+    <second-element></second-element> -->
     <!-- <input ng-model="project.completed" type="checkbox"> -->
     <div class="add">
         <a href="" ng-click="addField()">+ Add a New Task</a>
     </div>
 
-    <div ng-repeat="field in fields">
+    <div class="field__row" ng-repeat="field in fields">
         <input ng-change="field.edited = true" ng-model="field.name" ng-show="editing" ng-blur="editing = false;" ng-class="{'edited': field.edited}" type="text" placeholder="field.name">
-        <label ng-hide="editing">{{ field.name }}</label>
+        <label ng-click="editing = true" ng-hide="editing">{{ field.name }}</label>
 
         <!-- <input ng-model="project.time" type="text" placeholder="Project Time">
         <label ng-bind="project.time">{{ project.time }}</label> -->
 
         <div class='actions'>
-            <a href="" ng-click="editing = !editing">Edit</a>
-            <a href="" ng-click="saveFields(field)">Save</a>
-            <a href="" ng-click="deleteField(field, $index)">Delete</a>
+            <!-- <a href="" ng-click="editing = !editing">Edit</a> -->
+            <a class="left" href="" ng-click="saveFields(field)">Save</a>
+            <a class="right" href="" ng-click="deleteField(field, $index)">Delete</a>
         </div>
     </div>
 
-    {{fields}}
+    <!-- {{fields}} -->
 </div>

@@ -7,7 +7,58 @@
   <link data-require="bootstrap@3.3.5" data-semver="3.3.5" rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" />
  <!-- <script data-require="angular.js@1.4.7" data-semver="1.4.7" src="https://code.angularjs.org/1.4.7/angular.js"></script> -->
 </head>
+<style>
+
+    html, body {
+        height: 100%;
+    }
+    body {
+        background: #ff4c4c;
+        display: table;
+        margin: auto;
+    }
+    .field__container {
+        display: table-cell;
+        font-size: 3rem;
+        margin: auto;
+        vertical-align: middle;
+    }
+    header {
+        border-bottom: 1px solid #fff;
+        border-top: 1px solid #fff;
+        color: #fff;
+        padding: 1em 0;
+        position: absolute;
+            left: 0;
+        text-align: center;
+        width: 100%;
+    }
+    /*.field__row {
+        display: table;
+    }*/
+    input, label {
+        width: 300px;
+    }
+    label, a {
+        color: #fff;
+    }
+    .actions .left{
+        text-align: left;
+    }
+    .actions .right{
+        text-align: right;
+    }
+
+</style>
+
 <body ng-app="angularApp">
+
+  <header>
+      <nav>
+          <h1>Gladwellian Tool</h1>
+          <a>Current Projects List</a>
+      </nav>
+  </header>
 
   <fields></fields>
 

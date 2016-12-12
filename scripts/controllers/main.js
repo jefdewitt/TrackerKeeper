@@ -10,7 +10,7 @@ angular.module('angularApp')
 
     $scope.addField = function() {
         var field = {name: "This is a new field."};
-        $scope.fields.push(field);
+        $scope.fields.unshift(field);
     };
 
     $scope.helloConsole = dataService.helloConsole;
@@ -26,7 +26,7 @@ angular.module('angularApp')
     };
 
     $scope.saveFields = function() {
-        var filteredFields = $scope.field.filter(function(field) {
+        var filteredFields = $scope.fields.filter(function(field) {
             if(field.edited) {
                 return field;
             };

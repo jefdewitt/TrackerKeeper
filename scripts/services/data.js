@@ -18,8 +18,8 @@ angular.module('angularApp')
 
     };
 
-    this.saveFields = function(field) {
-        console.log("The " + field.name + "field has been saved.")
+    this.saveFields = function(fields) {
+        console.log(fields.length + " fields have been saved.")
 
     };
 
