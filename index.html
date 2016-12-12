@@ -51,14 +51,22 @@
 
 </style>
 
+<!--
+    The ng-app directive indicates which part of the page (all or part, up to
+    you) is the root of the Angular application. Angular reads the HTML within
+    that root and compiles it into an internal representation. This reading and
+    compiling is the bootstrapping process.
+-->
 <body ng-app="angularApp">
 
   <header>
       <nav>
           <h1>Gladwellian Tool</h1>
-          <a>Current Projects List</a>
+          <a href="#projects-list-view">Current Projects List</a>
       </nav>
   </header>
+
+  <div ng-view></div>
 
   <fields></fields>
 
