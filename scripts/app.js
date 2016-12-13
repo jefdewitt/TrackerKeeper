@@ -20,7 +20,7 @@ angular.module('angularApp', ['ngRoute'])
          })
 
          // route for the list page
-         .when('/projects-list', {
+         .when('/projects-list-view', {
              templateUrl : 'pages/projects-list-view.html',
              controller  : 'listCtlr'
          })

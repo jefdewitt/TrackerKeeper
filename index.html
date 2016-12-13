@@ -37,20 +37,15 @@
         text-align: center;
         width: 100%;
     }
-    /*.field__row {
-        display: table;
-    }*/
+    .content__wrapper {
+        display: table-cell;
+        vertical-align: middle;
+    }
     input, label {
         width: 300px;
     }
     label, a {
         color: #fff;
-    }
-    .actions .left{
-        text-align: left;
-    }
-    .actions .right{
-        text-align: right;
     }
 
 </style>
@@ -70,7 +65,7 @@
       </nav>
   </header>
 
-  <div ng-view></div>
+  <div class="content__wrapper" ng-view></div>
 
   <!-- <fields></fields> -->
 
