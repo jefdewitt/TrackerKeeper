@@ -7,26 +7,26 @@
  * tutorial for adding views found @:
  * https://scotch.io/tutorials/single-page-apps-with-angularjs-routing-and-templating
  */
-angular.module('angularApp', ['ngRoute']);
+angular.module('angularApp', ['ngRoute'])
 
 // configure our routes
- angularApp.config(function($routeProvider) {
+.config(function($routeProvider) {
      $routeProvider
 
          // route for the home page
-         .when('/', {
+         .when('/#', {
              templateUrl : 'pages/home-view.html',
              controller  : 'homeCtlr'
          })
 
-         // route for the about page
-         .when('/projects-list', {
+         // route for the list page
+         .when('/#/projects-list', {
              templateUrl : 'pages/projects-list-view.html',
              controller  : 'listCtlr'
          })
 
-         // route for the contact page
-         .when('/single-project', {
+         // route for the single project page
+         .when('/#/single-project', {
              templateUrl : 'pages/single-project-view.html',
              controller  : 'singleCtlr'
          });
