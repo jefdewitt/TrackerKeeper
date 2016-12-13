@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('angularApp')
+angular.module('scotchApp')
 
 .controller('listCtlr', function($scope) {
     $scope.message = 'Look! I am a list page.';

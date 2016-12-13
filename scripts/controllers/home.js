@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('angularApp')
+angular.module('scotchApp')
 
 // create the controller and inject Angular's $scope
 .controller('homeCtlr', function($scope) {
