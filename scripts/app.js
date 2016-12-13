@@ -14,19 +14,19 @@ angular.module('angularApp', ['ngRoute'])
      $routeProvider
 
          // route for the home page
-         .when('/#', {
+         .when('/', {
              templateUrl : 'pages/home-view.html',
              controller  : 'homeCtlr'
          })
 
          // route for the list page
-         .when('/#/projects-list', {
+         .when('/projects-list', {
              templateUrl : 'pages/projects-list-view.html',
              controller  : 'listCtlr'
          })
 
          // route for the single project page
-         .when('/#/single-project', {
+         .when('/single-project', {
              templateUrl : 'pages/single-project-view.html',
              controller  : 'singleCtlr'
          });
