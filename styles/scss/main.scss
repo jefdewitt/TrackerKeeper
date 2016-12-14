@@ -1,0 +1,97 @@
+
+$red: #ff4c4c;
+$white: #fff;
+$black: #333;
+
+html, body {
+    height: 100%;
+}
+
+body {
+    background: $red;
+    display: table;
+    font-size: 4vh;
+    margin: auto;
+}
+
+.field__container {
+    display: table-cell;
+    font-size: 3rem;
+    margin: auto;
+    vertical-align: middle;
+}
+
+header {
+    border-bottom: 1px solid #fff;
+    border-top: 1px solid #fff;
+    color: #fff;
+    padding: 1em 0;
+    position: absolute;
+        left: 0;
+    text-align: center;
+    width: 100%;
+}
+
+.content__wrapper {
+    display: table-cell;
+    vertical-align: middle;
+}
+
+input, label {
+    width: 300px;
+}
+
+label, a {
+    color: #fff;
+}
+
+.button {
+    border: 1px solid;
+    display: block;
+    margin-bottom: 1em;
+    padding: 1em;
+    text-decoration: none;
+}
+
+a {
+    transition: all .7s ease;
+
+    &:hover {
+        background: $white;
+        color: $red;
+
+    }
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// comment

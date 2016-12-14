@@ -19,6 +19,12 @@ angular.module('angularApp', ['ngRoute'])
              controller  : 'homeCtlr'
          })
 
+         // route for the new project page
+         .when('/new-project-view', {
+             templateUrl : 'pages/new-project-view.html',
+             controller  : ''
+         })
+
          // route for the list page
          .when('/projects-list-view', {
              templateUrl : 'pages/projects-list-view.html',

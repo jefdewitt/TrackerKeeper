@@ -1,0 +1,18 @@
+<!--
+    New Project
+-->
+<section class="content__main">
+
+    <div class="field__row" ng-repeat="field in fields">
+        <input ng-change="field.edited = true" ng-model="field.name" ng-show="editing" ng-blur="editing = false;" ng-class="{'edited': field.edited}" type="text" placeholder="field.name">
+        <label ng-click="editing = true" ng-hide="editing">{{ field.name }}</label>
+
+        <div class='actions'>
+            <!-- <a href="" ng-click="editing = !editing">Edit</a> -->
+            <a class="left" href="" ng-click="saveFields(field)">Save</a>
+            <a class="right" href="" ng-click="deleteField(field, $index)">Delete</a>
+        </div>
+
+        <a href="#home-view" class="button">Back</a>
+    </div>
+</section>
