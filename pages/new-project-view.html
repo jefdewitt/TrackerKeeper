@@ -3,16 +3,23 @@
 -->
 <section class="content__main">
 
-    <div class="field__row" ng-repeat="field in fields">
-        <input ng-change="field.edited = true" ng-model="field.name" ng-show="editing" ng-blur="editing = false;" ng-class="{'edited': field.edited}" type="text" placeholder="field.name">
-        <label ng-click="editing = true" ng-hide="editing">{{ field.name }}</label>
+    <div class="field__container">
 
-        <div class='actions'>
-            <!-- <a href="" ng-click="editing = !editing">Edit</a> -->
-            <a class="left" href="" ng-click="saveFields(field)">Save</a>
-            <a class="right" href="" ng-click="deleteField(field, $index)">Delete</a>
-        </div>
+        <h2>What do you want to call your goal?</h2>
+        <!-- <input ng-change="field.edited = true" ng-model="field.name" ng-show="editing" ng-blur="editing = false;" ng-class="{'edited': field.edited}" type="text" placeholder="field.name">
+        <label ng-click="editing = true" ng-hide="editing">{{ field.name }}</label> -->
+        <label for="name"></label>
+        <input type="text" name="name" id="name">
 
-        <a href="#home-view" class="button">Back</a>
+        <h2>How much time do you need</h2>
+        <label for="time"></label>
+        <input type="text" name="time" id="time">
+
     </div>
+
+    <div class="action">
+        <a href="/" class="button">Back</a>
+        <a href="#project-input-view" class="button">Save</a>
+    </div>
+
 </section>
