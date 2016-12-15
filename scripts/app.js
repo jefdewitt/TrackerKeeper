@@ -13,35 +13,35 @@ angular.module('angularApp', ['ngRoute'])
 .config(function($routeProvider) {
      $routeProvider
 
-         // route for the home page
-         .when('/', {
-             templateUrl : 'pages/home-view.html',
-             controller  : 'homeCtlr'
-         })
+     // route for the home page
+     .when('/', {
+         templateUrl : 'pages/home-view.html',
+         controller  : 'homeCtlr'
+     })
 
-         // route for the new project page
-         .when('/new-project-view', {
-             templateUrl : 'pages/new-project-view.html',
-             controller  : 'newCtlr'
-         })
+     // route for the new project page
+     .when('/new-project-view', {
+         templateUrl : 'pages/new-project-view.html',
+         controller  : 'newCtlr'
+     })
 
-         // route for the list page
-         .when('/projects-list-view', {
-             templateUrl : 'pages/projects-list-view.html',
-             controller  : 'listCtlr'
-         })
+     // route for the list page
+     .when('/projects-list-view', {
+         templateUrl : 'pages/projects-list-view.html',
+         controller  : 'listCtlr'
+     })
 
-         // route for the project input page
-         .when('/project-input', {
-             templateUrl : 'pages/project-input-view.html',
-             controller  : 'inputCtlr'
-         });
+     // route for the project input page
+     .when('/project-input-view', {
+         templateUrl : 'pages/project-input-view.html',
+         controller  : 'inputCtlr'
+     })
 
-         // route for the project output page
-         .when('/project-output', {
-             templateUrl : 'pages/project-output-view.html',
-             controller  : 'outputCtlr'
-         });
+     // route for the project output page
+     .when('/project-output-view', {
+         templateUrl : 'pages/project-output-view.html',
+         controller  : 'outputCtlr'
+     });
  });
 
 /**

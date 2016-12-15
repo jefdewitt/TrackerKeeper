@@ -24,7 +24,8 @@ header {
 input, label {
   width: calc(100% - 4rem); }
 
-label, a {
+h1, h2, h3, h4, h5, h6,
+p, li, label, a {
   color: #fff; }
 
 .field__container {
@@ -36,7 +37,8 @@ label, a {
   margin-bottom: 1em;
   padding: 1em;
   text-align: center;
-  text-decoration: none; }
+  text-decoration: none;
+  white-space: nowrap; }
 
 a {
   transition: all .7s ease; }
