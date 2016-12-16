@@ -26,7 +26,8 @@ header {
 
 input, label {
   width: calc(100% - 4rem);
-  font-size: 4vh; }
+  font-size: 4vh;
+  padding: 1em; }
 
 h1, h2, h3, h4, h5, h6,
 p, li, label, a, th, td {
