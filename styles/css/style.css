@@ -19,13 +19,17 @@ header {
 
 .content__wrapper {
   margin: auto;
-  max-width: 30rem; }
+  max-width: 90%; }
+  @media screen and (min-width: 767px) {
+    .content__wrapper {
+      max-width: 60%; } }
 
 input, label {
-  width: calc(100% - 4rem); }
+  width: calc(100% - 4rem);
+  font-size: 4vh; }
 
 h1, h2, h3, h4, h5, h6,
-p, li, label, a {
+p, li, label, a, th, td {
   color: #fff; }
 
 .field__container {
@@ -50,5 +54,14 @@ a {
   text-align: center; }
   .action .button {
     display: inline-block; }
+
+tr {
+  height: 2em; }
+  tr > td {
+    padding: 0 .5em;
+    text-align: center;
+    width: 25%; }
+    tr > td:first-of-type, tr > td:last-of-type {
+      font-size: 1rem; }
 
 /*# sourceMappingURL=style.css.map */

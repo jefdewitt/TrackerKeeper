@@ -5,11 +5,10 @@
 
     <div class="field__container">
 
-        <p>What do you want to call your goal?</p>
         <!-- <input ng-change="field.edited = true" ng-model="field.name" ng-show="editing" ng-blur="editing = false;" ng-class="{'edited': field.edited}" type="text" placeholder="field.name">
         <label ng-click="editing = true" ng-hide="editing">{{ field.name }}</label> -->
-        <label for="name"></label>
-        <input type="text" name="name" id="name">
+        <label ng-click="editing = true" ng-hide="editing" for="name">{{project}}</label>
+        <input ng-blur="editing = false" ng-show="editing" ng-model="project" type="text" name="name" id="name" placeholder="What's the name of your goal?">
 
         <p>How much time do you need</p>
         <label for="time"></label>
