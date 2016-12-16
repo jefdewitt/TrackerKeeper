@@ -7,12 +7,15 @@
 
         <!-- <input ng-change="field.edited = true" ng-model="field.name" ng-show="editing" ng-blur="editing = false;" ng-class="{'edited': field.edited}" type="text" placeholder="field.name">
         <label ng-click="editing = true" ng-hide="editing">{{ field.name }}</label> -->
-        <label ng-click="editing = true; hide = false;" ng-hide="editing" for="name">{{project}}</label>
-        <input ng-click="editing = true" ng-blur="editing = false; hide = true;" ng-hide="hide" ng-model="project" type="text" name="name" id="name" placeholder="What's the name of your goal?">
+        <div class="input__container">
+            <label ng-click="editing = true; hide = false;" ng-hide="editing" for="name">{{project.name}}</label>
+            <input ng-click="editing = true" ng-blur="editing = false; hide = true;" ng-hide="hide" ng-model="project.name" type="text" name="name" id="name" placeholder="What's the name of your goal?">
+        </div>
 
-        <p>How much time do you need</p>
-        <label for="time"></label>
-        <input type="text" name="time" id="time">
+        <div class="input__container">
+            <label ng-click="editing = true; hide = false;" ng-hide="editing" for="time">{{project.time}}</label>
+            <input ng-click="editing = true" ng-blur="editing = false; hide = true;" ng-hide="hide" ng-model="project.time" type="text" name="name" id="time" placeholder="How much time do you need?">
+        </div>
 
     </div>
 

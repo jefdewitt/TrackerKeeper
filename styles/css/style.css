@@ -3,7 +3,7 @@ html, body {
 
 body {
   background: #ff4c4c;
-  font-size: 4vh;
+  font-size: 4vw;
   margin: auto;
   min-width: 20rem; }
 
@@ -23,6 +23,14 @@ header {
   @media screen and (min-width: 767px) {
     .content__wrapper {
       max-width: 60%; } }
+
+.input__container {
+  height: 5em;
+  position: relative; }
+  .input__container input, .input__container label {
+    position: absolute;
+    top: 50%;
+    transform: translatey(-50%); }
 
 input, label {
   width: calc(100% - 4rem);

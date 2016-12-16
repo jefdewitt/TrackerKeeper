@@ -43,6 +43,17 @@ header {
     }
 }
 
+.input__container {
+    height: 5em;
+    position: relative;
+
+    input, label {
+        position: absolute;
+        top: 50%;
+        transform: translatey(-50%);
+    }
+}
+
 input, label {
     width: calc(100% - 4rem);
     font-size: 4vh;
