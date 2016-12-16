@@ -7,7 +7,7 @@
 
         <!-- <input ng-change="field.edited = true" ng-model="field.name" ng-show="editing" ng-blur="editing = false;" ng-class="{'edited': field.edited}" type="text" placeholder="field.name">
         <label ng-click="editing = true" ng-hide="editing">{{ field.name }}</label> -->
-        <label ng-click="editing = true" ng-hide="editing" for="name">{{project}}</label>
+        <label ng-click="editing = true; hide = false;" ng-hide="editing" for="name">{{project}}</label>
         <input ng-click="editing = true" ng-blur="editing = false; hide = true;" ng-hide="hide" ng-model="project" type="text" name="name" id="name" placeholder="What's the name of your goal?">
 
         <p>How much time do you need</p>
