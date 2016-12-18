@@ -1,19 +1,21 @@
 <!--
     Project Input
 -->
-<div class="jumbotron text-center">
-    <p>Manual time input field</p>
-    <label for="time"></label>
-    <input type="text" name="time" id="time">
+<section class="content__main">
+
+    <div class="input__container">
+        <label ng-click="editing = true; hide = false;" ng-hide="editing" for="time">{{time}}</label>
+        <input ng-click="editing = true" ng-blur="editing = false; hide = true;" ng-hide="hide" ng-model="time" type="text" name="name" id="time" placeholder="Manually input time here.">
+    </div>
 
     <div class="action double">
         <a href="" class="button">Stopwatch</a>
         <a href="" class="button">Reset</a>
     </div>
 
-    <div class="action">
+    <div class="">
         <a href="#project-output-view" class="button">Confirm Time</a>
         <a href="#project-output-view" class="button">Go Back</a>
     </div>
 
-</div>
+</section>
