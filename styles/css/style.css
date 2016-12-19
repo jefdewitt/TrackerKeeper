@@ -28,6 +28,8 @@ header {
 
 .content__main {
   overflow: hidden; }
+  .content__main h1 {
+    text-align: center; }
 
 .input__container {
   height: 5em;
