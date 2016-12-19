@@ -8,13 +8,13 @@
         <!-- <input ng-change="field.edited = true" ng-model="field.name" ng-show="editing" ng-blur="editing = false;" ng-class="{'edited': field.edited}" type="text" placeholder="field.name">
         <label ng-click="editing = true" ng-hide="editing">{{ field.name }}</label> -->
         <div class="input__container">
-            <label ng-click="editing = true; hide = false;" ng-hide="editing" for="name">{{ first.project.name }}</label>
-            <input ng-click="editing = true" ng-blur="editing = false; hide = true;" ng-hide="hide" ng-model="first.project.name" type="text" name="name" id="name" placeholder="What's the name of your goal?">
+            <label ng-click="editing = true; hide = false;" ng-hide="editing" for="name">{{ Alpha.name }}</label>
+            <input ng-click="editing = true" ng-blur="editing = false; hide = true;" ng-hide="hide" ng-model="Alpha.name" type="text" name="name" id="name" placeholder="What's the name of your goal?">
         </div>
 
         <div class="input__container">
-            <label ng-click="revising = true; disappear = false;" ng-hide="revising" for="time">{{ first.project.time }}</label>
-            <input ng-click="revising = true" ng-blur="revising = false; disappear = true;" ng-hide="disappear" ng-model="first.project.time" type="text" name="name" id="time" placeholder="How much time do you need?">
+            <label ng-click="revising = true; disappear = false;" ng-hide="revising" for="time">{{ Alpha.time }}</label>
+            <input ng-click="revising = true" ng-blur="revising = false; disappear = true;" ng-hide="disappear" ng-model="Alpha.time" type="text" name="name" id="time" placeholder="How much time do you need?">
         </div>
 
     </div>

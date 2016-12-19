@@ -44,6 +44,11 @@ angular.module('angularApp', ['ngRoute', 'ui.router'])
      })
  })
 
+ // Create the factory that shares the Project object
+.factory('Project', function(){
+  return { Project: '' };
+})
+
 .config(function config($stateProvider) {
 
     $stateProvider.state('home', {
