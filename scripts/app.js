@@ -7,42 +7,7 @@
  * tutorial for adding views found @:
  * https://scotch.io/tutorials/single-page-apps-with-angularjs-routing-and-templating
  */
-angular.module('angularApp', ['ngRoute', 'ui.router'])
-
-// configure our routes
-.config(function($routeProvider) {
-     $routeProvider
-
-     // route for the home page
-     .when('/', {
-         templateUrl : 'pages/home-view.html',
-         controller  : 'homeCtlr'
-     })
-
-     // route for the new project page
-     .when('/new-project-view', {
-         templateUrl : 'pages/new-project-view.html',
-         controller  : 'newCtlr'
-     })
-
-     // route for the list page
-     .when('/projects-list-view', {
-         templateUrl : 'pages/projects-list-view.html',
-         controller  : 'listCtlr'
-     })
-
-     // route for the project input page
-     .when('/project-input-view', {
-         templateUrl : 'pages/project-input-view.html',
-         controller  : 'inputCtlr'
-     })
-
-     // route for the project output page
-     .when('/project-output-view', {
-         templateUrl : 'pages/project-output-view.html',
-         controller  : 'outputCtlr'
-     })
- })
+angular.module('angularApp', ['ui.router'])
 
 .config(function config($stateProvider) {
 
@@ -63,6 +28,40 @@ angular.module('angularApp', ['ngRoute', 'ui.router'])
         controller:'outputCtrl as second',
         templateuUrl:'pages/project-output-view.html'
     })
+})
+
+.service('project', function Project() {
+
+    var project = this;
+
+    project.name = 'Default';
+
+    project.time = 'Default';
+
+})
+
+
+// create the controller and inject Angular's $scope
+.controller('homeCtlr', function homeCtlr() {
+
+})
+
+.controller('newCtlr', function newCtlr(project) {
+
+
+    var first = this;
+
+    first.project = project;
+
+})
+
+.controller('outputCtlr', function outputCtlr(project) {
+
+
+    var second = this;
+
+    second.project = project;
+
 });
 /**
  * This code block would change our interpolation characters. Handy if building
