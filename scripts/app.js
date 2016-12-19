@@ -31,11 +31,8 @@ angular.module('angularApp', ['ui.router'])
 })
 
 .service('project', function Project() {
-
     var project = this;
-
     project.name = 'Default';
-
     project.time = 'Default';
 
 })
@@ -47,21 +44,13 @@ angular.module('angularApp', ['ui.router'])
 })
 
 .controller('newCtlr', function newCtlr(project) {
-
-
     var first = this;
-
     first.project = project;
-
 })
 
 .controller('outputCtlr', function outputCtlr(project) {
-
-
     var second = this;
-
     second.project = project;
-
 });
 /**
  * This code block would change our interpolation characters. Handy if building
