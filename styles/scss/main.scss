@@ -99,6 +99,8 @@ p, li, label, a, th, td {
 
 a {
     transition: all .7s ease;
+    text-decoration: none;
+    color: $black;
 
     &:hover {
         background: $white;
@@ -117,9 +119,12 @@ a {
 
     .button {
         display: block;
+        color: $black;
 
         @media screen and (min-width: 767px) {
             display: table-cell;
+            width: 50%;
+            background: $white;
         }
     }
 }

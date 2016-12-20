@@ -65,7 +65,9 @@ p, li, label, a, th, td {
       font-size: 3vw; } }
 
 a {
-  transition: all .7s ease; }
+  transition: all .7s ease;
+  text-decoration: none;
+  color: #333; }
   a:hover {
     background: #fff;
     color: #ff4c4c; }
@@ -78,10 +80,13 @@ a {
       display: table;
       width: 100%; } }
   .action .button {
-    display: block; }
+    display: block;
+    color: #333; }
     @media screen and (min-width: 767px) {
       .action .button {
-        display: table-cell; } }
+        display: table-cell;
+        width: 50%;
+        background: #fff; } }
 
 tr {
   height: 2em; }
