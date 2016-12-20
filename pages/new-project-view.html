@@ -21,9 +21,9 @@
             </div>
 
             <div class="action double">
-                <button class="button"><a href="/">Back</a></button>
+                <button ng-click="go('/')" class="button">Back</button>
                 <!-- <button ng-disabled="newProjectForm.$invalid"><a href="#project-output-view" class="button">Save</a></button> -->
-                <button ng-disabled="newProjectForm.$invalid" ng-click="go('project-output-view')" class="button">Save</button>
+                <button ng-disabled="newProjectForm.$invalid" ng-click="go('project-input-view')" class="button">Save</button>
             </div>
 
         </form>

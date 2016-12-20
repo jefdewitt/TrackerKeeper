@@ -79,14 +79,19 @@ a {
     .action {
       display: table;
       width: 100%; } }
-  .action .button {
-    display: block;
-    color: #333; }
-    @media screen and (min-width: 767px) {
-      .action .button {
-        display: table-cell;
-        width: 50%;
-        background: #fff; } }
+  @media screen and (min-width: 767px) {
+    .action .button {
+      display: table-cell;
+      width: 50%; } }
+
+.button {
+  background: #fff;
+  border-color: #ff4c4c;
+  color: #ff4c4c;
+  display: block;
+  width: 100%; }
+  .button a {
+    color: #ff4c4c; }
 
 tr {
   height: 2em; }

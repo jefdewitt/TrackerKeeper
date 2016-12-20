@@ -2,12 +2,14 @@
 
 angular.module('angularApp')
 
-.controller('outputCtlr', function outputCtlr($scope, project, Project) {
+.controller('outputCtlr', function ($scope, $location, Project) {
     $scope.message = "I'm a single project page";
 
     var second = this;
 
-    second.project = project;
+    $scope.go = function ( path ) {
+        $location.path( path );
+    }
 
-    $scope.Beta = Project;
+    $scope.Delta = Project;
 });

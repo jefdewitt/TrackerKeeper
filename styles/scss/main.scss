@@ -118,14 +118,23 @@ a {
     }
 
     .button {
-        display: block;
-        color: $black;
 
         @media screen and (min-width: 767px) {
             display: table-cell;
             width: 50%;
-            background: $white;
         }
+    }
+}
+
+.button {
+    background: $white;
+    border-color: $red;
+    color: $red;
+    display: block;
+    width: 100%;
+
+    a {
+        color: $red;
     }
 }
 

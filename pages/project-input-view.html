@@ -3,19 +3,23 @@
 -->
 <section class="content__main">
 
-    <div class="input__container">
-        <label ng-click="editing = true; hide = false;" ng-hide="editing" for="time">{{time}}</label>
-        <input ng-click="editing = true" ng-blur="editing = false; hide = true;" ng-hide="hide" ng-model="time" type="text" name="name" id="time" placeholder="Manually input time here.">
-    </div>
+    <form name="inputTimeForm" novalidate>
 
-    <div class="action double">
-        <a href="" class="button">Stopwatch</a>
-        <a href="" class="button">Reset</a>
-    </div>
+        <div class="input__container">
+            <label ng-click="editing = true; hide = false;" ng-hide="editing" for="time">{{timeInput}}</label>
+            <input ng-click="editing = true" ng-blur="editing = false; hide = true;" ng-hide="hide" ng-model="timeInput" type="number" name="timeInput" id="time" placeholder="Manually input time here." required>
+        </div>
 
-    <div class="">
-        <a href="#project-output-view" class="button">Confirm Time</a>
-        <a href="#project-output-view" class="button">Go Back</a>
-    </div>
+        <div class="action double">
+            <button class="button">Stopwatch</button>
+            <button ng-click="timeInput = ''; hide='false'" class="button">Reset</a>
+        </div>
+
+        <div class="">
+            <button ng-disabled="inputTimeForm.$invalid" ng-click="go('project-output-view')" class="button">Confirm Time</button>
+            <button ng-click="go('projects-list-view')" class="button">View Projects</button>
+        </div>
+
+    </form>
 
 </section>
