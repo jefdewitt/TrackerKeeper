@@ -11,12 +11,12 @@
         <div class="input__container">
             <!-- <label ng-click="editing = true; hide = false;" ng-hide="editing" for="time">{{timeInput}}</label> -->
             <!-- <input ng-click="editing = true" ng-blur="editing = false; hide = true;" ng-hide="hide" ng-model="timeInput" type="number" name="timeInput" id="time" placeholder="Manually input time here." required> -->
-            <input ng-model="timeInput" type="number" name="timeInput" id="time" placeholder="Manually input time here." required>
+            <input ng-model="timeInput" type="number" name="timeInput" id="time" placeholder="{{timerWithInterval | hhmmss}}" required>
         </div>
 
         <div class="action double">
-            <button class="button">Stopwatch</button>
-            <button ng-click="timeInput = ''; hide='false'" class="button">Reset</a>
+            <button ng-click="startTimerWithInterval()" class="button">Stopwatch</button>
+            <button ng-click="resetTimerWithInterval(); timeInput = '';" class="button">Reset</a>
         </div>
 
         <div class="">

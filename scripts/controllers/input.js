@@ -2,7 +2,7 @@
 
 angular.module('angularApp')
 
-.controller('inputCtlr', function($scope, $location, Project) {
+.controller('inputCtlr', function($scope, $location, $timeout, $interval, Project) {
     $scope.message = "I'm a single project page";
 
     $scope.go = function ( path ) {
@@ -46,9 +46,9 @@ angular.module('angularApp')
     $scope.resetTimerWithInterval = function(){
         $scope.timerWithInterval = 0;
         $interval.cancel($scope.myInterval);
-        }
-    })
+    }
 })
+
 
 
 .filter('hhmmss', function () {
@@ -64,4 +64,4 @@ angular.module('angularApp')
         var time    = hours+':'+minutes+':'+seconds;
         return time;
     }
-});
+})
