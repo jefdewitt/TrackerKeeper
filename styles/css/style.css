@@ -28,7 +28,7 @@ header {
 
 .content__main {
   overflow: hidden; }
-  .content__main h1 {
+  .content__main h1, .content__main h2, .content__main h3, .content__main h4, .content__main h5, .content__main h6 {
     text-align: center; }
 
 .input__container {
@@ -43,6 +43,8 @@ input, label {
   font-size: 4vw;
   padding: 1em;
   width: 100%; }
+  input:focus, label:focus {
+    outline: none; }
 
 h1, h2, h3, h4, h5, h6,
 p, li, label, a, th, td {
@@ -51,25 +53,33 @@ p, li, label, a, th, td {
 .field__container {
   margin: 0 auto 1em; }
 
-.button {
-  border: 1px solid;
-  display: block;
-  font-size: 5vw;
-  margin-bottom: 1em;
-  padding: 1em;
-  text-align: center;
-  text-decoration: none;
-  white-space: nowrap; }
-  @media screen and (min-width: 767px) {
-    .button {
-      font-size: 3vw; } }
-
 a {
   transition: all .7s ease;
   text-decoration: none;
   color: #333; }
   a:hover {
     background: #fff;
+    color: #ff4c4c; }
+
+.button {
+  background: #fff;
+  border-color: #ff4c4c;
+  color: #ff4c4c;
+  border: 1px solid;
+  display: block;
+  font-size: 5vw;
+  margin-bottom: 1em;
+  padding: 1em 0;
+  text-align: center;
+  text-decoration: none;
+  white-space: nowrap;
+  width: 100%; }
+  .button:focus {
+    outline: none; }
+  @media screen and (min-width: 767px) {
+    .button {
+      font-size: 3vw; } }
+  .button a {
     color: #ff4c4c; }
 
 .action {
@@ -83,15 +93,6 @@ a {
     .action .button {
       display: table-cell;
       width: 50%; } }
-
-.button {
-  background: #fff;
-  border-color: #ff4c4c;
-  color: #ff4c4c;
-  display: block;
-  width: 100%; }
-  .button a {
-    color: #ff4c4c; }
 
 tr {
   height: 2em; }

@@ -9,5 +9,5 @@ angular.module('angularApp')
         $location.path( path );
     }
 
-    $scope.Gamma = Project;
+    $scope.Beta = Project;
 });

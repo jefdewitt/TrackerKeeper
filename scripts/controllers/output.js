@@ -11,5 +11,5 @@ angular.module('angularApp')
         $location.path( path );
     }
 
-    $scope.Delta = Project;
+    $scope.Gamma = Project;
 });

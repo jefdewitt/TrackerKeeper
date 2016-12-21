@@ -50,7 +50,7 @@ header {
 .content__main {
     overflow: hidden;
 
-    h1 {
+    h1, h2, h3, h4, h5, h6 {
         text-align: center;
     }
 }
@@ -70,6 +70,10 @@ input, label {
     font-size: 4vw;
     padding: 1em;
     width: 100%;
+
+    &:focus {
+        outline: none;
+    }
 }
 
 h1, h2, h3, h4, h5, h6,
@@ -82,21 +86,6 @@ p, li, label, a, th, td {
     //padding: 0 2em;
 }
 
-.button {
-    border: 1px solid;
-    display: block;
-    font-size: 5vw;
-    margin-bottom: 1em;
-    padding: 1em;
-    text-align: center;
-    text-decoration: none;
-    white-space: nowrap;
-
-    @media screen and (min-width: 767px) {
-        font-size: 3vw;
-    }
-}
-
 a {
     transition: all .7s ease;
     text-decoration: none;
@@ -104,6 +93,33 @@ a {
 
     &:hover {
         background: $white;
+        color: $red;
+    }
+}
+
+.button {
+    background: $white;
+    border-color: $red;
+    color: $red;
+    border: 1px solid;
+    display: block;
+    font-size: 5vw;
+    margin-bottom: 1em;
+    padding: 1em 0;
+    text-align: center;
+    text-decoration: none;
+    white-space: nowrap;
+    width: 100%;
+
+    &:focus {
+        outline: none;
+    }
+
+    @media screen and (min-width: 767px) {
+        font-size: 3vw;
+    }
+
+    a {
         color: $red;
     }
 }
@@ -123,18 +139,6 @@ a {
             display: table-cell;
             width: 50%;
         }
-    }
-}
-
-.button {
-    background: $white;
-    border-color: $red;
-    color: $red;
-    display: block;
-    width: 100%;
-
-    a {
-        color: $red;
     }
 }
 

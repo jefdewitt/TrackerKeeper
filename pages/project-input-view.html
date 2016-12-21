@@ -3,11 +3,15 @@
 -->
 <section class="content__main">
 
+    <h1>{{ Beta.name }}</h1>
+    <h2>{{ Beta.time }}</h2>
+
     <form name="inputTimeForm" novalidate>
 
         <div class="input__container">
-            <label ng-click="editing = true; hide = false;" ng-hide="editing" for="time">{{timeInput}}</label>
-            <input ng-click="editing = true" ng-blur="editing = false; hide = true;" ng-hide="hide" ng-model="timeInput" type="number" name="timeInput" id="time" placeholder="Manually input time here." required>
+            <!-- <label ng-click="editing = true; hide = false;" ng-hide="editing" for="time">{{timeInput}}</label> -->
+            <!-- <input ng-click="editing = true" ng-blur="editing = false; hide = true;" ng-hide="hide" ng-model="timeInput" type="number" name="timeInput" id="time" placeholder="Manually input time here." required> -->
+            <input ng-model="timeInput" type="number" name="timeInput" id="time" placeholder="Manually input time here." required>
         </div>
 
         <div class="action double">
