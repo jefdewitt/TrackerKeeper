@@ -26,8 +26,6 @@ angular.module('angularApp')
             $scope.timerWithInterval = promise;
             // store the interval promise
             $scope.timerWithInterval++;
-            console.log($scope.timerWithInterval);
-
         }
         $scope.onInterval = function(){
             $scope.timerWithInterval++;
@@ -39,7 +37,6 @@ angular.module('angularApp')
         if ($scope.myInterval){
             $interval.cancel($scope.myInterval);
             promise = $scope.timerWithInterval;
-            console.log(promise);
         }
     }
 
@@ -65,4 +62,4 @@ angular.module('angularApp')
         var time    = hours+':'+minutes+':'+seconds;
         return time;
     }
-})
+});

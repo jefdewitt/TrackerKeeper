@@ -6,17 +6,20 @@
     <h1>{{ Beta.name }}</h1>
     <h2>{{ Beta.time }}</h2>
 
-    <form name="inputTimeForm" novalidate>
+    <form name="inputTimeForm" class="form__input" novalidate>
 
         <div class="input__container">
-            <!-- <label ng-click="editing = true; hide = false;" ng-hide="editing" for="time">{{timeInput}}</label> -->
+            <label ng-click="resetTimerWithInterval(); editing = true; working = false;" ng-hide="editing" ng-show="working" for="time">{{timerWithInterval | hhmmss}}</label>
+            <!-- <label ng-click="editing = true; hide = false;" ng-hide="editing" for="name">{{ Alpha.name }}</label> -->
+            <!-- <input ng-click="editing = true" ng-blur="editing = false; hide = true;" ng-hide="hide" ng-model="Alpha.name" type="text" name="projectName" id="name" placeholder="What's the name of your goal?" required> -->
+
             <!-- <input ng-click="editing = true" ng-blur="editing = false; hide = true;" ng-hide="hide" ng-model="timeInput" type="number" name="timeInput" id="time" placeholder="Manually input time here." required> -->
-            <input ng-model="timeInput" type="number" name="timeInput" id="time" placeholder="{{timerWithInterval | hhmmss}}" required>
+            <input ng-click="resetTimerWithInterval();" ng-model="timeInput" ng-hide="active" ng-show="!working" type="number" name="timeInput" id="time" placeholder="Manually enter time">
         </div>
 
         <div class="action triple">
-            <button ng-click="startTimerWithInterval(); active = true;" ng-disabled="active" class="button">Start</button>
-            <button ng-click="stopTimerWithInterval(); active = false;" class="button">Stop</button>
+            <button ng-click="startTimerWithInterval(); active = true; editing = false; working = true;" ng-disabled="working" class="button">Start</button>
+            <button ng-click="stopTimerWithInterval(); working = false;" class="button">Stop</button>
             <button ng-click="resetTimerWithInterval(); timeInput = '';" class="button">Reset</a>
         </div>
 

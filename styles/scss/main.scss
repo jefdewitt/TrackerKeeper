@@ -56,19 +56,31 @@ header {
 }
 
 .input__container {
-    height: 5em;
-    margin-bottom: 1rem;
+    // height: 5em;
+    //margin-bottom: 1rem;
     position: relative;
+}
 
-    input, label {
-        position: absolute;
-        top: 50%;
-        transform: translatey(-50%);
+.form__input {
+
+    .input__container {
+        height: 5em;
+        margin-bottom: 1.5rem;
+
+        @media screen and (min-width: 767px) {
+            margin-bottom: 1rem;
+        }
+
+        input, label {
+            margin-bottom: 2rem;
+            position: absolute;
+            top: 50%;
+            transform: translatey(-50%);
+        }
     }
 }
 
 input, label {
-    font-size: 5vw;
     padding: 1em;
     width: 100%;
 
@@ -76,6 +88,21 @@ input, label {
         outline: none;
     }
 }
+
+input {
+    font-size: 4vw;
+}
+
+label {
+    font-size: 5vw;
+}
+
+.form__input {
+    input {
+        font-size: 5vw;
+    }
+}
+
 
 h1, h2, h3, h4, h5, h6,
 p, li, label, a, th, td {
@@ -127,7 +154,7 @@ a {
 
 .action {
     text-align: center;
-    margin-bottom: 1em;
+    margin-bottom: 0;
 
     @media screen and (min-width: 767px) {
         display: table;
