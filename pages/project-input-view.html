@@ -15,8 +15,8 @@
         </div>
 
         <div class="action triple">
-            <button ng-click="startTimerWithInterval()" class="button">Start</button>
-            <button ng-click="stopTimerWithInterval()" class="button">Stop</button>
+            <button ng-click="startTimerWithInterval(); active = true;" ng-disabled="active" class="button">Start</button>
+            <button ng-click="stopTimerWithInterval(); active = false;" class="button">Stop</button>
             <button ng-click="resetTimerWithInterval(); timeInput = '';" class="button">Reset</a>
         </div>
 

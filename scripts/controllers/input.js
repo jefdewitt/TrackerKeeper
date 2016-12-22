@@ -45,6 +45,7 @@ angular.module('angularApp')
 
     $scope.resetTimerWithInterval = function(){
         $scope.timerWithInterval = 0;
+        promise = 0;
         $interval.cancel($scope.myInterval);
     }
 })
