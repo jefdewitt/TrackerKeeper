@@ -14,8 +14,9 @@
             <input ng-model="timeInput" type="number" name="timeInput" id="time" placeholder="{{timerWithInterval | hhmmss}}" required>
         </div>
 
-        <div class="action double">
-            <button ng-click="startTimerWithInterval()" class="button">Stopwatch</button>
+        <div class="action triple">
+            <button ng-click="startTimerWithInterval()" class="button">Start</button>
+            <button ng-click="stopTimerWithInterval()" class="button">Stop</button>
             <button ng-click="resetTimerWithInterval(); timeInput = '';" class="button">Reset</a>
         </div>
 

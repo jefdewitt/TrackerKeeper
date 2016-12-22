@@ -33,6 +33,7 @@ header {
 
 .input__container {
   height: 5em;
+  margin-bottom: 1rem;
   position: relative; }
   .input__container input, .input__container label {
     position: absolute;
@@ -40,7 +41,7 @@ header {
     transform: translatey(-50%); }
 
 input, label {
-  font-size: 4vw;
+  font-size: 5vw;
   padding: 1em;
   width: 100%; }
   input:focus, label:focus {
@@ -93,6 +94,10 @@ a {
     .action .button {
       display: table-cell;
       width: 50%; } }
+  @media screen and (min-width: 767px) {
+    .action.triple .button {
+      display: table-cell;
+      width: 33%; } }
 
 tr {
   height: 2em; }

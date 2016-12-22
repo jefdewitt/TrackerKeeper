@@ -57,6 +57,7 @@ header {
 
 .input__container {
     height: 5em;
+    margin-bottom: 1rem;
     position: relative;
 
     input, label {
@@ -67,7 +68,7 @@ header {
 }
 
 input, label {
-    font-size: 4vw;
+    font-size: 5vw;
     padding: 1em;
     width: 100%;
 
@@ -138,6 +139,13 @@ a {
         @media screen and (min-width: 767px) {
             display: table-cell;
             width: 50%;
+        }
+    }
+
+    &.triple .button {
+        @media screen and (min-width: 767px) {
+            display: table-cell;
+            width: 33%;
         }
     }
 }

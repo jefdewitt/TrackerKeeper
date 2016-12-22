@@ -11,24 +11,11 @@ angular.module('angularApp')
 
     $scope.Beta = Project;
 
-    //timer with timeout
-    $scope.timerWithTimeout = 0;
-    $scope.startTimerWithTimeout = function() {
-        $scope.timerWithTimeout = 0;
-        if($scope.myTimeout){
-            $timeout.cancel($scope.myTimeout);
-        }
-        $scope.onTimeout = function(){
-            $scope.timerWithTimeout++;
-            $scope.myTimeout = $timeout($scope.onTimeout,1000);
-        }
-        $scope.myTimeout = $timeout($scope.onTimeout,1000);
-    }
+    // store the interval promise in this variable
+    var promise;
 
-    $scope.resetTimerWithTimeout = function(){
-        $scope.timerWithTimeout = 0;
-        $timeout.cancel($scope.myTimeout);
-    }
+    // simulated items array
+    $scope.items = [];
 
     //timer with interval
     $scope.timerWithInterval = 0;
@@ -36,11 +23,24 @@ angular.module('angularApp')
         $scope.timerWithInterval = 0;
         if($scope.myInterval){
             $interval.cancel($scope.myInterval);
+            $scope.timerWithInterval = promise;
+            // store the interval promise
+            $scope.timerWithInterval++;
+            console.log($scope.timerWithInterval);
+
         }
         $scope.onInterval = function(){
             $scope.timerWithInterval++;
         }
     $scope.myInterval = $interval($scope.onInterval,1000);
+    }
+
+    $scope.stopTimerWithInterval = function() {
+        if ($scope.myInterval){
+            $interval.cancel($scope.myInterval);
+            promise = $scope.timerWithInterval;
+            console.log(promise);
+        }
     }
 
     $scope.resetTimerWithInterval = function(){
