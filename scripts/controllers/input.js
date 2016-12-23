@@ -10,7 +10,7 @@ angular.module('angularApp')
     }
 
     $scope.Beta = Project;
-    // 
+    //
     // $scope.Timer = {timerWithInterval | hhmmss};
 
     // store the interval promise in this variable
@@ -46,6 +46,22 @@ angular.module('angularApp')
         $scope.timerWithInterval = 0;
         promise = 0;
         $interval.cancel($scope.myInterval);
+    }
+
+    $scope.storeTime = function() {
+        // grab the current interval timer value
+        var currentTimerTime = $scope.timerWithInterval;
+        // grab the manual time entered
+        var manualTime = $scope.Beta.timer;
+        if ( currentTimerTime > 0 ) {
+            // if the stopwatch has been used
+            $scope.showTime = currentTimerTime;
+            console.log($scope.showTime);
+        } else {
+            // if time has been manually entered
+            $scope.showTime = manualTime;
+            console.log($scope.showTime);
+        }
     }
 })
 

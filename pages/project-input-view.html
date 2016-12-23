@@ -21,7 +21,7 @@
             <!-- <input ng-click="editing = true" ng-blur="editing = false; hide = true;" ng-hide="hide" ng-model="Alpha.name" type="text" name="projectName" id="name" placeholder="What's the name of your goal?" required> -->
 
             <!-- <input ng-click="editing = true" ng-blur="editing = false; hide = true;" ng-hide="hide" ng-model="timeInput" type="number" name="timeInput" id="time" placeholder="Manually input time here." required> -->
-            <input ng-click="resetTimerWithInterval();" ng-model="timeInput" ng-hide="working" ng-show="editing" type="number" name="timeInput" id="time" placeholder="Enter time in min">
+            <input ng-click="resetTimerWithInterval();" ng-model="Beta.timer" ng-hide="working" ng-show="editing" type="number" name="timeInput" id="time" placeholder="Enter time in min">
         </div>
 
         <div class="action triple">
@@ -34,6 +34,8 @@
             <button ng-disabled="inputTimeForm.$invalid" ng-click="go('project-output-view')" class="button">Confirm Time</button>
             <button ng-click="go('projects-list-view')" class="button">View Projects</button>
         </div>
+
+        <button ng-click="storeTime();" class="button">{{  }}</button>
 
     </form>
 
