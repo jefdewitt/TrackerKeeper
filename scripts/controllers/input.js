@@ -2,7 +2,7 @@
 
 angular.module('angularApp')
 
-.controller('inputCtlr', function($scope, $location, $timeout, $interval, Project) {
+.controller('inputCtlr', function($scope, $location, $interval, Project) {
     $scope.message = "I'm a single project page";
 
     $scope.go = function ( path ) {
@@ -10,6 +10,8 @@ angular.module('angularApp')
     }
 
     $scope.Beta = Project;
+    // 
+    // $scope.Timer = {timerWithInterval | hhmmss};
 
     // store the interval promise in this variable
     var promise;

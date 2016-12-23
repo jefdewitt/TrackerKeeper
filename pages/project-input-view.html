@@ -3,18 +3,25 @@
 -->
 <section class="content__main">
 
-    <h1>{{ Beta.name }}</h1>
-    <h2>{{ Beta.time }}</h2>
+    <div class="content__main--header">
+        <div class="row">
+            <h2>Project</h2><h2>{{ Beta.name }}</h2>
+        </div>
+        <div class="row">
+            <h2>Time Goal</h2><h2>{{ Beta.time }} hours</h2>
+        </div>
+    </div>
 
     <form name="inputTimeForm" class="form__input" novalidate>
 
         <div class="input__container">
+            <h3>Timer</h3>
             <label ng-click="resetTimerWithInterval(); editing = true; working = false;" ng-hide="editing" ng-show="working" for="time">{{timerWithInterval | hhmmss}}</label>
             <!-- <label ng-click="editing = true; hide = false;" ng-hide="editing" for="name">{{ Alpha.name }}</label> -->
             <!-- <input ng-click="editing = true" ng-blur="editing = false; hide = true;" ng-hide="hide" ng-model="Alpha.name" type="text" name="projectName" id="name" placeholder="What's the name of your goal?" required> -->
 
             <!-- <input ng-click="editing = true" ng-blur="editing = false; hide = true;" ng-hide="hide" ng-model="timeInput" type="number" name="timeInput" id="time" placeholder="Manually input time here." required> -->
-            <input ng-click="resetTimerWithInterval();" ng-model="timeInput" ng-hide="working" ng-show="editing" type="number" name="timeInput" id="time" placeholder="Manually enter time">
+            <input ng-click="resetTimerWithInterval();" ng-model="timeInput" ng-hide="working" ng-show="editing" type="number" name="timeInput" id="time" placeholder="Enter time in min">
         </div>
 
         <div class="action triple">

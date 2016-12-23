@@ -1,3 +1,6 @@
+* {
+  box-sizing: border-box; }
+
 html, body {
   height: 100%;
   width: 100%; }
@@ -24,7 +27,7 @@ header {
   padding: 0 1em; }
   @media screen and (min-width: 767px) {
     .content__wrapper {
-      max-width: 60%; } }
+      max-width: 70%; } }
 
 .content__main {
   overflow: hidden; }
@@ -40,13 +43,25 @@ header {
   @media screen and (min-width: 767px) {
     .form__input .input__container {
       margin-bottom: 1rem; } }
-  .form__input .input__container input, .form__input .input__container label {
+  .form__input .input__container h3, .form__input .input__container input, .form__input .input__container label {
     margin-bottom: 2rem;
     position: absolute;
     top: 50%;
     transform: translatey(-50%); }
+  .form__input .input__container input {
+    padding: 1em .5em; }
+  .form__input .input__container label {
+    border: 3px solid #fff;
+    padding: 1em .5em;
+    text-align: right;
+    width: 100%; }
+  .form__input .input__container h3 {
+    padding: 1em .5em;
+    margin: 0;
+    text-align: left; }
 
 input, label {
+  margin-bottom: 2rem;
   padding: 1em;
   width: 100%; }
   input:focus, label:focus {
@@ -128,5 +143,16 @@ ul {
 
 li {
   margin-bottom: 1em; }
+
+.content__main--header .row {
+  display: table;
+  margin-bottom: 1rem;
+  width: 100%; }
+  .content__main--header .row h2 {
+    display: table-cell; }
+    .content__main--header .row h2:first-of-type {
+      text-align: left; }
+    .content__main--header .row h2:last-of-type {
+      text-align: right; }
 
 /*# sourceMappingURL=style.css.map */

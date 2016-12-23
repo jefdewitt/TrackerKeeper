@@ -4,6 +4,10 @@ $white: #fff;
 $black: #333;
 $font-family: sans-serif;
 
+* {
+    box-sizing: border-box;
+}
+
 html, body {
     height: 100%;
     width: 100%;
@@ -43,7 +47,7 @@ header {
     padding: 0 1em;
 
     @media screen and (min-width: 767px) {
-        max-width: 60%;
+        max-width: 70%;
     }
 }
 
@@ -71,16 +75,34 @@ header {
             margin-bottom: 1rem;
         }
 
-        input, label {
+        h3, input, label {
             margin-bottom: 2rem;
             position: absolute;
-            top: 50%;
-            transform: translatey(-50%);
+                top: 50%;
+                transform: translatey(-50%);
+        }
+
+        input {
+            padding: 1em .5em;
+        }
+
+        label {
+            border: 3px solid #fff;
+            padding: 1em .5em;;
+            text-align: right;
+            width: 100%;
+        }
+
+        h3 {
+            padding: 1em .5em;
+            margin: 0;
+            text-align: left;
         }
     }
 }
 
 input, label {
+    margin-bottom: 2rem;
     padding: 1em;
     width: 100%;
 
@@ -205,8 +227,26 @@ li {
     margin-bottom: 1em;
 }
 
+.content__main--header {
 
+    .row {
+        display: table;
+        margin-bottom: 1rem;
+        width: 100%;
 
+        h2 {
+            display: table-cell;
+
+            &:first-of-type {
+                text-align: left;
+            }
+
+            &:last-of-type {
+                text-align: right;
+            }
+        }
+    }
+}
 
 
 
