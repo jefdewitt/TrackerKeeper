@@ -63,6 +63,12 @@ angular.module('angularApp')
             console.log($scope.showTime);
         }
     }
+
+    $scope.confirmTime = function() {
+        if (confirm('Are you sure you want to confirm this time?')) {
+             console.log('00000');
+        }
+    }
 })
 
 
