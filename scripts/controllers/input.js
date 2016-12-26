@@ -2,16 +2,13 @@
 
 angular.module('angularApp')
 
-.controller('inputCtlr', function($scope, $location, $interval, Project) {
-    $scope.message = "I'm a single project page";
+.controller('inputCtlr', function($scope, $location, $interval, project) {
 
     $scope.go = function ( path ) {
         $location.path( path );
     }
 
-    $scope.Beta = Project;
-    //
-    // $scope.Timer = {timerWithInterval | hhmmss};
+    $scope.Beta = project;
 
     // store the interval promise in this variable
     var promise;
@@ -48,25 +45,33 @@ angular.module('angularApp')
         $interval.cancel($scope.myInterval);
     }
 
-    $scope.storeTime = function() {
-        // grab the current interval timer value
-        var currentTimerTime = $scope.timerWithInterval;
-        // grab the manual time entered
-        var manualTime = $scope.Beta.timer;
-        if ( currentTimerTime > 0 ) {
-            // if the stopwatch has been used
-            $scope.showTime = currentTimerTime;
-            console.log($scope.showTime);
-        } else {
-            // if time has been manually entered
-            $scope.showTime = manualTime;
-            console.log($scope.showTime);
-        }
-    }
+    // $scope.storeTime = function() {
+    //     // grab the current interval timer value
+    //     var currentTimerTime = $scope.timerWithInterval;
+    //     // grab the manual time entered
+    //     var manualTime = $scope.Beta.timer;
+    //     if ( currentTimerTime > 0 ) {
+    //         // if the stopwatch has been used
+    //         $scope.showTime = currentTimerTime;
+    //     } else {
+    //         // if time has been manually entered
+    //         $scope.showTime = manualTime;
+    //     }
+    // }
 
     $scope.confirmTime = function() {
         if (confirm('Are you sure you want to confirm this time?')) {
-             console.log('00000');
+            // grab the current interval timer value
+            var currentTimerTime = $scope.timerWithInterval;
+            // grab the manual time entered
+            var manualTime = $scope.Beta.timer;
+
+            if ( currentTimerTime > 0 ) {
+                $scope.Beta.entries.push($scope.timerWithInterval);
+            } else {
+                $scope.Beta.entries.push($scope.Beta.timer);
+            }
+            console.log($scope.Beta.entries);
         }
     }
 })

@@ -2,17 +2,13 @@
 
 angular.module('angularApp')
 
-.controller('newCtlr', function($scope, $location, Project) {
-    $scope.message = 'Look! I am a list page.';
+.controller('newCtlr', function($scope, $location, project) {
+    $scope.message = 'Look! I am a new page.';
 
     $scope.go = function ( path ) {
         $location.path( path );
     }
 
-    // var first = this;
-
-    // first.project = project;
-
-    $scope.Alpha = Project;
+    $scope.Alpha = project;
 
 });

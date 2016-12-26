@@ -12,8 +12,12 @@ angular.module('angularApp')
 
     var project = this;
 
-    project.name = 'Default';
+    project.name = '';
 
-    project.time = 'Default';
+    project.time = '';
+
+    project.timer = '';
+
+    project.entries = [];
 
 });
