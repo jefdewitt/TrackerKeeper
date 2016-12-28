@@ -2,6 +2,12 @@
 
 angular.module('angularApp')
 
-.controller('listCtlr', function($scope) {
-    $scope.message = 'Look! I am a list page.';
+.controller('listCtlr', function($scope, $location, project) {
+
+    $scope.go = function ( path ) {
+        $location.path( path );
+    }
+
+    $scope.Delta = project;
+
 });

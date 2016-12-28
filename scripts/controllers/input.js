@@ -2,13 +2,24 @@
 
 angular.module('angularApp')
 
-.controller('inputCtlr', function($scope, $location, $interval, project) {
+.controller('inputCtlr', function($scope, $location, $interval, $localStorage,
+    $sessionStorage, project) {
 
     $scope.go = function ( path ) {
         $location.path( path );
     }
 
     $scope.Beta = project;
+
+    $scope.$storage = $localStorage;
+
+    $scope.save = function() {
+        $localStorage.project = $scope.Beta;
+    }
+
+    $scope.load = function() {
+        $scope.data = $localStorage.project;
+    }
 
     // store the interval promise in this variable
     var promise;

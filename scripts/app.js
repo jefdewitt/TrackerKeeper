@@ -7,7 +7,7 @@
  * tutorial for adding views found @:
  * https://scotch.io/tutorials/single-page-apps-with-angularjs-routing-and-templating
  */
-angular.module('angularApp', ['ngRoute', 'ui.router'])
+angular.module('angularApp', ['ngRoute', 'ui.router', 'ngStorage'])
 
 // configure our routes
 .config(function($routeProvider) {
