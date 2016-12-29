@@ -3,19 +3,23 @@
 -->
 <section class="content__main">
 
-    <ul class="">
+    <div class="field__container">
 
-        <li ng-click="go('project-input-view')">{{ Delta.name }}</li>
-        <li><a href=""></a>Project #2</li>
-        <li><a href=""></a>Project #3</li>
-        <li><a href=""></a>Project #4</li>
-        <li><a href=""></a>Project #5</li>
-        <li><a href=""></a>Project #6</li>
+        <ul class="projects__list">
 
-    </ul>
+            <li ng-click="loadData(); go('project-output-view');"><span>{{ Delta.name }}</span><span>{{ Delta.totalAccumulatedPctg.toFixed(2) }}% completed</span></li>
+            <li><a href=""></a>Project #2</li>
+            <li><a href=""></a>Project #3</li>
+            <li><a href=""></a>Project #4</li>
+            <li><a href=""></a>Project #5</li>
+            <li><a href=""></a>Project #6</li>
 
-    <div class="action">
-        <a href="/" class="button">Start Over</a>
+        </ul>
+
+        <div class="action">
+            <a href="/" class="button">Start Over</a>
+        </div>
+
     </div>
 
 </section>

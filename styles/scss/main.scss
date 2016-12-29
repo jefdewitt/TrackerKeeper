@@ -37,6 +37,12 @@ header {
     padding: 1em 0;
     text-align: center;
     width: 100%;
+
+    h1 {
+        @media screen and (min-width: 767px) {
+            margin: 0;
+        }
+    }
 }
 
 .content__wrapper {
@@ -248,8 +254,11 @@ li {
     }
 }
 
-
-
+.projects__list {
+    span:last-of-type {
+        float: right;
+    }
+}
 
 
 

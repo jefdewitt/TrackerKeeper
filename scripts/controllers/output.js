@@ -13,14 +13,39 @@ angular.module('angularApp')
     // establish project completion time in minutes
     $scope.Gamma.goalTimeInMin = $scope.Gamma.time * 60;
 
+    /**
+     * This not so complex timeStamp check, to determine whether entries were
+     * made the same day so we can combine them and they won't mess up our
+     * averages, had me on the verge of giving up. On all things in life.
+     */
+    // if there are enough entries, compare the timeStamps to see if they're made the same day
+    if( $scope.Gamma.entries.length > 1 ) {
+        // if they're made the same day combine the minutes property
+        if ( $scope.Gamma.entries.slice(-1)[0].timeStamp == $scope.Gamma.entries.slice(-2)[0].timeStamp ) {
+            var newObject = {
+                timeStamp: $scope.Gamma.entries.slice(-1)[0].timeStamp,
+                minutes: $scope.Gamma.entries.slice(-1)[0].minutes + $scope.Gamma.entries.slice(-2)[0].minutes
+            }
+            // remove the entries from the same date
+            $scope.Gamma.entries.splice(-2);
+            // add the new entry with combined minutes
+            $scope.Gamma.entries.push(newObject);
+        }
+    }
+
     // convert today's time entry into hours
-    $scope.Gamma.todaysTime = $scope.Gamma.entries[0] / 60;
+    $scope.Gamma.todaysTime = $scope.Gamma.entries[0].minutes / 60;
 
     // find today's time entry as a percentage of the whole project
-    $scope.Gamma.todaysPctg = ( $scope.Gamma.entries[0] * 100 ) / $scope.Gamma.goalTimeInMin;
+    $scope.Gamma.todaysPctg = ( $scope.Gamma.entries[0].minutes * 100 ) / $scope.Gamma.goalTimeInMin;
+
+    // we use map to grab object properties from within arrays -- SO STOKED!!!
+    $scope.Gamma.arrayMinutes = $scope.Gamma.entries.map(function(object) {
+        return object.minutes;
+    });
 
     // grab the sum of the entries
-    $scope.Gamma.sumOfEntries = $scope.Gamma.entries.reduce(function(a, b) {
+    $scope.Gamma.sumOfEntries = $scope.Gamma.arrayMinutes.reduce(function(a, b) {
         return a + b;
     }, 0);
 
@@ -39,15 +64,16 @@ angular.module('angularApp')
         $scope.Gamma.weekAvg = $scope.Gamma.weekTotalHours / $scope.Gamma.entries.length;
 
         // find the entry's daily average percentage of the whole project
-        $scope.Gamma.weekDailyAvgPctg = ( $scope.Gamma.sumOfEntries * 100 ) / $scope.Gamma.goalTimeInMin;
+        $scope.Gamma.weekDailyAvgPctg = ( $scope.Gamma.weekAvg * 100 ) / $scope.Gamma.time;
 
     } else {
 
         // if there are a week's worth of entries grab the last 7
-        $scope.Gamma.recentWeek = $scope.Gamma.entries.slice(-7);
+        $scope.Gamma.recentWeek = $scope.Gamma.arrayMinutes.slice(-7);
+        console.log($scope.Gamma.recentWeek);
 
         // add the week's worth of entries together
-        $scope.Gamma.weekTotal = recentWeek.reduce(function(a, b) {
+        $scope.Gamma.weekTotal = $scope.Gamma.recentWeek.reduce(function(a, b) {
             return a + b;
         }, 0);
 
@@ -61,10 +87,9 @@ angular.module('angularApp')
         $scope.Gamma.weekAvg = $scope.Gamma.weekTotalHours / 7;
 
         // find the week's daily average percentage of the whole project
-        $scope.Gamma.weekDailyAvgPctg = ( $scope.Gamma.weekAvg * 100 ) / $scope.Gamma.goalTimeInMin;
+        $scope.Gamma.weekDailyAvgPctg = ( $scope.Gamma.weekAvg * 100 ) / $scope.Gamma.time;
 
     }
-
 
     /**
      * monthly daily average algorithms
@@ -82,15 +107,15 @@ angular.module('angularApp')
         $scope.Gamma.monthAvg = $scope.Gamma.monthTotalHours / $scope.Gamma.entries.length;
 
         // find the entry's daily average percentage of the whole project
-        $scope.Gamma.monthDailyAvgPctg = ( $scope.Gamma.sumOfEntries * 100 ) / $scope.Gamma.goalTimeInMin;
+        $scope.Gamma.monthDailyAvgPctg = ( $scope.Gamma.monthAvg * 100 ) / $scope.Gamma.time;
 
     } else {
 
         // if there are a month's worth of entries grab the last 30
-        $scope.Gamma.recentMonth = $scope.Gamma.entries.slice(-30);
+        $scope.Gamma.recentMonth = $scope.Gamma.arrayMinutes.slice(-30);
 
         // add the month's worth of entries together
-        $scope.Gamma.monthTotal = recentMonth.reduce(function(a, b) {
+        $scope.Gamma.monthTotal = $scope.Gamma.recentMonth.reduce(function(a, b) {
             return a + b;
         }, 0);
 
@@ -104,7 +129,7 @@ angular.module('angularApp')
         $scope.Gamma.monthAvg = $scope.Gamma.monthTotalHours / 30;
 
         // find the month's daily average percentage of the whole project
-        $scope.Gamma.monthDailyAvgPctg = ( $scope.Gamma.monthAvg * 100 ) / $scope.Gamma.goalTimeInMin;
+        $scope.Gamma.monthDailyAvgPctg = ( $scope.Gamma.monthAvg * 100 ) / $scope.Gamma.time;
     }
 
     /**
@@ -122,15 +147,15 @@ angular.module('angularApp')
         $scope.Gamma.yearAvg = $scope.Gamma.yearTotalHours / $scope.Gamma.entries.length;
 
         // find the entry's daily average percentage of the whole project
-        $scope.Gamma.yearDailyAvgPctg = ( $scope.Gamma.sumOfEntries * 100 ) / $scope.Gamma.goalTimeInMin;
+        $scope.Gamma.yearDailyAvgPctg = ( $scope.Gamma.yearAvg * 100 ) / $scope.Gamma.time;
 
     } else {
 
         // if there are a years's worth of entries grab the last 365
-        $scope.Gamma.recentYear = $scope.Gamma.entries.slice(-365);
+        $scope.Gamma.recentYear = $scope.Gamma.arrayMinutes.slice(-365);
 
         // add the month's worth of entries together
-        $scope.Gamma.yearTotal = recentYear.reduce(function(a, b) {
+        $scope.Gamma.yearTotal = $scope.Gamma.recentYear.reduce(function(a, b) {
             return a + b;
         }, 0);
 
@@ -144,7 +169,7 @@ angular.module('angularApp')
         $scope.Gamma.yearAvg = $scope.Gamma.yearTotalHours / 30;
 
         // find the entry's daily average percentage of the whole project
-        $scope.Gamma.yearDailyAvgPctg = ( $scope.Gamma.yearAvg * 100 ) / $scope.Gamma.goalTimeInMin;
+        $scope.Gamma.yearDailyAvgPctg = ( $scope.Gamma.yearAvg * 100 ) / $scope.Gamma.time;
     }
 
     /**

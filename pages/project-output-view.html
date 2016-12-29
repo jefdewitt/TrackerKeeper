@@ -24,63 +24,63 @@
                 <tr>
                     <th></th>
                     <th>hours</th>
-                    <th>%</th>
+                    <th>percent</th>
                     <th></th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
                     <td>today</td>
-                    <td>{{ Gamma.todaysTime }}</td>
-                    <td>{{ Gamma.todaysPctg }}</td>
+                    <td>{{ Gamma.todaysTime.toFixed(2) }}</td>
+                    <td>{{ Gamma.todaysPctg.toFixed(2) }}%</td>
                     <td></td>
                 </tr>
                 <tr>
                     <td>week total</td>
-                    <td>{{ Gamma.weekTotalHours }}</td>
-                    <td>{{ Gamma.weekTotalPctg }}</td>
+                    <td>{{ Gamma.weekTotalHours.toFixed(2) }}</td>
+                    <td>{{ Gamma.weekTotalPctg.toFixed(2) }}%</td>
                     <td></td>
                 </tr>
                 <tr>
                     <td></td>
-                    <td>{{ Gamma.weekAvg }}</td>
-                    <td>{{ Gamma.weekDailyAvgPctg }}</td>
+                    <td>{{ Gamma.weekAvg.toFixed(2) }}</td>
+                    <td>{{ Gamma.weekDailyAvgPctg.toFixed(2) }}%</td>
                     <td>daily avg per week</td>
                 </tr>
                 <tr>
                     <td>month</td>
-                    <td>{{ Gamma.monthTotalHours }}</td>
-                    <td>{{ Gamma.monthTotalPctg }}</td>
+                    <td>{{ Gamma.monthTotalHours.toFixed(2) }}</td>
+                    <td>{{ Gamma.monthTotalPctg.toFixed(2) }}%</td>
                     <td></td>
                 </tr>
                 <tr>
                     <td></td>
-                    <td>{{ Gamma.monthAvg }}</td>
-                    <td>{{ Gamma.monthDailyAvgPctg }}</td>
+                    <td>{{ Gamma.monthAvg.toFixed(2) }}</td>
+                    <td>{{ Gamma.monthDailyAvgPctg.toFixed(2) }}%</td>
                     <td>daily avg per month</td>
                 </tr>
                 <tr>
                     <td>year</td>
-                    <td>{{ Gamma.yearTotalHours }}</td>
-                    <td>{{ Gamma.yearTotalPctg }}</td>
+                    <td>{{ Gamma.yearTotalHours.toFixed(2) }}</td>
+                    <td>{{ Gamma.yearTotalPctg.toFixed(2) }}%</td>
                     <td></td>
                 </tr>
                 <tr>
                     <td></td>
-                    <td>{{ Gamma.yearAvg }}</td>
-                    <td>{{ Gamma.yearDailyAvgPctg }}</td>
+                    <td>{{ Gamma.yearAvg.toFixed(2) }}</td>
+                    <td>{{ Gamma.yearDailyAvgPctg.toFixed(2) }}%</td>
                     <td>daily avg per year</td>
                 </tr>
                 <tr>
                     <td>total accumulated hours</td>
-                    <td>{{ Gamma.totalAccumulatedHours }}</td>
+                    <td>{{ Gamma.totalAccumulatedHours.toFixed(2) }}</td>
                     <td></td>
                     <td></td>
                 </tr>
                 <tr>
                     <td></td>
                     <td></td>
-                    <td>{{ Gamma.totalAccumulatedPctg }}</td>
+                    <td>{{ Gamma.totalAccumulatedPctg.toFixed(2) }}%</td>
                     <td>% toward completion</td>
                 </tr>
             </tbody>

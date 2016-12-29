@@ -13,13 +13,19 @@ angular.module('angularApp')
 
     $scope.$storage = $localStorage;
 
-    $scope.save = function() {
+    $scope.saveData = function() {
         $localStorage.project = $scope.Beta;
+        console.log('data saved');
     }
 
-    $scope.load = function() {
+    $scope.loadData = function() {
         $scope.data = $localStorage.project;
+        console.log('data loaded');
     }
+
+    /**
+     * Stopwatch feature
+     */
 
     // store the interval promise in this variable
     var promise;
@@ -56,38 +62,37 @@ angular.module('angularApp')
         $interval.cancel($scope.myInterval);
     }
 
-    // $scope.storeTime = function() {
-    //     // grab the current interval timer value
-    //     var currentTimerTime = $scope.timerWithInterval;
-    //     // grab the manual time entered
-    //     var manualTime = $scope.Beta.timer;
-    //     if ( currentTimerTime > 0 ) {
-    //         // if the stopwatch has been used
-    //         $scope.showTime = currentTimerTime;
-    //     } else {
-    //         // if time has been manually entered
-    //         $scope.showTime = manualTime;
-    //     }
-    // }
-
     $scope.confirmTime = function() {
         if (confirm('Are you sure you want to confirm this time?')) {
+
             // grab the current interval timer value
             var currentTimerTime = $scope.timerWithInterval;
             // grab the manual time entered
             var manualTime = $scope.Beta.timer;
 
             if ( currentTimerTime > 0 ) {
-                $scope.Beta.entries.push($scope.timerWithInterval);
+                // create new object or suffer the wrath of each new object overwriting all previously pushed objects
+                $scope.Beta.entryItem = {};
+                // store some useful timestamp info for each array item
+                var timeStamp = new Date(); // create new date object
+                $scope.Beta.entryItem.timeStamp = timeStamp.getDate(); // get today's date & add it to the property
+                // store the actual object properties in the array item object
+                $scope.Beta.entryItem.minutes = $scope.timerWithInterval;
+                $scope.Beta.entries.push($scope.Beta.entryItem);
+
             } else {
-                $scope.Beta.entries.push($scope.Beta.timer);
+                // create new object or suffer the wrath of each new object overwriting all previously pushed objects
+                $scope.Beta.entryItem = {};
+                // store some useful timestamp info for each array item
+                var timeStamp = new Date(); // create new date object
+                $scope.Beta.entryItem.timeStamp = timeStamp.getDate(); // get today's date & add it to the property
+                // store the actual object properties in the array item object
+                $scope.Beta.entryItem.minutes = $scope.Beta.timer;
+                $scope.Beta.entries.push($scope.Beta.entryItem);
             }
-            console.log($scope.Beta.entries);
         }
     }
 })
-
-
 
 .filter('hhmmss', function () {
     return function (time) {

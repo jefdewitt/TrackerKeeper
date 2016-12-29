@@ -20,4 +20,9 @@ angular.module('angularApp')
 
     project.entries = [];
 
+    project.entryItem = {
+        minutes: '',
+        timeStamp: ''
+    };
+
 });

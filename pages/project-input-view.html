@@ -17,10 +17,6 @@
         <div class="input__container">
             <h3>Timer</h3>
             <label ng-click="resetTimerWithInterval(); editing = true; working = false;" ng-hide="editing" ng-show="working" for="time">{{timerWithInterval | hhmmss}}</label>
-            <!-- <label ng-click="editing = true; hide = false;" ng-hide="editing" for="name">{{ Alpha.name }}</label> -->
-            <!-- <input ng-click="editing = true" ng-blur="editing = false; hide = true;" ng-hide="hide" ng-model="Alpha.name" type="text" name="projectName" id="name" placeholder="What's the name of your goal?" required> -->
-
-            <!-- <input ng-click="editing = true" ng-blur="editing = false; hide = true;" ng-hide="hide" ng-model="timeInput" type="number" name="timeInput" id="time" placeholder="Manually input time here." required> -->
             <input ng-click="resetTimerWithInterval();" ng-model="Beta.timer" ng-hide="working" ng-show="editing" type="number" name="timeInput" id="time" placeholder="Enter time in min">
         </div>
 
@@ -31,12 +27,10 @@
         </div>
 
         <div class="">
-            <button ng-disabled="inputTimeForm.$invalid" ng-click="confirmTime(); go('project-output-view');" class="button">Confirm Time</button>
+            <button ng-disabled="inputTimeForm.$invalid" ng-click="confirmTime(); saveData(); go('project-output-view');" class="button">Confirm Time</button>
             <button ng-click="go('projects-list-view')" class="button">View Projects</button>
         </div>
-<!-- 
-        <button ng-click="storeTime();" class="button">{{  }}</button> -->
-
+        
     </form>
 
 </section>
