@@ -10,6 +10,7 @@ angular.module('angularApp')
     }
 
     $scope.Beta = project;
+    console.log($scope.Beta);
 
     $scope.$storage = $localStorage.project;
 

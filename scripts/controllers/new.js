@@ -11,4 +11,16 @@ angular.module('angularApp')
 
     $scope.Alpha = project;
 
+    $scope.resetForm = function(){
+
+        $scope.Alpha.name = $scope.formObject.name;
+
+        $scope.Alpha.time = $scope.formObject.time;
+
+        $scope.formObject = {
+            name: '',
+            time: ''
+        }
+    }
+
 });
