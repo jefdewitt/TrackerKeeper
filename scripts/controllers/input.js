@@ -10,17 +10,34 @@ angular.module('angularApp')
     }
 
     $scope.Beta = project;
-    console.log($scope.Beta);
 
     $scope.$storage = $localStorage.project;
 
+    $scope.projectsArray = [];
+
+    console.dir('projectsArray before save' + $scope.projectsArray);
+    var projectObject = $scope.$storage;
+    console.dir('stored object input page before save' + projectObject);
+
     $scope.saveData = function() {
-        // $scope.projectsArray = [];
-        // console.log('array before ' + $scope.projectsArray);
-        // $scope.projectsArray.push($scope.Beta);
-        // console.log('array after ' + $scope.projectsArray);
-        $localStorage.project = $scope.Beta;
+
+        var projectObject = {
+            name : $scope.Beta.name,
+            time : $scope.Beta.time,
+            timer : '',
+            entries : [],
+            entryItem : {
+                minutes: '',
+                timeStamp: ''
+            }
+        };
+
+        $scope.projectsArray.push(projectObject);
+
+        $localStorage.project = $scope.projectsArray;
         console.log('localStorage -- input ' + $localStorage.project);
+        console.dir('projectsArray after save' + $scope.projectsArray);
+        console.dir('stored object input page after save' + projectObject);
     }
 
     /**
