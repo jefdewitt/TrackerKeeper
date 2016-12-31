@@ -14,7 +14,7 @@ angular.module('angularApp')
     $scope.Gamma.goalTimeInMin = $scope.Gamma.time * 60;
 
     /**
-     * This not so complex timeStamp check, to determine whether entries were
+     * This not-so-complex timeStamp check, to determine whether entries were
      * made the same day so we can combine them and they won't mess up our
      * averages, had me on the verge of giving up. On all things in life.
      */

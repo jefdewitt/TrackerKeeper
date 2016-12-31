@@ -11,11 +11,21 @@ angular.module('angularApp')
 
     $scope.Delta = project;
 
-    $scope.$storage = $localStorage;
+    // $localStorage.project = $scope.$storage;
+
+    $scope.$storage = $localStorage.project;
 
     $scope.loadData = function() {
-        $scope.data = $localStorage.project;
-        console.log('data loaded');
+
+        // console.log('scope storage -- output ' + $scope.$storage);
+        // console.log('localStorage -- output ' + $localStorage.project);
+        // console.log('localStorage -- output min ' + $localStorage.project.entryItem);
+        // console.log('localStorage -- output min ' + $localStorage.project.Delta);
+
+        var projectObject = $scope.$storage;
+        console.log(projectObject);
+        console.dir(projectObject);
+
     }
 
 });

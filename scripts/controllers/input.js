@@ -11,16 +11,15 @@ angular.module('angularApp')
 
     $scope.Beta = project;
 
-    $scope.$storage = $localStorage;
+    $scope.$storage = $localStorage.project;
 
     $scope.saveData = function() {
+        // $scope.projectsArray = [];
+        // console.log('array before ' + $scope.projectsArray);
+        // $scope.projectsArray.push($scope.Beta);
+        // console.log('array after ' + $scope.projectsArray);
         $localStorage.project = $scope.Beta;
-        console.log('data saved');
-    }
-
-    $scope.loadData = function() {
-        $scope.data = $localStorage.project;
-        console.log('data loaded');
+        console.log('localStorage -- input ' + $localStorage.project);
     }
 
     /**
@@ -30,10 +29,7 @@ angular.module('angularApp')
     // store the interval promise in this variable
     var promise;
 
-    // simulated items array
-    $scope.items = [];
-
-    //timer with interval
+    // timer with interval
     $scope.timerWithInterval = 0;
     $scope.startTimerWithInterval = function() {
         $scope.timerWithInterval = 0;
@@ -80,6 +76,10 @@ angular.module('angularApp')
                 $scope.Beta.entryItem.minutes = $scope.timerWithInterval;
                 $scope.Beta.entries.push($scope.Beta.entryItem);
 
+                $scope.go('project-output-view');
+                $scope.saveData();
+                $scope.timerWithInterval = '';
+
             } else {
                 // create new object or suffer the wrath of each new object overwriting all previously pushed objects
                 $scope.Beta.entryItem = {};
@@ -89,6 +89,10 @@ angular.module('angularApp')
                 // store the actual object properties in the array item object
                 $scope.Beta.entryItem.minutes = $scope.Beta.timer;
                 $scope.Beta.entries.push($scope.Beta.entryItem);
+
+                $scope.go('project-output-view');
+                $scope.saveData();
+                $scope.Beta.timer = '';
             }
         }
     }

@@ -46,8 +46,13 @@ angular.module('angularApp', ['ngRoute', 'ui.router', 'ngStorage'])
 
  // Create the factory that shares the Project object
 .factory('Project', function(){
-  return { Project: '' };
+    return { Project: '' };
 })
+
+// Create the factory that shares the Project object
+// .factory('Memory', function(){
+//     return { Memory: '' };
+// })
 
 .config(function config($stateProvider) {
 
