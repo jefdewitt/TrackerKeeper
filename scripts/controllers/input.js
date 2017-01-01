@@ -11,22 +11,24 @@ angular.module('angularApp')
 
     $scope.Input = goalToBeTracked;
 
+    console.log('Input object ' + $scope.Input);
+
     $scope.$storage = $localStorage.project;
 
     $scope.saveNewData = function() {
 
-        // var projectObject = {
-        //     name : $scope.Input.name,
-        //     time : $scope.Input.time,
-        //     timer : '',
-        //     entries : [],
-        //     entryItem : {
-        //         minutes: '',
-        //         timeStamp: ''
-        //     }
-        // };
+        var projectObject = {
+            name : $scope.Input.name,
+            time : $scope.Input.time,
+            timer : '',
+            entries : [],
+            entryItem : {
+                minutes: '',
+                timeStamp: ''
+            }
+        };
 
-        $scope.$storage.push($scope.Input);
+        $scope.$storage.push(projectObject);
 
         $localStorage.project = $scope.$storage;
         console.log('localStorage -- input ' + $scope.$storage);
