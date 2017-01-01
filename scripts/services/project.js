@@ -8,19 +8,19 @@
 
 angular.module('angularApp')
 
-.service('project', function Project() {
+.service('goalToBeTracked', function Project() {
 
-    var project = this;
+    var goalToBeTracked = this;
 
-    project.name = '';
+    goalToBeTracked.name = '';
 
-    project.time = '';
+    goalToBeTracked.time = '';
 
-    project.timer = '';
+    goalToBeTracked.timer = '';
 
-    project.entries = [];
+    goalToBeTracked.entries = [];
 
-    project.entryItem = {
+    goalToBeTracked.entryItem = {
         minutes: '',
         timeStamp: ''
     };

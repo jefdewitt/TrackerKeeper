@@ -5,15 +5,11 @@
 
     <div class="content__main--header">
         <div class="row">
-            <h2>Project</h2><h2>{{ Gamma.name }}</h2>
+            <h2>Project</h2><h2>{{ Output.name }}</h2>
         </div>
         <div class="row">
-            <h2>Time Goal</h2><h2>{{ Gamma.time }} hours</h2>
+            <h2>Time Goal</h2><h2>{{ Output.time }} hours</h2>
         </div>
-
-        <!-- <div class="row">
-            <h2>Accum. Time</h2><h2>{{ Gamma.timer }} hours</h2>
-        </div> -->
     </div>
 
 
@@ -31,56 +27,56 @@
             <tbody>
                 <tr>
                     <td>today</td>
-                    <td>{{ Gamma.todaysTime.toFixed(2) }}</td>
-                    <td>{{ Gamma.todaysPctg.toFixed(2) }}%</td>
+                    <td>{{ Output.todaysTime.toFixed(2) }}</td>
+                    <td>{{ Output.todaysPctg.toFixed(2) }}%</td>
                     <td></td>
                 </tr>
                 <tr>
                     <td>week total</td>
-                    <td>{{ Gamma.weekTotalHours.toFixed(2) }}</td>
-                    <td>{{ Gamma.weekTotalPctg.toFixed(2) }}%</td>
+                    <td>{{ Output.weekTotalHours.toFixed(2) }}</td>
+                    <td>{{ Output.weekTotalPctg.toFixed(2) }}%</td>
                     <td></td>
                 </tr>
                 <tr>
                     <td></td>
-                    <td>{{ Gamma.weekAvg.toFixed(2) }}</td>
-                    <td>{{ Gamma.weekDailyAvgPctg.toFixed(2) }}%</td>
+                    <td>{{ Output.weekAvg.toFixed(2) }}</td>
+                    <td>{{ Output.weekDailyAvgPctg.toFixed(2) }}%</td>
                     <td>daily avg per week</td>
                 </tr>
                 <tr>
                     <td>month</td>
-                    <td>{{ Gamma.monthTotalHours.toFixed(2) }}</td>
-                    <td>{{ Gamma.monthTotalPctg.toFixed(2) }}%</td>
+                    <td>{{ Output.monthTotalHours.toFixed(2) }}</td>
+                    <td>{{ Output.monthTotalPctg.toFixed(2) }}%</td>
                     <td></td>
                 </tr>
                 <tr>
                     <td></td>
-                    <td>{{ Gamma.monthAvg.toFixed(2) }}</td>
-                    <td>{{ Gamma.monthDailyAvgPctg.toFixed(2) }}%</td>
+                    <td>{{ Output.monthAvg.toFixed(2) }}</td>
+                    <td>{{ Output.monthDailyAvgPctg.toFixed(2) }}%</td>
                     <td>daily avg per month</td>
                 </tr>
                 <tr>
                     <td>year</td>
-                    <td>{{ Gamma.yearTotalHours.toFixed(2) }}</td>
-                    <td>{{ Gamma.yearTotalPctg.toFixed(2) }}%</td>
+                    <td>{{ Output.yearTotalHours.toFixed(2) }}</td>
+                    <td>{{ Output.yearTotalPctg.toFixed(2) }}%</td>
                     <td></td>
                 </tr>
                 <tr>
                     <td></td>
-                    <td>{{ Gamma.yearAvg.toFixed(2) }}</td>
-                    <td>{{ Gamma.yearDailyAvgPctg.toFixed(2) }}%</td>
+                    <td>{{ Output.yearAvg.toFixed(2) }}</td>
+                    <td>{{ Output.yearDailyAvgPctg.toFixed(2) }}%</td>
                     <td>daily avg per year</td>
                 </tr>
                 <tr>
                     <td>total accumulated hours</td>
-                    <td>{{ Gamma.totalAccumulatedHours.toFixed(2) }}</td>
+                    <td>{{ Output.totalAccumulatedHours.toFixed(2) }}</td>
                     <td></td>
                     <td></td>
                 </tr>
                 <tr>
                     <td></td>
                     <td></td>
-                    <td>{{ Gamma.totalAccumulatedPctg.toFixed(2) }}%</td>
+                    <td>{{ Output.totalAccumulatedPctg.toFixed(2) }}%</td>
                     <td>% toward completion</td>
                 </tr>
             </tbody>

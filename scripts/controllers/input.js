@@ -3,41 +3,35 @@
 angular.module('angularApp')
 
 .controller('inputCtlr', function($scope, $location, $interval, $localStorage,
-    $sessionStorage, project) {
+    $sessionStorage, goalToBeTracked) {
 
     $scope.go = function ( path ) {
         $location.path( path );
     }
 
-    $scope.Beta = project;
+    $scope.Input = goalToBeTracked;
 
     $scope.$storage = $localStorage.project;
 
-    $scope.projectsArray = [];
+    $scope.saveNewData = function() {
 
-    console.dir('projectsArray before save' + $scope.projectsArray);
-    var projectObject = $scope.$storage;
-    console.dir('stored object input page before save' + projectObject);
+        // var projectObject = {
+        //     name : $scope.Input.name,
+        //     time : $scope.Input.time,
+        //     timer : '',
+        //     entries : [],
+        //     entryItem : {
+        //         minutes: '',
+        //         timeStamp: ''
+        //     }
+        // };
 
-    $scope.saveData = function() {
+        $scope.$storage.push($scope.Input);
 
-        var projectObject = {
-            name : $scope.Beta.name,
-            time : $scope.Beta.time,
-            timer : '',
-            entries : [],
-            entryItem : {
-                minutes: '',
-                timeStamp: ''
-            }
-        };
-
-        $scope.projectsArray.push(projectObject);
-
-        $localStorage.project = $scope.projectsArray;
-        console.log('localStorage -- input ' + $localStorage.project);
-        console.dir('projectsArray after save' + $scope.projectsArray);
-        console.dir('stored object input page after save' + projectObject);
+        $localStorage.project = $scope.$storage;
+        console.log('localStorage -- input ' + $scope.$storage);
+        console.dir('projectsArray after save' + $scope.$storage);
+        // console.dir('stored object input page after save' + projectObject);
     }
 
     /**
@@ -82,35 +76,35 @@ angular.module('angularApp')
             // grab the current interval timer value
             var currentTimerTime = $scope.timerWithInterval;
             // grab the manual time entered
-            var manualTime = $scope.Beta.timer;
+            var manualTime = $scope.Input.timer;
 
             if ( currentTimerTime > 0 ) {
                 // create new object or suffer the wrath of each new object overwriting all previously pushed objects
-                $scope.Beta.entryItem = {};
+                $scope.Input.entryItem = {};
                 // store some useful timestamp info for each array item
                 var timeStamp = new Date(); // create new date object
-                $scope.Beta.entryItem.timeStamp = timeStamp.getDate(); // get today's date & add it to the property
+                $scope.Input.entryItem.timeStamp = timeStamp.getDate(); // get today's date & add it to the property
                 // store the actual object properties in the array item object
-                $scope.Beta.entryItem.minutes = $scope.timerWithInterval;
-                $scope.Beta.entries.push($scope.Beta.entryItem);
+                $scope.Input.entryItem.minutes = $scope.timerWithInterval;
+                $scope.Input.entries.push($scope.Input.entryItem);
 
                 $scope.go('project-output-view');
-                $scope.saveData();
+                $scope.saveNewData();
                 $scope.timerWithInterval = '';
 
             } else {
                 // create new object or suffer the wrath of each new object overwriting all previously pushed objects
-                $scope.Beta.entryItem = {};
+                $scope.Input.entryItem = {};
                 // store some useful timestamp info for each array item
                 var timeStamp = new Date(); // create new date object
-                $scope.Beta.entryItem.timeStamp = timeStamp.getDate(); // get today's date & add it to the property
+                $scope.Input.entryItem.timeStamp = timeStamp.getDate(); // get today's date & add it to the property
                 // store the actual object properties in the array item object
-                $scope.Beta.entryItem.minutes = $scope.Beta.timer;
-                $scope.Beta.entries.push($scope.Beta.entryItem);
+                $scope.Input.entryItem.minutes = $scope.Input.timer;
+                $scope.Input.entries.push($scope.Input.entryItem);
 
                 $scope.go('project-output-view');
-                $scope.saveData();
-                $scope.Beta.timer = '';
+                $scope.saveNewData();
+                $scope.Input.timer = '';
             }
         }
     }

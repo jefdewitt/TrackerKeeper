@@ -5,26 +5,18 @@
 
     <div class="field__container">
 
-        <!-- <input ng-change="field.edited = true" ng-model="field.name" ng-show="editing" ng-blur="editing = false;" ng-class="{'edited': field.edited}" type="text" placeholder="field.name">
-        <label ng-click="editing = true" ng-hide="editing">{{ field.name }}</label> -->
-
         <form name="newProjectForm">
 
             <div class="input__container">
-                <!-- <label ng-click="editing = true; hide = false;" ng-hide="editing" for="name">{{ Alpha.name }}</label> -->
-                <!-- <input ng-click="editing = true" ng-blur="editing = false; hide = true;" ng-hide="hide" ng-model="Alpha.name" type="text" name="projectName" id="name" placeholder="What's the name of your goal?" required> -->
                 <input ng-model="formObject.name" type="text" name="projectName" id="name" placeholder="What's the name of your goal?" required>
             </div>
 
             <div class="input__container">
-                <!-- <label ng-click="revising = true; disappear = false;" ng-hide="revising" for="time">{{ Alpha.time }}</label> -->
-                <!-- <input ng-click="revising = true" ng-blur="revising = false; disappear = true;" ng-hide="disappear" ng-model="Alpha.time" type="number" min="1" max"10001" name="name" id="time" placeholder="How many hours do you need?" required> -->
                 <input ng-model="formObject.time" type="number" min="1" max"10001" name="projectTime" id="time" placeholder="How many hours do you need?" required>
             </div>
 
             <div class="action double">
                 <button ng-click="go('/')" class="button">Back</button>
-                <!-- <button ng-disabled="newProjectForm.$invalid"><a href="#project-output-view" class="button">Save</a></button> -->
                 <button ng-disabled="newProjectForm.$invalid" ng-click="go('project-input-view'); resetForm();" class="button">Save</button>
             </div>
 
@@ -32,13 +24,4 @@
 
     </div>
 
-
 </section>
-
-<script>
-    window.onload = function() {
-
-    };
-</script>
-
-<!-- ng-click="hide = (editing==false ? !editing : editing)"  -->

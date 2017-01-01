@@ -7,7 +7,7 @@
 
         <ul class="projects__list">
 
-            <li ng-click="loadData(); go('project-output-view');"><span>{{ Delta.name }}</span><span>{{ Delta.totalAccumulatedPctg.toFixed(2) }}% completed</span></li>
+            <li ng-click="loadData(); go('project-output-view');"><span>{{ ListItem.name }}</span><span>{{ ListItem.totalAccumulatedPctg.toFixed(2) }}% completed</span></li>
             <li><a href=""></a>Project #2</li>
             <li><a href=""></a>Project #3</li>
             <li><a href=""></a>Project #4</li>
@@ -18,7 +18,9 @@
 
         <div class="action">
             <a href="/" class="button">Start Over</a>
+            <a href="" class="button" ng-click="clearData()">Clear Store</a>
         </div>
+
 
     </div>
 
