@@ -30,7 +30,7 @@ angular.module('angularApp')
 
     $scope.clearData = function() {
         $localStorage.$reset();
-        $scope.$storage.$reset();
+        // $scope.$storage.$reset();
     }
 
 });
