@@ -11,16 +11,9 @@ angular.module('angularApp')
 
     $scope.ListItem = goalToBeTracked;
 
-    // $localStorage.project = $scope.$storage;
-
     $scope.$storage = $localStorage.project;
 
     $scope.loadData = function() {
-
-        // console.log('scope storage -- output ' + $scope.$storage);
-        // console.log('localStorage -- output ' + $localStorage.project);
-        // console.log('localStorage -- output min ' + $localStorage.project.entryItem);
-        // console.log('localStorage -- output min ' + $localStorage.project.ListItem);
 
         var projectObject = $scope.$storage;
         console.log(projectObject);
@@ -29,8 +22,7 @@ angular.module('angularApp')
     }
 
     $scope.clearData = function() {
-        $localStorage.$reset();
-        // $scope.$storage.$reset();
+        $localStorage.project = [];
     }
 
 });
