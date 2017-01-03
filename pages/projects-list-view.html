@@ -11,7 +11,13 @@
             <li><a href=""></a>Project #2</li>
             <li ng-repeat="item in ListItem"></li>
 
+
         </ul>
+
+        <ul class="projects__list" ng-repeat="item in ListItem">
+            <li ng-click="loadData(); go('project-output-view');"><span>{{ ListItem.name }}</span><span>{{ totalAccumulatedPctg.toFixed(2) }}% completed</span></li>
+        </ul>
+
 
         <div class="action">
             <a href="/" class="button">Start Over</a>
