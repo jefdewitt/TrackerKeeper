@@ -32,12 +32,22 @@ angular.module('angularApp')
     $scope.$storage = $localStorage.project;
 
     $scope.projectObject = $scope.$storage;
+    //
+    // angular.forEach(project in $scope.projectObject) {
+    //     console.log('project name ' + project.name, 'project time ' + project.time);
+    // }
+
+    angular.forEach($scope.projectObject, function(value, key) {
+      console.log(key + ': ' + value);
+      console.log($scope.projectObject.name + ': ' + value);
+      console.log($scope.projectObject.time + ': ' + value);
+    });
 
     $scope.loadData = function() {
 
         // var projectObject = $scope.$storage;
-        // console.log(projectObject);
-        // console.dir(projectObject);
+        console.log($scope.projectObject);
+        console.dir($scope.projectObject);
 
     }
 
