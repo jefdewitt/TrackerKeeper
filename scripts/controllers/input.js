@@ -18,7 +18,6 @@ angular.module('angularApp')
         $scope.$storage.push($scope.Input);
 
         $localStorage.project = $scope.$storage;
-        console.log('localStorage -- input ' + $scope.$storage);
     }
 
     /**

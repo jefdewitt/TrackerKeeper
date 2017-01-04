@@ -13,34 +13,48 @@ angular.module('angularApp')
 
     // consider func as the next 6 vars exist in output.js too
 
-    $scope.goalTimeInMin = $scope.ListItem.time * 60;
+    // $scope.goalTimeInMin = $scope.ListItem.time * 60;
+    //
+    // $scope.arrayMinutes = $scope.ListItem.entries.map(function(object) {
+    //     return object.minutes;
+    // });
+    //
+    // $scope.sumOfEntries = $scope.arrayMinutes.reduce(function(a, b) {
+    //     return a + b;
+    // }, 0);
 
-    $scope.arrayMinutes = $scope.ListItem.entries.map(function(object) {
-        return object.minutes;
-    });
+    // $scope.totalAccumulated = $scope.sumOfEntries;
 
-    $scope.sumOfEntries = $scope.arrayMinutes.reduce(function(a, b) {
-        return a + b;
-    }, 0);
-
-    $scope.totalAccumulated = $scope.sumOfEntries;
-
-    $scope.totalAccumulatedHours = $scope.totalAccumulated / 60;
-
-    $scope.totalAccumulatedPctg = ( $scope.totalAccumulated * 100 ) /$scope.goalTimeInMin;
+    // $scope.totalAccumulatedHours = $scope.sumOfEntries / 60;
+    //
+    // $scope.totalAccumulatedPctg = ( $scope.sumOfEntries * 100 ) /$scope.goalTimeInMin;
 
     $scope.$storage = $localStorage.project;
 
     $scope.projectObject = $scope.$storage;
-    //
-    // angular.forEach(project in $scope.projectObject) {
-    //     console.log('project name ' + project.name, 'project time ' + project.time);
-    // }
 
-    angular.forEach($scope.projectObject, function(value, key) {
-      console.log(key + ': ' + value);
-      console.log($scope.projectObject.name + ': ' + value);
-      console.log($scope.projectObject.time + ': ' + value);
+    angular.forEach($scope.projectObject, function(index) {
+    //   console.log(index);
+    //   console.log(index.name);
+    //   console.log(index.time);
+    //   console.dir(index);
+
+      var goalInMin = index.time * 60;
+      console.log('goalInMin ' + goalInMin);
+
+      var arrayMin = index.entries.map(function(object) {
+          return object.minutes;
+      });
+
+      var sumOfArrayMin = arrayMin.reduce(function(a, b) {
+          return a + b;
+      }, 0);
+
+      var totalAccumulatedHours = sumOfArrayMin / 60;
+
+      $scope.accumulatedPctg = ( sumOfArrayMin  * 100 ) / goalInMin;
+      console.log('$scope.accumulatedPctg ' + $scope.accumulatedPctg);
+
     });
 
     $scope.loadData = function() {
