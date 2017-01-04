@@ -31,11 +31,13 @@ angular.module('angularApp')
 
     $scope.$storage = $localStorage.project;
 
+    $scope.projectObject = $scope.$storage;
+
     $scope.loadData = function() {
 
-        var projectObject = $scope.$storage;
-        console.log(projectObject);
-        console.dir(projectObject);
+        // var projectObject = $scope.$storage;
+        // console.log(projectObject);
+        // console.dir(projectObject);
 
     }
 

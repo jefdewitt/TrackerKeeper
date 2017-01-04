@@ -14,7 +14,7 @@
 
         </ul>
 
-        <ul class="projects__list" ng-repeat="item in ListItem">
+        <ul class="projects__list" ng-repeat="project in projectObject">
             <li ng-click="loadData(); go('project-output-view');"><span>{{ ListItem.name }}</span><span>{{ totalAccumulatedPctg.toFixed(2) }}% completed</span></li>
         </ul>
 
