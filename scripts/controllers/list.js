@@ -37,21 +37,24 @@ angular.module('angularApp')
     //   console.log(index);
     //   console.log(index.name);
     //   console.log(index.time);
-    //   console.dir(index);
+      console.dir('index ' + index);
 
       var goalInMin = index.time * 60;
       console.log('goalInMin ' + goalInMin);
-
+      //
       var arrayMin = index.entries.map(function(object) {
           return object.minutes;
       });
-
+      console.log('arrayMin ' + arrayMin);
+      //
       var sumOfArrayMin = arrayMin.reduce(function(a, b) {
           return a + b;
       }, 0);
-
+      console.log('sumOfArrayMin ' + sumOfArrayMin);
+      //
       var totalAccumulatedHours = sumOfArrayMin / 60;
-
+      console.log('totalAccumulatedHours ' + totalAccumulatedHours);
+      //
       $scope.accumulatedPctg = ( sumOfArrayMin  * 100 ) / goalInMin;
       console.log('$scope.accumulatedPctg ' + $scope.accumulatedPctg);
 
@@ -67,6 +70,8 @@ angular.module('angularApp')
 
     $scope.clearData = function() {
         $localStorage.project = [];
+        $scope.$storage = [];
+        $scope.projectObject = [];
     }
 
 });
