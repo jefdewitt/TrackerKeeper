@@ -15,6 +15,14 @@ angular.module('angularApp')
 
     $scope.saveNewData = function() {
 
+        angular.forEach($scope.$storage, function(index) {
+            console.log('index.name ' + index.name);
+            console.log('$scope.Input.name ' + $scope.Input.name);
+            if (index.name === $scope.Input.name) {
+                console.log('we have a match');
+            }
+        });
+
         $scope.$storage.push($scope.Input);
 
         $localStorage.project = $scope.$storage;
