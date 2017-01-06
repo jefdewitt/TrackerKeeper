@@ -18,9 +18,13 @@ angular.module('angularApp')
         angular.forEach($scope.$storage, function(index) {
             console.log('index.name ' + index.name);
             console.log('$scope.Input.name ' + $scope.Input.name);
+
             if (index.name === $scope.Input.name) {
                 console.log('we have a match');
-            }
+                index.entries.push($scope.Input.entryItem)
+                console.log('$scope.Input.entryItem ' + $scope.Input.entryItem);
+                console.log('index.entries ' + index.entries);
+            };
         });
 
         $scope.$storage.push($scope.Input);
