@@ -12,22 +12,82 @@ angular.module('angularApp')
     $scope.Input = goalToBeTracked;
 
     $scope.$storage = $localStorage.project;
+    console.log('Heres our scope.storage contents');
+    angular.forEach($scope.$storage, function(index) {
+        console.dir(index.name);
+    });
 
     $scope.saveNewData = function() {
+        // grab the current interval timer value
+        var currentTimerTime = $scope.timerWithInterval;
+        // grab the manual time entered
+        var manualTime = $scope.timer;
+        // create new object or suffer the wrath of each new object overwriting all previously pushed objects
+        $scope.entryItem = {};
+        // store some useful timestamp info for each array item
+        var timeStamp = new Date(); // create new date object
+        $scope.entryItem.timeStamp = timeStamp.getDate(); // get today's date & add it to the property
 
-        angular.forEach($scope.$storage, function(index) {
-            console.log('index.name ' + index.name);
-            console.log('$scope.Input.name ' + $scope.Input.name);
+        if ( currentTimerTime > 0 ) {
+            // store the actual object properties in the entries array
+            $scope.entryItem.minutes = $scope.timerWithInterval;
+            // if localStorage isn't empty
+            if ( $scope.$storage[0] !== undefined ) {
+                // loop through our localStorage array
+                angular.forEach($scope.$storage, function(index) {
 
-            if (index.name === $scope.Input.name) {
-                console.log('we have a match');
-                index.entries.push($scope.Input.entryItem)
-                console.log('$scope.Input.entryItem ' + $scope.Input.entryItem);
-                console.log('index.entries ' + index.entries);
-            };
-        });
+                    if (index.name === $scope.Input.name) {
+                        index.entries = [];
+                        index.entries.push($scope.entryItem)
+                    } else {
+                        $scope.Input.entries.push($scope.entryItem);
+                        $scope.$storage.push($scope.Input);
+                    }
+                });
 
-        $scope.$storage.push($scope.Input);
+            } else {
+                $scope.Input.entries.push($scope.entryItem);
+                $scope.$storage.push($scope.Input);
+            }
+            $scope.timerWithInterval = '';
+
+        } else {
+            // store the actual object properties in the array item object
+            $scope.entryItem.minutes = $scope.timer;
+            //
+            // if ( $scope.$storage.length > 1 ) {
+
+                var count = 0;
+
+                angular.forEach($scope.$storage, function(index) {
+                    console.log('index.name ' + index.name);
+                    console.log('$scope.Input.name ' + $scope.Input.name);
+                    if (index.name === $scope.Input.name) {
+                        console.log('00000');
+                        index.entries = [];
+                        index.entries.push($scope.entryItem);
+                    } else {
+                        console.log('11111');
+                        count++;
+                        console.log('count = ' + count);
+                    }
+                })
+
+                if (count === $scope.$storage.length) {
+                    console.log('count = $scope.$storage.length');
+                    $scope.Input.entries.push($scope.entryItem);
+                    $scope.$storage.push($scope.Input);
+                    console.dir($scope.$storage);
+                }
+
+            // } else {
+            //     $scope.Input.entries.push($scope.entryItem);
+            //     $scope.$storage.push($scope.Input);
+            //     console.dir($scope.$storage);
+            // }
+            $scope.timer = '';
+        }
+
 
         $localStorage.project = $scope.$storage;
     }
@@ -70,42 +130,13 @@ angular.module('angularApp')
 
     $scope.confirmTime = function() {
         if (confirm('Are you sure you want to confirm this time?')) {
+            // if confirm is true we save our object and go to the next view
+            $scope.saveNewData();
+            $scope.go('project-output-view');
 
-            // grab the current interval timer value
-            var currentTimerTime = $scope.timerWithInterval;
-            // grab the manual time entered
-            var manualTime = $scope.Input.timer;
-
-            if ( currentTimerTime > 0 ) {
-                // create new object or suffer the wrath of each new object overwriting all previously pushed objects
-                $scope.Input.entryItem = {};
-                // store some useful timestamp info for each array item
-                var timeStamp = new Date(); // create new date object
-                $scope.Input.entryItem.timeStamp = timeStamp.getDate(); // get today's date & add it to the property
-                // store the actual object properties in the array item object
-                $scope.Input.entryItem.minutes = $scope.timerWithInterval;
-                $scope.Input.entries.push($scope.Input.entryItem);
-
-                $scope.go('project-output-view');
-                $scope.saveNewData();
-                $scope.timerWithInterval = '';
-
-            } else {
-                // create new object or suffer the wrath of each new object overwriting all previously pushed objects
-                $scope.Input.entryItem = {};
-                // store some useful timestamp info for each array item
-                var timeStamp = new Date(); // create new date object
-                $scope.Input.entryItem.timeStamp = timeStamp.getDate(); // get today's date & add it to the property
-                // store the actual object properties in the array item object
-                $scope.Input.entryItem.minutes = $scope.Input.timer;
-                $scope.Input.entries.push($scope.Input.entryItem);
-
-                $scope.go('project-output-view');
-                $scope.saveNewData();
-                $scope.Input.timer = '';
-            }
         }
     }
+
 })
 
 .filter('hhmmss', function () {

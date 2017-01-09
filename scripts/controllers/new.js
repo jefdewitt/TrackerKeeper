@@ -21,6 +21,7 @@ angular.module('angularApp')
             name: '',
             time: ''
         }
+
     }
 
 });

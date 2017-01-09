@@ -33,11 +33,15 @@ angular.module('angularApp')
 
     $scope.projectObject = $scope.$storage;
 
-    angular.forEach($scope.projectObject, function(index) {
+    console.log('Heres our scope.storage contents');
+    angular.forEach($scope.$storage, function(index) {
+        console.dir(index.name);
+    });
+
+    // angular.forEach($scope.projectObject, function(index) {
     //   console.log(index);
     //   console.log(index.name);
     //   console.log(index.time);
-      console.dir('index ' + index);
 
     //   var goalInMin = index.time * 60;
     //   console.log('goalInMin ' + goalInMin);
@@ -58,7 +62,7 @@ angular.module('angularApp')
     //   $scope.accumulatedPctg = ( sumOfArrayMin  * 100 ) / goalInMin;
     //   console.log('$scope.accumulatedPctg ' + $scope.accumulatedPctg);
 
-    });
+    // });
 
     $scope.loadData = function() {
 

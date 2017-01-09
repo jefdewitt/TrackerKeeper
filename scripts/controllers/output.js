@@ -2,13 +2,19 @@
 
 angular.module('angularApp')
 
-.controller('outputCtlr', function ($scope, $location, goalToBeTracked) {
+.controller('outputCtlr', function ($scope, $location, $localStorage, goalToBeTracked) {
 
     $scope.go = function ( path ) {
         $location.path( path );
     }
 
     $scope.Output = goalToBeTracked;
+
+    $scope.$storage = $localStorage.project;
+    console.log('Heres our scope.storage contents');
+    angular.forEach($scope.$storage, function(index) {
+        console.dir(index.name);
+    });
 
     // establish project completion time in minutes
     // $scope.Output.goalTimeInMin = $scope.Output.time * 60;
