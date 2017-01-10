@@ -44,10 +44,10 @@ angular.module('angularApp', ['ngRoute', 'ui.router', 'ngStorage'])
      })
  })
 
- // Create the factory that shares the GoalToBeTracked object
-// .factory('GoalToBeTracked', function(){
-//     return { GoalToBeTracked: '' };
-// })
+// Create the factory that shares the GoalToBeTracked object
+.factory('GoalToBeTracked', function(){
+    return { GoalToBeTracked: '' };
+})
 
 
 .config(function config($stateProvider) {

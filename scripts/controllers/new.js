@@ -2,7 +2,7 @@
 
 angular.module('angularApp')
 
-.controller('newCtlr', function($scope, $location, goalToBeTracked) {
+.controller('newCtlr', function($scope, $location, $localStorage, goalToBeTracked) {
     $scope.message = 'Look! I am a new page.';
 
     $scope.go = function ( path ) {
@@ -11,11 +11,28 @@ angular.module('angularApp')
 
     $scope.New = goalToBeTracked;
 
-    $scope.resetForm = function(){
+    function Goal(name, hours) {
+        this.name = name;
+        this.hours = hours;
+    }
 
-        $scope.New.name = $scope.formObject.name;
+    $scope.$storage = $localStorage.project;
 
-        $scope.New.time = $scope.formObject.time;
+    $scope.saveGoal = function(){
+
+        var newGoal = new Goal($scope.formObject.name, $scope.formObject.hours)
+
+        $scope.$storage.push(newGoal);
+
+        $scope.New.name = newGoal.name;
+        $scope.New.hours = newGoal.hours;
+
+        $localStorage.project = $scope.$storage;
+        $scope.$storage = $localStorage.project;
+        console.log('Heres our scope.storage contents');
+        angular.forEach($scope.$storage, function(index) {
+            console.dir(index.name);
+        });
 
         $scope.formObject = {
             name: '',

@@ -70,6 +70,9 @@ angular.module('angularApp')
         console.log($scope.projectObject);
         console.dir($scope.projectObject);
 
+        $scope.ListItem = this;
+        console.log('ListItem ' + ListItem);
+
     }
 
     $scope.clearData = function() {

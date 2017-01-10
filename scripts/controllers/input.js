@@ -23,14 +23,14 @@ angular.module('angularApp')
         // grab the manual time entered
         var manualTime = $scope.timer;
         // create new object or suffer the wrath of each new object overwriting all previously pushed objects
-        $scope.entryItem = {};
+        $scope.newTime = {};
         // store some useful timestamp info for each array item
         var timeStamp = new Date(); // create new date object
-        $scope.entryItem.timeStamp = timeStamp.getDate(); // get today's date & add it to the property
+        $scope.newTime.timeStamp = timeStamp.getDate(); // get today's date & add it to the property
 
         if ( currentTimerTime > 0 ) {
             // store the actual object properties in the entries array
-            $scope.entryItem.minutes = $scope.timerWithInterval;
+            $scope.newTime.minutes = $scope.timerWithInterval;
             // if localStorage isn't empty
             if ( $scope.$storage[0] !== undefined ) {
                 // loop through our localStorage array
@@ -38,22 +38,22 @@ angular.module('angularApp')
 
                     if (index.name === $scope.Input.name) {
                         index.entries = [];
-                        index.entries.push($scope.entryItem)
+                        index.entries.push($scope.newTime)
                     } else {
-                        $scope.Input.entries.push($scope.entryItem);
+                        $scope.Input.entries.push($scope.newTime);
                         $scope.$storage.push($scope.Input);
                     }
                 });
 
             } else {
-                $scope.Input.entries.push($scope.entryItem);
+                $scope.Input.entries.push($scope.newTime);
                 $scope.$storage.push($scope.Input);
             }
             $scope.timerWithInterval = '';
 
         } else {
             // store the actual object properties in the array item object
-            $scope.entryItem.minutes = $scope.timer;
+            $scope.newTime.minutes = $scope.timer;
             //
             // if ( $scope.$storage.length > 1 ) {
 
@@ -65,7 +65,7 @@ angular.module('angularApp')
                     if (index.name === $scope.Input.name) {
                         console.log('00000');
                         index.entries = [];
-                        index.entries.push($scope.entryItem);
+                        index.entries.push($scope.newTime);
                     } else {
                         console.log('11111');
                         count++;
@@ -75,13 +75,13 @@ angular.module('angularApp')
 
                 if (count === $scope.$storage.length) {
                     console.log('count = $scope.$storage.length');
-                    $scope.Input.entries.push($scope.entryItem);
+                    $scope.Input.entries.push($scope.newTime);
                     $scope.$storage.push($scope.Input);
                     console.dir($scope.$storage);
                 }
 
             // } else {
-            //     $scope.Input.entries.push($scope.entryItem);
+            //     $scope.Input.entries.push($scope.newTime);
             //     $scope.$storage.push($scope.Input);
             //     console.dir($scope.$storage);
             // }

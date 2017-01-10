@@ -12,13 +12,13 @@ angular.module('angularApp')
 
     var goalToBeTracked = this;
 
-    goalToBeTracked.name = '';
-
-    goalToBeTracked.time = '';
-
-    // goalToBeTracked.timer = '';
-
-    goalToBeTracked.entries = [];
+    // goalToBeTracked.name = '';
+    //
+    // goalToBeTracked.time = '';
+    //
+    // // goalToBeTracked.timer = '';
+    //
+    // goalToBeTracked.entries = [];
 
     // goalToBeTracked.entryItem = {
     //     minutes: '',
