@@ -12,6 +12,7 @@ angular.module('angularApp')
     $scope.Input = goalToBeTracked;
 
     $scope.$storage = $localStorage.project;
+
     console.log('Heres our scope.storage contents');
     angular.forEach($scope.$storage, function(index) {
         console.dir(index.name);
@@ -29,26 +30,31 @@ angular.module('angularApp')
         $scope.newTime.timeStamp = timeStamp.getDate(); // get today's date & add it to the property
 
         if ( currentTimerTime > 0 ) {
-            // store the actual object properties in the entries array
+            // store the actual object properties in the timeRepo array
             $scope.newTime.minutes = $scope.timerWithInterval;
-            // if localStorage isn't empty
-            if ( $scope.$storage[0] !== undefined ) {
-                // loop through our localStorage array
-                angular.forEach($scope.$storage, function(index) {
 
-                    if (index.name === $scope.Input.name) {
-                        index.entries = [];
-                        index.entries.push($scope.newTime)
-                    } else {
-                        $scope.Input.entries.push($scope.newTime);
-                        $scope.$storage.push($scope.Input);
-                    }
-                });
+            var count = 0;
 
-            } else {
-                $scope.Input.entries.push($scope.newTime);
-                $scope.$storage.push($scope.Input);
+            angular.forEach($scope.$storage, function(index) {
+
+                if (index.name === $scope.Input.name) {
+                    index.timeRepo.push($scope.newTime)
+                } else {
+                    count++;
+                }
+            })
+
+            if (count === $scope.$storage.length) {
+                // $scope.Input.timeRepo.push($scope.newTime);
+                // $scope.$storage.push($scope.Input);
+                console.log('error');
+                alert('no items in storage match our current scoped object');
             }
+
+            // } else {
+            //     $scope.Input.timeRepo.push($scope.newTime);
+            //     $scope.$storage.push($scope.Input);
+            // }
             $scope.timerWithInterval = '';
 
         } else {
@@ -57,31 +63,31 @@ angular.module('angularApp')
             //
             // if ( $scope.$storage.length > 1 ) {
 
-                var count = 0;
+            var count = 0;
 
-                angular.forEach($scope.$storage, function(index) {
-                    console.log('index.name ' + index.name);
-                    console.log('$scope.Input.name ' + $scope.Input.name);
-                    if (index.name === $scope.Input.name) {
-                        console.log('00000');
-                        index.entries = [];
-                        index.entries.push($scope.newTime);
-                    } else {
-                        console.log('11111');
-                        count++;
-                        console.log('count = ' + count);
-                    }
-                })
-
-                if (count === $scope.$storage.length) {
-                    console.log('count = $scope.$storage.length');
-                    $scope.Input.entries.push($scope.newTime);
-                    $scope.$storage.push($scope.Input);
-                    console.dir($scope.$storage);
+            angular.forEach($scope.$storage, function(index) {
+                console.log('index.name ' + index.name);
+                console.log('$scope.Input.name ' + $scope.Input.name);
+                if (index.name === $scope.Input.name) {
+                    console.log('we have a match');
+                    index.timeRepo.push($scope.newTime);
+                    console.log( '\n index.name is ' + index.name );
+                    console.log( '   index.hours is ' + index.hours );
+                    console.log( '   index.timeRepo.timestamp is ' + index.timeRepo.timestamp );
+                    console.log( '   index.timeRepo.minutes is \n' + index.timeRepo.minutes );
+                } else {
+                    console.log('no match');
+                    // alert('no items in storage match our current scoped object');
                 }
+            })
+
+            // if (count === $scope.$storage.length) {
+            //     console.log('error');
+            //     alert('no items in storage match our current scoped object');
+            // }
 
             // } else {
-            //     $scope.Input.entries.push($scope.newTime);
+            //     $scope.Input.timeRepo.push($scope.newTime);
             //     $scope.$storage.push($scope.Input);
             //     console.dir($scope.$storage);
             // }

@@ -9,31 +9,42 @@ angular.module('angularApp')
         $location.path( path );
     }
 
+    // we hook into our shared object from our service/factory
     $scope.New = goalToBeTracked;
 
+    // we create a new project object constructor
     function Goal(name, hours) {
         this.name = name;
         this.hours = hours;
+        this.timeRepo = [];
     }
+
+    console.log('Heres our scope.storage contents');
+    angular.forEach($scope.$storage, function(index) {
+        console.dir(index.name);
+    });
 
     $scope.$storage = $localStorage.project;
 
     $scope.saveGoal = function(){
 
-        var newGoal = new Goal($scope.formObject.name, $scope.formObject.hours)
+        // create a new instance of our project object and store values from
+        // the input fields on the front-end of the app
+        var newGoal = new Goal($scope.formObject.name, $scope.formObject.hours);
+        console.dir('newGoal ' + newGoal);
 
+        // add the new project object to storage
         $scope.$storage.push(newGoal);
 
+        // we match the props of our shared object with project object
         $scope.New.name = newGoal.name;
         $scope.New.hours = newGoal.hours;
+        $scope.New.timeRepo = [];
 
+        // we set our localStorage object to match our $scope.$storage object
         $localStorage.project = $scope.$storage;
-        $scope.$storage = $localStorage.project;
-        console.log('Heres our scope.storage contents');
-        angular.forEach($scope.$storage, function(index) {
-            console.dir(index.name);
-        });
 
+        // here we clear the form
         $scope.formObject = {
             name: '',
             time: ''
