@@ -60,7 +60,7 @@ angular.module('angularApp')
         } else {
             // store the actual object properties in the array item object
             $scope.newTime.minutes = $scope.timer;
-            //
+
             // if ( $scope.$storage.length > 1 ) {
 
             var count = 0;
@@ -71,10 +71,12 @@ angular.module('angularApp')
                 if (index.name === $scope.Input.name) {
                     console.log('we have a match');
                     index.timeRepo.push($scope.newTime);
-                    console.log( '\n index.name is ' + index.name );
+                    $scope.Input.timeRepo = index.timeRepo;
+                    console.log( '\n   index.name is ' + index.name );
                     console.log( '   index.hours is ' + index.hours );
-                    console.log( '   index.timeRepo.timestamp is ' + index.timeRepo.timestamp );
-                    console.log( '   index.timeRepo.minutes is \n' + index.timeRepo.minutes );
+                    console.log( '   index.timeRepo[0].timestamp is ' + index.timeRepo[0].timeStamp );
+                    console.log( '   index.timeRepo[0].minutes is ' + index.timeRepo[0].minutes + '\n');
+                    console.dir('index');
                 } else {
                     console.log('no match');
                     // alert('no items in storage match our current scoped object');
@@ -142,7 +144,6 @@ angular.module('angularApp')
 
         }
     }
-
 })
 
 .filter('hhmmss', function () {
