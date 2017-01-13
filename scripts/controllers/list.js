@@ -11,9 +11,28 @@ angular.module('angularApp')
 
     $scope.ListItem = goalToBeTracked;
 
+    $scope.pctgCompleted = function(project) {
+
+        this.goalTimeInMin = project.hours * 60;
+
+        this.arrayMinutes = project.timeRepo.map(function(object) {
+            return object.minutes;
+        });
+
+        this.sumOfEntries = this.arrayMinutes.reduce(function(a, b) {
+            return a + b;
+        }, 0);
+
+        this.totalAccumulatedHours = this.sumOfEntries / 60;
+
+        this.totalAccumulatedPctg = ( this.sumOfEntries * 100 ) / this.goalTimeInMin;
+
+        return this.totalAccumulatedPctg;
+    }
+
     // consider func as the next 6 vars exist in output.js too
 
-    // $scope.goalTimeInMin = $scope.ListItem.time * 60;
+    // $scope.goalTimeInMin = $scope.ListItem.hours * 60;
     //
     // $scope.arrayMinutes = $scope.ListItem.entries.map(function(object) {
     //     return object.minutes;
