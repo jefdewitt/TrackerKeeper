@@ -138,9 +138,14 @@ angular.module('angularApp')
 
     $scope.confirmTime = function() {
         if (confirm('Are you sure you want to confirm this time?')) {
+
+            if ( $scope.Input.hours > 0 && ( $scope.timer > 0 || $scope.timerWithInterval > 0) ) {
             // if confirm is true we save our object and go to the next view
-            $scope.saveNewData();
-            $scope.go('project-output-view');
+                $scope.saveNewData();
+                $scope.go('project-output-view');
+            } else {
+                alert('A project must be selected and the time entered must be greater than zero.')
+            }
 
         }
     }

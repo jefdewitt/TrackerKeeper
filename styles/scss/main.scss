@@ -181,13 +181,15 @@ a {
 }
 
 .action {
-    text-align: center;
+    display: table;
     margin-bottom: 0;
+    text-align: center;
+    width: 100%;
 
-    @media screen and (min-width: 767px) {
-        display: table;
-        width: 100%;
-    }
+    // @media screen and (min-width: 767px) {
+    //     display: table;
+    //     width: 100%;
+    // }
 
     .button {
 
@@ -198,10 +200,10 @@ a {
     }
 
     &.triple .button {
-        @media screen and (min-width: 767px) {
+        // @media screen and (min-width: 767px) {
             display: table-cell;
             width: 33%;
-        }
+        // }
     }
 }
 
@@ -283,15 +285,16 @@ progress[value]::-webkit-progress-bar {
 
 progress[value]::-webkit-progress-value {
 
-    background: linear-gradient(-90deg, rgba(255,255,255,.1) 33%, rgba(255,255,255,.5) 66%, rgba(255,255,255,1))
+    background: #fff;
+
+    // background: linear-gradient( 90deg, rgba(255,255,255,.1) 0%, rgba(255,255,255,1) 100% );
 	//    -webkit-linear-gradient(-45deg,
 	//                            transparent 33%, rgba(0, 0, 0, .1) 33%,
 	//                            rgba(0,0, 0, .1) 66%, transparent 66%),
 	//    -webkit-linear-gradient(top,
 	//                            rgba(255, 255, 255, .25),
 	//                            rgba(0, 0, 0, .25)),
-	//    -webkit-linear-gradient(left, #09c, #f44)
-	;
+	//    -webkit-linear-gradient(left, #09c, #f44);
 
     border-radius: 2px;
     background-size: 35px 20px, 100% 100%, 100% 100%;
