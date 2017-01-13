@@ -30,24 +30,6 @@ angular.module('angularApp')
         return this.totalAccumulatedPctg;
     }
 
-    // consider func as the next 6 vars exist in output.js too
-
-    // $scope.goalTimeInMin = $scope.ListItem.hours * 60;
-    //
-    // $scope.arrayMinutes = $scope.ListItem.entries.map(function(object) {
-    //     return object.minutes;
-    // });
-    //
-    // $scope.sumOfEntries = $scope.arrayMinutes.reduce(function(a, b) {
-    //     return a + b;
-    // }, 0);
-
-    // $scope.totalAccumulated = $scope.sumOfEntries;
-
-    // $scope.totalAccumulatedHours = $scope.sumOfEntries / 60;
-    //
-    // $scope.totalAccumulatedPctg = ( $scope.sumOfEntries * 100 ) /$scope.goalTimeInMin;
-
     $scope.$storage = $localStorage.project;
 
     $scope.projectObject = $scope.$storage;
@@ -57,47 +39,16 @@ angular.module('angularApp')
         console.dir(index.name);
     });
 
-    // angular.forEach($scope.projectObject, function(index) {
-    //   console.log(index);
-    //   console.log(index.name);
-    //   console.log(index.time);
-
-    //   var goalInMin = index.time * 60;
-    //   console.log('goalInMin ' + goalInMin);
-    //   //
-    //   var arrayMin = index.entries.map(function(object) {
-    //       return object.minutes;
-    //   });
-    //   console.log('arrayMin ' + arrayMin);
-    //   //
-    //   var sumOfArrayMin = arrayMin.reduce(function(a, b) {
-    //       return a + b;
-    //   }, 0);
-    //   console.log('sumOfArrayMin ' + sumOfArrayMin);
-    //   //
-    //   var totalAccumulatedHours = sumOfArrayMin / 60;
-    //   console.log('totalAccumulatedHours ' + totalAccumulatedHours);
-    //   //
-    //   $scope.accumulatedPctg = ( sumOfArrayMin  * 100 ) / goalInMin;
-    //   console.log('$scope.accumulatedPctg ' + $scope.accumulatedPctg);
-
-    // });
-
-    $scope.loadData = function() {
-
-        // var projectObject = $scope.$storage;
-        console.log($scope.projectObject);
-        console.dir($scope.projectObject);
-
-        $scope.ListItem = this;
-        console.log('ListItem ' + ListItem);
-
+    $scope.loadData = function(project) {
+        $scope.ListItem.name = project.name;
+        $scope.ListItem.hours = project.hours;
+        $scope.ListItem.timeRepo = project.timeRepo;
+        console.log('$scope.ListItem.timeRepo ' + $scope.ListItem.timeRepo);
     }
 
     $scope.clearData = function() {
         $localStorage.project = [];
         $scope.$storage = [];
-        $scope.projectObject = [];
     }
 
 });
