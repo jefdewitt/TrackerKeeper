@@ -1,0 +1,21 @@
+<!--
+    Project Details
+-->
+<section class="content__main">
+
+    <div class="field__container">
+
+        <ul class="projects__list" ng-repeat="project in projectObject track by $index">
+            <li ng-click="loadData(project); go('project-output-view')"><span>{{ project.name }}</span><span>{{ pctgCompleted(project) }}% completed</span></br>
+                <progress max="100" value="{{ pctgCompleted(project) }}"></progress>
+            </li>
+        </ul>
+
+        <div class="action">
+            <a href="/" class="button">Add Missed Time</a>
+            <a href="" class="button" ng-click="">Input New Time</a>
+        </div>
+
+    </div>
+
+</section>
