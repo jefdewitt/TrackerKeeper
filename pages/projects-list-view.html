@@ -15,7 +15,9 @@
         </ul> -->
 
         <ul class="projects__list" ng-repeat="project in projectObject track by $index">
-            <li ng-click="loadData(project); go('project-output-view')"><span>{{ project.name }}</span><span>{{ pctgCompleted(project) }}% completed</span></li>
+            <li ng-click="loadData(project); go('project-output-view')"><span>{{ project.name }}</span><span>{{ pctgCompleted(project) }}% completed</span></br>
+                <progress max="100" value="{{ pctgCompleted(project) }}"></progress>
+            </li>
         </ul>
 
 
