@@ -198,12 +198,12 @@ a {
     //     width: 100%;
     // }
 
-    .button {
+    &.double .button {
 
-        @media screen and (min-width: 767px) {
-            display: table-cell;
-            width: 50%;
-        }
+        // @media screen and (min-width: 767px) {
+        display: table-cell;
+        width: 50%;
+        // }
     }
 
     &.triple .button {
@@ -318,6 +318,27 @@ progress[value]::-webkit-progress-value {
 
 @keyframes animate-stripes {
    100% { background-position: -100px 0px; }
+}
+
+.content__main {
+    .date {
+        color: $white;
+        display: inline-block;
+        text-align: left;
+    }
+
+    .time {
+        color: $white;
+        display: inline-block;
+        float: right;
+    }
+}
+
+.detail__list {
+    .input__container {
+        display: inline-block;
+        float: right;
+    }
 }
 
 

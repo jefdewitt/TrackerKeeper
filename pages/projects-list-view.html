@@ -1,6 +1,11 @@
 <!--
     Projects List
 -->
+<nav class="action double">
+    <button ng-click="go('/')" class="button">New</button>
+    <button class="button" ng-click="clearData()">Clear Store</button>
+</nav>
+
 <section class="content__main">
 
     <div class="field__container">
@@ -19,13 +24,6 @@
                 <progress max="100" value="{{ pctgCompleted(project) }}"></progress>
             </li>
         </ul>
-
-
-        <div class="action">
-            <a href="/" class="button">Start Over</a>
-            <a href="" class="button" ng-click="clearData()">Clear Store</a>
-        </div>
-
 
     </div>
 

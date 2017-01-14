@@ -13,7 +13,7 @@ angular.module('angularApp')
 
     $scope.$storage = $localStorage.project;
 
-    $scope.projectObject.timeRepo = $scope.Detail.timeRepo;
+    $scope.timeObject = $scope.Detail.timeRepo;
 
 
 });

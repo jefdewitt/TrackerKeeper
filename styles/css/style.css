@@ -119,10 +119,9 @@ a {
   display: table;
   text-align: center;
   width: 100%; }
-  @media screen and (min-width: 767px) {
-    .action .button {
-      display: table-cell;
-      width: 50%; } }
+  .action.double .button {
+    display: table-cell;
+    width: 50%; }
   .action.triple .button {
     display: table-cell;
     width: 33%; }
@@ -186,5 +185,17 @@ progress[value]::-webkit-progress-value {
 @keyframes animate-stripes {
   100% {
     background-position: -100px 0px; } }
+.content__main .date {
+  color: #fff;
+  display: inline-block;
+  text-align: left; }
+.content__main .time {
+  color: #fff;
+  display: inline-block;
+  float: right; }
+
+.detail__list .input__container {
+  display: inline-block;
+  float: right; }
 
 /*# sourceMappingURL=style.css.map */

@@ -9,23 +9,17 @@ angular.module('angularApp')
     }
 
     $scope.Output = goalToBeTracked;
-    console.dir('$scope.Output.timeRepo[0].minutes ' + $scope.Output.timeRepo[0].minutes);
 
     $scope.$storage = $localStorage.project;
-    console.log('Heres our scope.storage contents');
-    angular.forEach($scope.$storage, function(index) {
-        console.dir(index);
-    });
 
     // establish project completion time in minutes
     // $scope.Output.goalTimeInMin = $scope.Output.time * 60;
     $scope.goalTimeInMin = $scope.Output.hours * 60;
 
-    /**
-     * This not-so-complex timeStamp check, to determine whether timeRepo were
-     * made the same day so we can combine them and they won't mess up our
-     * averages, had me on the verge of giving up. On all things in life.
-     */
+    // This not-so-complex timeStamp check, to determine whether timeRepo were
+    // made the same day so we can combine them and they won't mess up our
+    // averages, had me on the verge of giving up. On all things in life.
+
     // if there are enough timeRepo objects, compare the timeStamps to see if they're made the same day
     if( $scope.Output.timeRepo.length > 1 ) {
         // if they're made the same day combine the minutes property

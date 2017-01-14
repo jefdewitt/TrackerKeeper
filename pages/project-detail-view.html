@@ -1,21 +1,31 @@
 <!--
     Project Details
 -->
+<nav class="action double">
+    <button ng-click="go('project-input-view')" class="button">Add Time</button>
+    <button ng-click="go('projects-list-view')"class="button">Tracks</button>
+</nav>
+
 <section class="content__main">
 
     <div class="field__container">
 
-        <h1>{{ Detail.name }}</h1>
+        <h2>{{ Detail.name }}</h2>
 
-        <ul class="projects__list" ng-repeat="project in projectObject track by $index">
-            <li ng-click="loadData(project)"><span>{{ project.timeStamp }}</span><span>{{ project.minutes }} minutes</span>
+        <div>
+            <h3 class="date">Date</h3><h3 class="time">Minutes</h3>
+        </div>
+
+        <ul class="detail__list" ng-repeat="time in timeObject track by $index">
+            <li ng-click="loadData(project)">
+                <span>{{ time.timeStamp }}</span>
+
+                <div class="input__container">
+                    <label ng-click="picking = true" ng-hide="picking" for="minutes">{{ time.minutes }}</label>
+                    <input type="number" ng-hide="!picking" ng-show="picking" ng-model="minutes">
+                </div>
             </li>
         </ul>
-
-        <div class="action">
-            <a href="/" class="button">Add Missed Time</a>
-            <a href="" class="button" ng-click="">Input New Time</a>
-        </div>
 
     </div>
 

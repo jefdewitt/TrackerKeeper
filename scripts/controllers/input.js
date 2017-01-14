@@ -13,96 +13,72 @@ angular.module('angularApp')
 
     $scope.$storage = $localStorage.project;
 
-    console.log('Heres our scope.storage contents');
-    angular.forEach($scope.$storage, function(index) {
-        console.dir(index.name);
-    });
+    $scope.timeStamp = function() {
+        var dateObj = new Date();
+        var month = dateObj.getMonth() + 1; //months from 1-12
+        if (month < 10) { month = '0' + month; }
+        var day = dateObj.getDate();
+        if (day < 10) { day = '0' + day; }
+        var year = dateObj.getFullYear();
+
+        $scope.timeStamp = year + "-" + month + "-" + day;
+        return $scope.timeStamp;
+    }
 
     $scope.saveNewData = function() {
         // grab the current interval timer value
         var currentTimerTime = $scope.timerWithInterval;
         // grab the manual time entered
         var manualTime = $scope.timer;
-        // create new object or suffer the wrath of each new object overwriting all previously pushed objects
+        // create a new time object to add to our timeRepo property
         $scope.newTime = {};
-        // store some useful timestamp info for each array item
-        var timeStamp = new Date(); // create new date object
-        $scope.newTime.timeStamp = timeStamp.getDate(); // get today's date & add it to the property
+
+        // if diff date is selected add it to our new time object
+        if ( $scope.date != undefined ) {
+            $scope.newTime.timeStamp = $scope.date;
+        } else {
+            // get today's date & add it to our new time object
+            $scope.newTime.timeStamp = $scope.timeStamp();
+        }
 
         if ( currentTimerTime > 0 ) {
             // store the actual object properties in the timeRepo array
             $scope.newTime.minutes = $scope.timerWithInterval;
 
-            var count = 0;
-
             angular.forEach($scope.$storage, function(index) {
 
                 if (index.name === $scope.Input.name) {
-                    index.timeRepo.push($scope.newTime)
+                    index.timeRepo.push($scope.newTime);
+                    $scope.Input.timeRepo = index.timeRepo;
                 } else {
-                    count++;
+                    console.log('no match');
                 }
             })
 
-            if (count === $scope.$storage.length) {
-                // $scope.Input.timeRepo.push($scope.newTime);
-                // $scope.$storage.push($scope.Input);
-                console.log('error');
-                alert('no items in storage match our current scoped object');
-            }
-
-            // } else {
-            //     $scope.Input.timeRepo.push($scope.newTime);
-            //     $scope.$storage.push($scope.Input);
-            // }
             $scope.timerWithInterval = '';
 
         } else {
             // store the actual object properties in the array item object
             $scope.newTime.minutes = $scope.timer;
 
-            // if ( $scope.$storage.length > 1 ) {
-
-            var count = 0;
-
             angular.forEach($scope.$storage, function(index) {
-                console.log('index.name ' + index.name);
-                console.log('$scope.Input.name ' + $scope.Input.name);
+
                 if (index.name === $scope.Input.name) {
-                    console.log('we have a match');
                     index.timeRepo.push($scope.newTime);
                     $scope.Input.timeRepo = index.timeRepo;
-                    console.log( '\n   index.name is ' + index.name );
-                    console.log( '   index.hours is ' + index.hours );
-                    console.log( '   index.timeRepo[0].timestamp is ' + index.timeRepo[0].timeStamp );
-                    console.log( '   index.timeRepo[0].minutes is ' + index.timeRepo[0].minutes + '\n');
-                    console.dir('index');
                 } else {
                     console.log('no match');
-                    // alert('no items in storage match our current scoped object');
                 }
             })
 
-            // if (count === $scope.$storage.length) {
-            //     console.log('error');
-            //     alert('no items in storage match our current scoped object');
-            // }
-
-            // } else {
-            //     $scope.Input.timeRepo.push($scope.newTime);
-            //     $scope.$storage.push($scope.Input);
-            //     console.dir($scope.$storage);
-            // }
             $scope.timer = '';
         }
-
 
         $localStorage.project = $scope.$storage;
     }
 
-    /**
-     * Stopwatch feature
-     */
+
+    // Stopwatch feature
 
     // store the interval promise in this variable
     var promise;
