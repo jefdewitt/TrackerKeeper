@@ -33,7 +33,7 @@ header {
     border-top: 1px solid #fff;
     color: #fff;
     display: block;
-    margin-bottom: 1em;
+    // margin-bottom: 1em;
     padding: 1em 0;
     text-align: center;
     width: 100%;
@@ -45,20 +45,27 @@ header {
     }
 }
 
+nav {
+    margin-bottom: 1em;
+}
+
 .content__wrapper {
     //display: table-cell;
     //vertical-align: middle;
     margin: auto;
     overflow: hidden;
-    padding: 0 1em;
+    // padding: 0 1em;
 
     @media screen and (min-width: 767px) {
-        max-width: 70%;
+        // max-width: 70%;
     }
 }
 
 .content__main {
+    margin: auto;
+    max-width: 70%;
     overflow: hidden;
+    padding: 0 1em;
 
     h1, h2, h3, h4, h5, h6 {
         text-align: center;
@@ -160,7 +167,7 @@ a {
     border: 1px solid;
     display: block;
     font-size: 5vw;
-    margin-bottom: 1em;
+    // margin-bottom: 1em;
     padding: 1em 0;
     text-align: center;
     text-decoration: none;
@@ -182,7 +189,7 @@ a {
 
 .action {
     display: table;
-    margin-bottom: 0;
+    // margin-bottom: 0;
     text-align: center;
     width: 100%;
 
@@ -254,6 +261,10 @@ li {
             }
         }
     }
+}
+
+p {
+    margin: 0 0 1em 0;
 }
 
 .projects__list {

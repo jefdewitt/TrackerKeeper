@@ -42,6 +42,12 @@ angular.module('angularApp', ['ngRoute', 'ui.router', 'ngStorage'])
          templateUrl : 'pages/project-output-view.html',
          controller  : 'outputCtlr'
      })
+
+     // route for the project output page
+     .when('/project-detail-view', {
+         templateUrl : 'pages/project-detail-view.html',
+         controller  : 'detailCtlr'
+     })
  })
 
 // Create the factory that shares the GoalToBeTracked object
@@ -50,26 +56,26 @@ angular.module('angularApp', ['ngRoute', 'ui.router', 'ngStorage'])
 })
 
 
-.config(function config($stateProvider) {
-
-    $stateProvider.state('home', {
-        url:'/home-view',
-        controller:'homeCtrl as home',
-        templateuUrl:'pages/home-view.html'
-    })
-
-    $stateProvider.state('first', {
-        url:'/new-project-view',
-        controller:'newCtrl as first',
-        templateuUrl:'pages/new-project-view.html'
-    })
-
-    $stateProvider.state('second', {
-        url:'/project-output-view',
-        controller:'outputCtrl as second',
-        templateuUrl:'pages/project-output-view.html'
-    })
-});
+// .config(function config($stateProvider) {
+//
+//     $stateProvider.state('home', {
+//         url:'/home-view',
+//         controller:'homeCtrl as home',
+//         templateuUrl:'pages/home-view.html'
+//     })
+//
+//     $stateProvider.state('first', {
+//         url:'/new-project-view',
+//         controller:'newCtrl as first',
+//         templateuUrl:'pages/new-project-view.html'
+//     })
+//
+//     $stateProvider.state('second', {
+//         url:'/project-output-view',
+//         controller:'outputCtrl as second',
+//         templateuUrl:'pages/project-output-view.html'
+//     })
+// });
 /**
  * This code block would change our interpolation characters. Handy if building
  * on top of a templating engine, i.e. Jekyll.

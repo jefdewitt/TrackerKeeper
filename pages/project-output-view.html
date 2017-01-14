@@ -1,6 +1,13 @@
 <!--
     Project Output
 -->
+
+<nav class="action triple">
+    <button ng-click="go('project-input-view')" class="button">Input New Time</button>
+    <button ng-click="go('project-detail-view')"class="button">View Time Entered</button>
+    <button ng-click="go('projects-list-view')"class="button">Current Projects</button>
+</nav>
+
 <section class="content__main">
 
     <div class="content__main--header">
@@ -10,6 +17,8 @@
         <div class="row">
             <h2>Time Goal</h2><h2>{{ Output.hours }} hours</h2>
         </div>
+
+
     </div>
 
 
@@ -81,11 +90,6 @@
                 </tr>
             </tbody>
         </table>
-    </div>
-
-    <div class="action">
-        <a href="#project-input-view" class="button">Input New Time</a>
-        <a href="#projects-list-view" class="button">Current Projects</a>
     </div>
 
 </section>

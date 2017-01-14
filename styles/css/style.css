@@ -16,7 +16,6 @@ header {
   border-top: 1px solid #fff;
   color: #fff;
   display: block;
-  margin-bottom: 1em;
   padding: 1em 0;
   text-align: center;
   width: 100%; }
@@ -24,16 +23,18 @@ header {
     header h1 {
       margin: 0; } }
 
+nav {
+  margin-bottom: 1em; }
+
 .content__wrapper {
   margin: auto;
-  overflow: hidden;
-  padding: 0 1em; }
-  @media screen and (min-width: 767px) {
-    .content__wrapper {
-      max-width: 70%; } }
+  overflow: hidden; }
 
 .content__main {
-  overflow: hidden; }
+  margin: auto;
+  max-width: 70%;
+  overflow: hidden;
+  padding: 0 1em; }
   .content__main h1, .content__main h2, .content__main h3, .content__main h4, .content__main h5, .content__main h6 {
     text-align: center; }
 
@@ -101,7 +102,6 @@ a {
   border: 1px solid;
   display: block;
   font-size: 5vw;
-  margin-bottom: 1em;
   padding: 1em 0;
   text-align: center;
   text-decoration: none;
@@ -117,7 +117,6 @@ a {
 
 .action {
   display: table;
-  margin-bottom: 0;
   text-align: center;
   width: 100%; }
   @media screen and (min-width: 767px) {
@@ -154,6 +153,9 @@ li {
       text-align: left; }
     .content__main--header .row h2:last-of-type {
       text-align: right; }
+
+p {
+  margin: 0 0 1em 0; }
 
 .projects__list span {
   display: inline-block;
