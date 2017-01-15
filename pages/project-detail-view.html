@@ -21,8 +21,9 @@
                 <span>{{ time.timeStamp }}</span>
 
                 <div class="input__container">
-                    <label ng-click="picking = true" ng-hide="picking" for="minutes">{{ time.minutes }}</label>
-                    <input type="number" ng-hide="!picking" ng-show="picking" ng-model="minutes">
+                    <label ng-click="picking = true" ng-hide="picking" ng-show="!picking" for="minutes">{{ time.minutes }}</label>
+                    <input type="number" ng-hide="!editing" ng-show="picking" ng-model="time.minutes" ng-change="field.edited = true"
+                    ng-blur="picking = false; saveNewMin()" ng-class="{'edited': field.edited}">
                 </div>
             </li>
         </ul>

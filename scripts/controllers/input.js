@@ -37,7 +37,7 @@ angular.module('angularApp')
         if ( $scope.date != undefined ) {
             $scope.newTime.timeStamp = $scope.date;
         } else {
-            // get today's date & add it to our new time object
+            // otherwise get today's date & add it to our new time object
             $scope.newTime.timeStamp = $scope.timeStamp();
         }
 

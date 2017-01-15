@@ -27,23 +27,17 @@ angular.module('angularApp')
 
         this.totalAccumulatedPctg = ( this.sumOfEntries * 100 ) / this.goalTimeInMin;
 
-        return this.totalAccumulatedPctg;
+        return this.totalAccumulatedPctg.toFixed(2);
     }
 
     $scope.$storage = $localStorage.project;
 
     $scope.projectObject = $scope.$storage;
 
-    console.log('Heres our scope.storage contents');
-    angular.forEach($scope.$storage, function(index) {
-        console.dir(index.name);
-    });
-
     $scope.loadData = function(project) {
         $scope.ListItem.name = project.name;
         $scope.ListItem.hours = project.hours;
         $scope.ListItem.timeRepo = project.timeRepo;
-        console.log('$scope.ListItem.timeRepo ' + $scope.ListItem.timeRepo);
     }
 
     $scope.clearData = function() {

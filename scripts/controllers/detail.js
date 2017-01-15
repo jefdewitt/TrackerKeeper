@@ -9,11 +9,9 @@ angular.module('angularApp')
     }
 
     $scope.Detail = goalToBeTracked;
-    console.log('$scope.Detail.name ' + $scope.Detail.name);
 
     $scope.$storage = $localStorage.project;
 
     $scope.timeObject = $scope.Detail.timeRepo;
-
 
 });
