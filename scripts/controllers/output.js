@@ -16,25 +16,6 @@ angular.module('angularApp')
     // $scope.Output.goalTimeInMin = $scope.Output.time * 60;
     $scope.goalTimeInMin = $scope.Output.hours * 60;
 
-    // This not-so-complex timeStamp check, to determine whether timeRepo were
-    // made the same day so we can combine them and they won't mess up our
-    // averages, had me on the verge of giving up. On all things in life.
-
-    // if there are enough timeRepo objects, compare the timeStamps to see if they're made the same day
-    if( $scope.Output.timeRepo.length > 1 ) {
-        // if they're made the same day combine the minutes property
-        if ( $scope.Output.timeRepo.slice(-1)[0].timeStamp == $scope.Output.timeRepo.slice(-2)[0].timeStamp ) {
-            var newObject = {
-                timeStamp: $scope.Output.timeRepo.slice(-1)[0].timeStamp,
-                minutes: $scope.Output.timeRepo.slice(-1)[0].minutes + $scope.Output.timeRepo.slice(-2)[0].minutes
-            }
-            // remove the timeRepo from the same date
-            $scope.Output.timeRepo.splice(-2);
-            // add the new entry with combined minutes
-            $scope.Output.timeRepo.push(newObject);
-        }
-    }
-
     // convert today's time entry into hours
     // $scope.Output.todaysTime = $scope.Output.timeRepo[0].minutes / 60;
     $scope.todaysTime = $scope.Output.timeRepo[0].minutes / 60;

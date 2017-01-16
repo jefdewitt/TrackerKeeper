@@ -156,10 +156,16 @@ li {
 p {
   margin: 0 0 1em 0; }
 
+.projects__list li {
+  position: relative;
+  transition: all .5s ease;
+  width: 100%; }
+  .projects__list li.slide {
+    width: 80%; }
 .projects__list span {
   display: inline-block;
   margin-bottom: .5em; }
-.projects__list span:last-of-type {
+.projects__list span:nth-of-type(2) {
   float: right; }
 
 progress {
@@ -197,5 +203,17 @@ progress[value]::-webkit-progress-value {
 .detail__list .input__container {
   display: inline-block;
   float: right; }
+
+.button--delete {
+  background: rgba(0, 0, 0, 0.4);
+  /* border-radius: 50%; */
+  color: #fff;
+  height: 2.75em;
+  padding: .75em .5em 0 .75em;
+  position: absolute;
+  right: -3em;
+  top: 50%;
+  transform: translatey(-50%);
+  width: 2em; }
 
 /*# sourceMappingURL=style.css.map */

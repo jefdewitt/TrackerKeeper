@@ -71,6 +71,27 @@ angular.module('angularApp')
                 }
             })
 
+            var newArray = $scope.Input.timeRepo.slice();
+            newArray.pop();
+
+            var count = 0;
+            angular.forEach(newArray, function(index) {
+                // if they're made the same day combine the minutes property
+                if( $scope.Input.timeRepo.slice(-1)[0].timeStamp != index.timeStamp ){
+                    count++;
+                } else {
+                    var match = count;
+                    index.timeStamp = $scope.Input.timeRepo.slice(-1)[0].timeStamp,
+                    index.minutes = $scope.Input.timeRepo.slice(-1)[0].minutes + index.minutes
+
+                }
+            })
+            if ( count < newArray.length ) {
+                $scope.Input.timeRepo.pop();
+            }
+            count = 0;
+            // $scope.$storage
+
             $scope.timer = '';
         }
 

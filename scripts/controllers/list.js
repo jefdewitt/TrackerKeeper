@@ -3,7 +3,7 @@
 angular.module('angularApp')
 
 .controller('listCtlr', function($scope, $location, $interval, $localStorage,
-    $sessionStorage, goalToBeTracked) {
+    $sessionStorage, $filter, goalToBeTracked) {
 
     $scope.go = function ( path ) {
         $location.path( path );
@@ -40,9 +40,42 @@ angular.module('angularApp')
         $scope.ListItem.timeRepo = project.timeRepo;
     }
 
-    $scope.clearData = function() {
-        $localStorage.project = [];
-        $scope.$storage = [];
+    var count = 0;
+    var myEl = angular.element( document.querySelectorAll( 'li' ) );
+
+    $scope.removeData = function() {
+
+        if (count < 1) {
+            var myEl = angular.element( document.querySelectorAll( 'li' ) );
+            myEl.addClass('slide');
+        }
+        count++;
+    }
+
+    $scope.restoreCount = function() {
+        angular.element( document.querySelectorAll( 'li' ) ).removeClass('slide');
+        count = 0;
+    }
+
+    $scope.deleteTrack = function(project) {
+        if (confirm('Are you sure you want to delete this track? All data will be lost.')) {
+
+            var count = 0;
+            angular.forEach($scope.projectObject, function(index) {
+
+                if (project.name != index.name) {
+                    count++
+                } else {
+                    // we find the index of the items that match by counting the number of times
+                    // we loop thru the array until we find a match.
+                    var match = count;
+                    $scope.projectObject.splice( match, 1 );
+                }
+            })
+
+            count = 0;
+
+        }
     }
 
 });

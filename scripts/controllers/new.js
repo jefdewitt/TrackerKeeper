@@ -30,8 +30,7 @@ angular.module('angularApp')
 
         // create a new instance of our project object and store values from
         // the input fields on the front-end of the app
-        var newGoal = new Goal($scope.formObject.name, $scope.formObject.hours);
-        console.dir('newGoal ' + newGoal);
+        var newGoal = new Goal( $scope.formObject.name, $scope.formObject.hours );
 
         // add the new project object to storage
         $scope.$storage.push(newGoal);
