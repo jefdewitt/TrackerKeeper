@@ -1,3 +1,11 @@
+@font-face {
+  font-family: 'Yellowtail';
+  src: url("../../yellowtail-regular-webfont.eot");
+  /* IE9 Compat Modes */
+  src: url("../../yellowtail-regular-webfont.eot?#iefix") format("embedded-opentype"), url("../../yellowtail-regular-webfont.woff2") format("woff2"), url("../../yellowtail-regular-webfont.woff") format("woff"), url("../../yellowtail-regular-webfont.ttf") format("truetype"), url("../../yellowtail-regular-webfont.svg#svgFontName") format("svg");
+  /* Legacy iOS */
+  font-style: italic;
+  font-weight: 400; }
 * {
   box-sizing: border-box; }
 
@@ -6,57 +14,101 @@ html, body {
   width: 100%; }
 
 body {
-  background: #ff4c4c;
   font-family: sans-serif;
-  font-size: 4vw;
+  font-size: 4vh;
   margin: auto; }
 
+.app__body {
+  background: #aaa; }
+
 header {
-  border-bottom: 1px solid #fff;
+  background: #424242;
+  border-bottom: 1px solid #B2FFB2;
   border-top: 1px solid #fff;
   color: #fff;
   display: block;
-  padding: 1em 0;
+  padding: 2em 0;
   text-align: center;
   width: 100%; }
-  @media screen and (min-width: 767px) {
-    header h1 {
-      margin: 0; } }
+  header h1 {
+    color: #B2FFB2;
+    font-family: "Yellowtail";
+    font-size: 7vh;
+    letter-spacing: 3px;
+    margin: 0; }
 
 nav {
-  margin-bottom: 1em; }
+  bottom: 0;
+  display: table;
+  margin-bottom: 0;
+  position: absolute;
+  width: 100%;
+  z-index: 10; }
+  nav button.button {
+    background: #424242;
+    color: #B2FFB2;
+    display: table-cell;
+    width: 50%; }
 
-.content__wrapper {
+.body__inner {
+  background: #666;
   margin: auto;
-  overflow: hidden; }
+  min-height: 700px;
+  overflow: hidden;
+  position: relative; }
+  @media screen and (min-width: 768px) {
+    .body__inner {
+      max-width: 768px; } }
 
 .content__main {
+  background: #666;
   margin: auto;
-  max-width: 70%;
-  overflow: hidden;
-  padding: 0 1em; }
+  overflow: hidden; }
   .content__main h1, .content__main h2, .content__main h3, .content__main h4, .content__main h5, .content__main h6 {
     text-align: center; }
 
+.main {
+  background: #424242;
+  border: 1px solid #B2FFB2;
+  margin: 2rem;
+  padding: 2rem; }
+  .main p {
+    font-size: 3vh;
+    line-height: 1.5;
+    margin-bottom: 0; }
+    .main p:first-of-type {
+      margin-bottom: 1rem; }
+  .main button {
+    position: relative;
+    left: -3rem;
+    width: calc(100% + 6rem); }
+    .main button:first-of-type {
+      margin-bottom: 2rem; }
+  .main .triple button {
+    margin-bottom: 0; }
+
 .input__container {
   position: relative; }
+  .input__container:first-of-type {
+    margin-bottom: 2rem; }
 
 .form__input .input__container {
   height: 5em;
   margin-bottom: 1.5rem; }
-  @media screen and (min-width: 767px) {
-    .form__input .input__container {
-      margin-bottom: 1rem; } }
+  .form__input .input__container:first-of-type {
+    margin-bottom: 2rem; }
+  .form__input .input__container:last-of-type input {
+    padding: 1.1rem .25rem; }
   .form__input .input__container h3, .form__input .input__container input, .form__input .input__container label {
-    margin-bottom: 2rem;
     position: absolute;
     top: 50%;
     transform: translatey(-50%); }
   .form__input .input__container input {
     padding: 1em .5em; }
   .form__input .input__container label {
-    border: 3px solid #fff;
-    padding: 1em .5em;
+    background: #fff;
+    color: #aaa;
+    padding: 1.1em .5em;
     text-align: right;
     width: 100%; }
   .form__input .input__container h3 {
@@ -65,43 +117,45 @@ nav {
     text-align: left; }
 
 input, label {
-  margin-bottom: 2rem;
-  padding: 1em;
+  padding: 1em 2em;
   width: 100%; }
   input:focus, label:focus {
     outline: none; }
 
 input {
-  font-size: 4vw; }
+  font-size: 3vh;
+  text-align: center; }
 
 label {
-  font-size: 5vw; }
+  font-size: 3vh; }
 
-.form__input input {
-  font-size: 5vw; }
+.form__input--wrapper {
+  display: table;
+  width: calc(100% + 6rem); }
+  .form__input--wrapper .input__container {
+    display: table-cell; }
 
 h1, h2, h3, h4, h5, h6,
 p, li, label, a, th, td {
   color: #fff; }
 
-.field__container {
-  margin: 0 auto 1em; }
+.input__container {
+  position: relative;
+  left: -3rem;
+  width: calc(100% + 6rem); }
 
 a {
   transition: all .7s ease;
   text-decoration: none;
   color: #333; }
   a:hover {
-    background: #fff;
-    color: #ff4c4c; }
+    background: #fff; }
 
 .button {
   background: #fff;
-  border-color: #ff4c4c;
-  color: #ff4c4c;
   border: 1px solid;
   display: block;
-  font-size: 5vw;
+  font-size: 3vh;
   padding: 1em 0;
   text-align: center;
   text-decoration: none;
@@ -109,16 +163,11 @@ a {
   width: 100%; }
   .button:focus {
     outline: none; }
-  @media screen and (min-width: 767px) {
-    .button {
-      font-size: 3vw; } }
-  .button a {
-    color: #ff4c4c; }
 
 .action {
   display: table;
   text-align: center;
-  width: 100%; }
+  width: calc(100% + 6rem); }
   .action.double .button {
     display: table-cell;
     width: 50%; }
@@ -127,13 +176,20 @@ a {
     width: 33%; }
 
 tr {
-  height: 2em; }
+  background: #fff;
+  height: 2em;
+  border-bottom: solid 2rem #424242; }
   tr > td {
+    color: #333;
+    font-size: 3vh;
     padding: 0 .5em;
     text-align: center;
     width: 25%; }
     tr > td:first-of-type, tr > td:last-of-type {
-      font-size: 1rem; }
+      font-size: 2vh; }
+
+thead tr {
+  background: initial; }
 
 ul {
   list-style: none;
@@ -142,16 +198,8 @@ ul {
 li {
   margin-bottom: 1em; }
 
-.content__main--header .row {
-  display: table;
-  margin-bottom: 1rem;
-  width: 100%; }
-  .content__main--header .row h2 {
-    display: table-cell; }
-    .content__main--header .row h2:first-of-type {
-      text-align: left; }
-    .content__main--header .row h2:last-of-type {
-      text-align: right; }
+.content__main--header {
+  text-align: center; }
 
 p {
   margin: 0 0 1em 0; }
@@ -215,5 +263,12 @@ progress[value]::-webkit-progress-value {
   top: 50%;
   transform: translatey(-50%);
   width: 2em; }
+
+.output {
+  border-collapse: collapse;
+  margin-bottom: 1em;
+  position: relative;
+  left: -3rem;
+  width: calc(100% + 6rem); }
 
 /*# sourceMappingURL=style.css.map */

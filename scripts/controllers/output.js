@@ -16,12 +16,37 @@ angular.module('angularApp')
     // $scope.Output.goalTimeInMin = $scope.Output.time * 60;
     $scope.goalTimeInMin = $scope.Output.hours * 60;
 
-    // convert today's time entry into hours
-    // $scope.Output.todaysTime = $scope.Output.timeRepo[0].minutes / 60;
-    $scope.todaysTime = $scope.Output.timeRepo[0].minutes / 60;
+    // get today's date and format it
+    var dateObj = new Date();
+    var month = dateObj.getMonth() + 1; //months from 1-12
+    if (month < 10) { month = '0' + month; }
+    var day = dateObj.getDate();
+    if (day < 10) { day = '0' + day; }
+    var year = dateObj.getFullYear();
+    var today = year + "-" + month + "-" + day;
 
+    // get the info of the most recent item pushed to storage
+    var arrayCopy = $scope.Output.timeRepo.slice();
+    var mostRecentObject = arrayCopy.pop();
+    var mostRecentDay = mostRecentObject.timeStamp;
+    var mostRecentMinutes = mostRecentObject.minutes;
+
+    // compare today's date to the date of the last item in our array
+    if ( mostRecentDay === today ) {
+    // convert today's time entry into hours
+        $scope.todaysTime = mostRecentMinutes / 60;
+    } else {
+        $scope.todaysTime = 0;
+    }
+
+    // compare today's date to the date of the last item in our array
+    if ( mostRecentDay === today ) {
     // find today's time entry as a percentage of the whole project
-    $scope.todaysPctg = ( $scope.Output.timeRepo[0].minutes * 100 ) / $scope.goalTimeInMin;
+        $scope.todaysPctg = ( mostRecentMinutes * 100 ) / $scope.goalTimeInMin;
+    } else {
+        $scope.todaysPctg = 0;
+    }
+
 
     // we use map to grab object properties from within arrays -- SO STOKED!!!
     $scope.arrayMinutes = $scope.Output.timeRepo.map(function(object) {
@@ -33,127 +58,117 @@ angular.module('angularApp')
         return a + b;
     }, 0);
 
-    /**
-     * weekly daily average algorithms
-     */
-    if ( $scope.Output.timeRepo.length < 6 ) {
+    //
+    // weekly daily average algorithms
+    //
 
-        // convert sum to hours
-        $scope.weekTotalHours = $scope.sumOfEntries / 60;
+    // first, let's create a var with the date we'll use to establish one week ago
+    var newDate = new Date();
+    newDate.setDate(newDate.getDate() - 7);
+    var sevenDaysAgo = newDate.getDate();
+    if (sevenDaysAgo < 10) { sevenDaysAgo = '0' + sevenDaysAgo; }
+    var monthMinusWeek = newDate.getMonth() + 1;
+    if (monthMinusWeek < 10) { monthMinusWeek = '0' + monthMinusWeek; }
+    var yearMinusWeek = newDate.getFullYear();
+    var oneWeekAgo = yearMinusWeek + "-" + monthMinusWeek + "-" + sevenDaysAgo;
+    var weekTime = 0;
+    var count = 0;
 
-        // get the total of the entry's hours as a percentage of the whole project
-        $scope.weekTotalPctg = ( $scope.sumOfEntries * 100 ) /$scope.goalTimeInMin;
+    angular.forEach($scope.Output.timeRepo, function(index) {
 
-        // divide the sum of the timeRepo by the number of timeRepo
-        $scope.weekAvg = $scope.weekTotalHours / $scope.Output.timeRepo.length;
+        if( index.timeStamp > oneWeekAgo ) {
+            weekTime += index.minutes;
+            count++;
+        }
+    })
 
-        // find the entry's daily average percentage of the whole project
-        $scope.weekDailyAvgPctg = ( $scope.weekAvg * 100 ) / $scope.Output.hours;
+    // convert sum to hours
+    $scope.weekTotalHours = weekTime / 60;
 
-    } else {
+    // get the total of the entry's hours as a percentage of the whole project
+    $scope.weekTotalPctg = ( weekTime * 100 ) /$scope.goalTimeInMin;
 
-        // if there are a week's worth of timeRepo grab the last 7
-        $scope.Output.recentWeek = $scope.arrayMinutes.slice(-7);
+    // divide the sum of the timeRepo by the number of timeRepo
+    $scope.weekAvg = $scope.weekTotalHours / count;
 
-        // add the week's worth of timeRepo together
-        $scope.Output.weekTotal = $scope.Output.recentWeek.reduce(function(a, b) {
-            return a + b;
-        }, 0);
+    // find the entry's daily average percentage of the whole project
+    $scope.weekDailyAvgPctg = ( $scope.weekAvg * 100 ) / $scope.Output.hours;
 
-        // convert sum to hours
-        $scope.weekTotalHours = $scope.Output.weekTotal / 60;
-
-        // get the total of the week's hours as a percentage of the whole project
-        $scope.weekTotalPctg = ( $scope.Output.weekTotal * 100 ) /$scope.goalTimeInMin;
-
-        // if there are a week's worth of timeRepo divide by 7
-        $scope.weekAvg = $scope.weekTotalHours / 7;
-
-        // find the week's daily average percentage of the whole project
-        $scope.weekDailyAvgPctg = ( $scope.weekAvg * 100 ) / $scope.Output.hours;
-
-    }
 
     /**
      * monthly daily average algorithms
      */
 
-    if ( $scope.Output.timeRepo.length < 29 ) {
+    // first, let's create a var with the date we'll use to establish one month ago
+    var newerDate = new Date();
+    newerDate.setDate(newerDate.getDate() - 30);
+    var thirtyDaysAgo = newerDate.getDate();
+    if (thirtyDaysAgo < 10) { thirtyDaysAgo = '0' + thirtyDaysAgo; }
+    var oneMonthAgo = newerDate.getMonth() + 1;
+    if (oneMonthAgo < 10) { oneMonthAgo = '0' + oneMonthAgo; }
+    var yearMinusMonth = newerDate.getFullYear();
+    var oneMonthAgo = yearMinusMonth + "-" + oneMonthAgo + "-" + thirtyDaysAgo;
+    var monthTime = 0;
+    var count = 0;
 
-        // convert sum to hours
-        $scope.monthTotalHours = $scope.sumOfEntries / 60;
+    angular.forEach($scope.Output.timeRepo, function(index) {
 
-        // get the total of the entry's hours as a percentage of the whole project
-        $scope.monthTotalPctg = ( $scope.sumOfEntries * 100 ) /$scope.goalTimeInMin;
+        if( index.timeStamp > oneMonthAgo ) {
+            monthTime += index.minutes;
+            count++;
+        }
+    })
 
-        // divide the sum of the timeRepo by the number of timeRepo
-        $scope.monthAvg = $scope.monthTotalHours / $scope.Output.timeRepo.length;
 
-        // find the entry's daily average percentage of the whole project
-        $scope.monthDailyAvgPctg = ( $scope.monthAvg * 100 ) / $scope.Output.hours;
+    // convert sum to hours
+    $scope.monthTotalHours = monthTime / 60;
 
-    } else {
+    // get the total of the entry's hours as a percentage of the whole project
+    $scope.monthTotalPctg = ( monthTime * 100 ) /$scope.goalTimeInMin;
 
-        // if there are a month's worth of timeRepo grab the last 30
-        $scope.recentMonth = $scope.arrayMinutes.slice(-30);
+    // divide the sum of the timeRepo by the number of timeRepo
+    $scope.monthAvg = $scope.monthTotalHours / count;
 
-        // add the month's worth of timeRepo together
-        $scope.monthTotal = $scope.recentMonth.reduce(function(a, b) {
-            return a + b;
-        }, 0);
+    // find the entry's daily average percentage of the whole project
+    $scope.monthDailyAvgPctg = ( $scope.monthAvg * 100 ) / $scope.Output.hours;
 
-        // convert sum to hours
-        $scope.monthTotalHours = $scope.monthTotal / 60;
-
-        // get the total of the month's hours as a percentage of the whole project
-        $scope.monthTotalPctg = ( $scope.monthTotal * 100 ) /$scope.goalTimeInMin;
-
-        // if there are a month's worth of timeRepo divide by 30
-        $scope.monthAvg = $scope.monthTotalHours / 30;
-
-        // find the month's daily average percentage of the whole project
-        $scope.monthDailyAvgPctg = ( $scope.monthAvg * 100 ) / $scope.Output.hours;
-    }
 
     /**
      * yearly daily average algorithms
      */
-    if ( $scope.Output.timeRepo.length < 364 ) {
 
-        // convert sum to hours
-        $scope.yearTotalHours = $scope.sumOfEntries / 60;
+     // first, let's create a var with the date we'll use to establish one year ago
+     var newestDate = new Date();
+     newestDate.setDate(newestDate.getDate() - 365);
+     var threeHundredSixtyFiveDaysAgo = newestDate.getDate();
+     if (threeHundredSixtyFiveDaysAgo < 10) { threeHundredSixtyFiveDaysAgo = '0' + threeHundredSixtyFiveDaysAgo; }
+     var oneMonthAgoMinusYear = newestDate.getMonth() + 1;
+     if (oneMonthAgoMinusYear < 10) { oneMonthAgoMinusYear = '0' + oneMonthAgoMinusYear; }
+     var yearMinusYear = newestDate.getFullYear();
 
-        // get the total of the entry's hours as a percentage of the whole project
-        $scope.yearTotalPctg = ( $scope.sumOfEntries * 100 ) /$scope.goalTimeInMin;
+     var oneYearAgo = yearMinusYear + "-" + oneMonthAgoMinusYear + "-" + threeHundredSixtyFiveDaysAgo;
+     var yearTime = 0;
+     var count = 0;
 
-        // divide the sum of the timeRepo by the number of timeRepo
-        $scope.yearAvg = $scope.yearTotalHours / $scope.Output.timeRepo.length;
+     angular.forEach($scope.Output.timeRepo, function(index) {
 
-        // find the entry's daily average percentage of the whole project
-        $scope.yearDailyAvgPctg = ( $scope.yearAvg * 100 ) / $scope.Output.hours;
+         if( index.timeStamp > oneYearAgo ) {
+             yearTime += index.minutes;
+             count++;
+         }
+     })
 
-    } else {
+    // convert sum to hours
+    $scope.yearTotalHours = yearTime / 60;
 
-        // if there are a years's worth of timeRepo grab the last 365
-        $scope.recentYear = $scope.arrayMinutes.slice(-365);
+    // get the total of the entry's hours as a percentage of the whole project
+    $scope.yearTotalPctg = ( yearTime * 100 ) /$scope.goalTimeInMin;
 
-        // add the month's worth of timeRepo together
-        $scope.yearTotal = $scope.recentYear.reduce(function(a, b) {
-            return a + b;
-        }, 0);
+    // divide the sum of the timeRepo by the number of timeRepo
+    $scope.yearAvg = $scope.yearTotalHours / count;
 
-        // convert sum to hours
-        $scope.yearTotalHours = $scope.yearTotal / 60;
-
-        // get the total of the years's hours as a percentage of the whole project
-        $scope.yearTotalPctg = ( $scope.yearTotal * 100 ) /$scope.goalTimeInMin;
-
-        // if there are a year's worth of timeRepo divide by 30
-        $scope.yearAvg = $scope.yearTotalHours / 30;
-
-        // find the entry's daily average percentage of the whole project
-        $scope.yearDailyAvgPctg = ( $scope.yearAvg * 100 ) / $scope.Output.hours;
-    }
+    // find the entry's daily average percentage of the whole project
+    $scope.yearDailyAvgPctg = ( $scope.yearAvg * 100 ) / $scope.Output.hours;
 
     /**
      * Project totals
