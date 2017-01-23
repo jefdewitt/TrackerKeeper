@@ -1,32 +1,41 @@
 <!--
     Projects List
 -->
-<nav class="action double">
-    <button ng-click="go('/')" class="button">New</button>
-    <button class="button" ng-click="removeData(); deleting = true" ng-hide="deleting">Remove</button>
-    <button class="button" ng-click="restoreCount(); deleting = false;" ng-hide="!deleting">Done</button>
-</nav>
-
 <section class="content__main">
 
-    <div class="field__container">
+    <div class="main list-view">
+        <div class="">
 
-        <!-- <ul class="projects__list">
+            <div class="field__container">
 
-            <li ng-click="loadData(); go('project-output-view');"><span>{{ ListItem.name }}</span><span>{{ totalAccumulatedPctg.toFixed(2) }}% completed</span></li>
-            <li><a href=""></a>Project #2</li>
-            <li ng-repeat="item in ListItem"></li>
+                <!-- <ul class="projects__list">
+
+                    <li ng-click="loadData(); go('project-output-view');"><span>{{ ListItem.name }}</span><span>{{ totalAccumulatedPctg.toFixed(2) }}% completed</span></li>
+                    <li><a href=""></a>Project #2</li>
+                    <li ng-repeat="item in ListItem"></li>
 
 
-        </ul> -->
+                </ul> -->
 
-        <ul class="projects__list" ng-repeat="project in projectObject track by $index">
-            <li ng-click="deleting||loadData(project); deleting||go('project-output-view')"><span>{{ project.name }}</span><span>{{ pctgCompleted(project) }}% completed</span></br>
-                <progress max="100" value="{{ pctgCompleted(project) }}"></progress>
-                <span class='button--delete' ng-click="deleteTrack(project)">x</span>
-            </li>
-        </ul>
+                <ul class="projects__list" ng-repeat="project in projectObject track by $index">
+                    <li ng-click="deleting||loadData(project); deleting||go('project-output-view')"><span>{{ project.name }}</span></br>
+                        <div class="progress__bar">
+                            <progress max="100" value="{{ pctgCompleted(project) }}"></progress>
+                            <span class="percent">{{ pctgCompleted(project) }}% done</span>
+                        </div>
+                        <span class='button--delete' ng-click="deleteTrack(project)">x</span>
+                    </li>
+                </ul>
 
+            </div>
+
+        </div>
     </div>
+
+    <nav class="">
+        <button ng-click="go('/')" class="button">New</button>
+        <button class="button" ng-click="removeData(); deleting = true" ng-hide="deleting">Remove</button>
+        <button class="button" ng-click="restoreCount(); deleting = false;" ng-hide="!deleting">Done</button>
+    </nav>
 
 </section>

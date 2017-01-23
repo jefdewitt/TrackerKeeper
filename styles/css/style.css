@@ -20,6 +20,8 @@ body {
 
 .app__body {
   background: #aaa; }
+  .app__body h2 {
+    margin: 0; }
 
 header {
   background: #424242;
@@ -49,6 +51,10 @@ nav {
     color: #B2FFB2;
     display: table-cell;
     width: 50%; }
+  nav.triple button {
+    display: table-cell;
+    margin-bottom: 0;
+    width: 33%; }
 
 .body__inner {
   background: #666;
@@ -85,7 +91,16 @@ nav {
     .main button:first-of-type {
       margin-bottom: 2rem; }
   .main .triple button {
-    margin-bottom: 0; }
+    display: table-cell;
+    margin-bottom: 0;
+    width: 33%; }
+  .main.output-view {
+    padding: 2rem 2rem 0;
+    margin-bottom: 4em; }
+  .main.list-view {
+    padding: 2rem 2rem 0;
+    margin-bottom: 4em;
+    overflow: hidden; }
 
 .input__container {
   position: relative; }
@@ -171,14 +186,10 @@ a {
   .action.double .button {
     display: table-cell;
     width: 50%; }
-  .action.triple .button {
-    display: table-cell;
-    width: 33%; }
 
 tr {
   background: #fff;
-  height: 2em;
-  border-bottom: solid 2rem #424242; }
+  height: 2em; }
   tr > td {
     color: #333;
     font-size: 3vh;
@@ -188,6 +199,8 @@ tr {
     tr > td:first-of-type, tr > td:last-of-type {
       font-size: 2vh; }
 
+thead th {
+  font-size: 3vh; }
 thead tr {
   background: initial; }
 
@@ -216,6 +229,15 @@ p {
 .projects__list span:nth-of-type(2) {
   float: right; }
 
+.progress__bar {
+  position: relative; }
+  .progress__bar .percent {
+    position: absolute;
+    right: 2%;
+    top: 50%;
+    transform: translatey(-50%);
+    text-shadow: 2px 2px 5px #000; }
+
 progress {
   border-radius: 2px;
   appearance: none;
@@ -229,7 +251,7 @@ progress[value]::-webkit-progress-bar {
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.25) inset; }
 
 progress[value]::-webkit-progress-value {
-  background: #fff;
+  background: rgba(255, 255, 255, 0.6);
   border-radius: 2px;
   background-size: 35px 20px, 100% 100%, 100% 100%; }
 
@@ -256,13 +278,18 @@ progress[value]::-webkit-progress-value {
   background: rgba(0, 0, 0, 0.4);
   /* border-radius: 50%; */
   color: #fff;
-  height: 2.75em;
-  padding: .75em .5em 0 .75em;
+  height: 2em;
+  opacity: 0;
+  padding: .4em .5em 0em .75em;
   position: absolute;
-  right: -3em;
+  right: -2.5em;
   top: 50%;
   transform: translatey(-50%);
+  transition: all .3s ease;
   width: 2em; }
+
+.slide .button--delete {
+  opacity: 1; }
 
 .output {
   border-collapse: collapse;
@@ -270,5 +297,32 @@ progress[value]::-webkit-progress-value {
   position: relative;
   left: -3rem;
   width: calc(100% + 6rem); }
+
+.detail--view .main {
+  width: 200px;
+  border: 1px solid black; }
+.detail--view .month {
+  background-color: black;
+  font: bold 12px sans-serif;
+  color: white; }
+.detail--view .daysofweek {
+  background-color: gray;
+  font: bold 12px sans-serif;
+  color: white; }
+.detail--view .days {
+  font-size: 12px;
+  font-family: sans-serif;
+  color: black;
+  background-color: lightyellow;
+  padding: 2px; }
+.detail--view .days #today {
+  font-weight: bold;
+  color: red; }
+
+#calendar-space .main {
+  margin: 0;
+  padding: 0; }
+#calendar-space table {
+  margin: 2em; }
 
 /*# sourceMappingURL=style.css.map */

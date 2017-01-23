@@ -1,33 +1,44 @@
 <!--
     Project Details
 -->
-<nav class="action double">
-    <button ng-click="go('project-input-view')" class="button">Add Time</button>
-    <button ng-click="go('projects-list-view')"class="button">Tracks</button>
-</nav>
-
 <section class="content__main">
 
-    <div class="field__container">
+    <div class="main detail-view">
+        <div class="">
 
-        <h2>{{ Detail.name }}</h2>
+            <div class="field__container">
 
-        <div>
-            <h3 class="date">Date</h3><h3 class="time">Minutes</h3>
+                <h2>{{ Detail.name }}</h2>
+
+                <div>
+                    <h3 class="date">Date</h3><h3 class="time">Minutes</h3>
+                </div>
+
+                <ul class="detail__list" ng-repeat="time in timeObject track by $index">
+                    <li ng-click="loadData(project)">
+                        <span>{{ time.timeStamp }}</span>
+
+                        <div class="input__container">
+                            <label ng-click="picking = true" ng-hide="picking" ng-show="!picking" for="minutes">{{ time.minutes }}</label>
+                            <input type="number" ng-hide="!editing" ng-show="picking" ng-model="time.minutes" ng-change="field.edited = true"
+                            ng-blur="picking = false; saveNewMin()" ng-class="{'edited': field.edited}">
+                        </div>
+                    </li>
+                </ul>
+
+            </div>
+
         </div>
 
-        <ul class="detail__list" ng-repeat="time in timeObject track by $index">
-            <li ng-click="loadData(project)">
-                <span>{{ time.timeStamp }}</span>
-
-                <div class="input__container">
-                    <label ng-click="picking = true" ng-hide="picking" ng-show="!picking" for="minutes">{{ time.minutes }}</label>
-                    <input type="number" ng-hide="!editing" ng-show="picking" ng-model="time.minutes" ng-change="field.edited = true"
-                    ng-blur="picking = false; saveNewMin()" ng-class="{'edited': field.edited}">
-                </div>
-            </li>
-        </ul>
-
+        <form id="form">
+            <select id="calendar-menu" onChange="updateCalendar(this.options)"></select>
+            <div id="calendar-space"></div>
+        </form>
     </div>
+
+    <nav class="">
+        <button ng-click="go('project-input-view')" class="button">Add Time</button>
+        <button ng-click="go('projects-list-view')"class="button">Tracks</button>
+    </nav>
 
 </section>

@@ -4,11 +4,11 @@
 
 <section class="content__main">
 
-    <div class="main">
+    <div class="main output-view">
         <div class="">
             <div class="content__main--header">
-                <p>{{ Output.name }}</p>
-                <p>{{ Output.hours }} hours</p>
+                <h2>{{ Output.name }}</h2>
+                <h2>{{ Output.hours }} hours</h2>
             </div>
 
             <div class="field__container">
@@ -84,8 +84,8 @@
         </div>
     </div>
 
-    <nav class="action triple">
-        <button ng-click="go('project-input-view')" class="button">Input Time</button>
+    <nav class="triple">
+        <button ng-click="go('project-input-view')" class="button">Add Time</button>
         <button ng-click="go('project-detail-view')"class="button">View Time</button>
         <button ng-click="go('projects-list-view')"class="button">Tracks</button>
     </nav>
