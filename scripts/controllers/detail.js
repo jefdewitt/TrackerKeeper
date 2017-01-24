@@ -15,6 +15,7 @@ angular.module('angularApp')
     $scope.timeObject = $scope.Detail.timeRepo;
 
     function buildCal(m, y, cM, cH, cDW, cD, brdr){
+            console.log('000000');
         var mn=['January','February','March','April','May','June','July','August','September','October','November','December'];
         var dim=[31,0,31,30,31,30,31,31,30,31,30,31];
 
@@ -48,16 +49,34 @@ angular.module('angularApp')
     var curyear=todaydate.getFullYear() //get current year
 
     var dropDown = document.getElementById("calendar-menu");
+    var option = dropDown.options[dropDown.selectedIndex];
 
-    function updatecalendar(theselection){
-        var themonth=parseInt(theselection.selectedIndex);
-        var calendarstr=buildCal(themonth, curyear, "main", "month", "daysofweek", "days", 0)
-        if (dropDown) {
-            var main = document.querySelector('.main:last-of-type');
-            main.remove();
-            document.getElementById("calendar-space").innerHTML=calendarstr;
+    console.log('dropDown.selectedIndex outside function ' + dropDown.selectedIndex);
+
+    console.log('1111111');
+    $scope.updateCalendar = function(theselection){
+        if ( dropDown.selectedIndex > 0 ) {
+            console.log('22222');
+            console.log('this.options ' + this.options);
+            console.log('dropDown.value ' + dropDown.value);
+            console.log('dropDown.selectedIndex ' + dropDown.selectedIndex);
+            console.log('dropDown.text ' + dropDown.text);
+            console.log('dropDown.options ' + dropDown.options);
+            console.log('dropDown.options[dropDown.selectedIndex] ' + dropDown.options[dropDown.selectedIndex]);
+            console.log('Object.keys(dropDown) ' + Object.keys(dropDown));
+            console.dir('$scope.updateCalendar ' + $scope.updateCalendar);
+            console.log('$scope.updateCalendar.selectedIndex ' + $scope.updateCalendar.selectedIndex);
+            var themonth=parseInt($scope.updateCalendar.selectedIndex);
+            var calendarstr=buildCal(themonth, curyear, "main", "month", "daysofweek", "days", 0)
+            if (dropDown) {
+                var main = document.querySelector('.main:last-of-type');
+                main.remove();
+                document.getElementById("calendar-space").innerHTML=calendarstr;
+            }
         }
     }
+
+    $scope.calendar = '<option value="curmonth-1" selected="yes">Current Month</option>'
 
     dropDown.innerHTML="<option value='curmonth-1' selected='yes'>Current Month</option>";
 
