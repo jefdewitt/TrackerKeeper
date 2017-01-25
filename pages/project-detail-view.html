@@ -31,8 +31,21 @@
         </div>
 
         <form id="form">
-            <select id="calendar-menu" ng-model="calendar" ng-change="updateCalendar()"></select>
+
+            <select id="calendar-menu"
+                    ng-options="option for option in listOfOptions"
+                    ng-model="calendar"
+                    ng-change="updateCalendar()">
+                <option style="display:none" value="">select a month</option>";
+            </select>
+
             <div id="calendar-space"></div>
+
+            <!-- <select ng-options="option for option in listOfOptions"
+                    ng-model="selectedItem"
+                    ng-change="selectedItemChanged()">
+                    <option style="display:none" value="">select a type</option>
+            </select> -->
         </form>
     </div>
 

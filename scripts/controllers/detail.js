@@ -51,45 +51,47 @@ angular.module('angularApp')
     var dropDown = document.getElementById("calendar-menu");
     var option = dropDown.options[dropDown.selectedIndex];
 
-    console.log('dropDown.selectedIndex outside function ' + dropDown.selectedIndex);
-
     console.log('1111111');
     $scope.updateCalendar = function(theselection){
         if ( dropDown.selectedIndex > 0 ) {
             console.log('22222');
-            console.log('this.options ' + this.options);
-            console.log('dropDown.value ' + dropDown.value);
+
             console.log('dropDown.selectedIndex ' + dropDown.selectedIndex);
-            console.log('dropDown.text ' + dropDown.text);
-            console.log('dropDown.options ' + dropDown.options);
-            console.log('dropDown.options[dropDown.selectedIndex] ' + dropDown.options[dropDown.selectedIndex]);
-            console.log('Object.keys(dropDown) ' + Object.keys(dropDown));
-            console.dir('$scope.updateCalendar ' + $scope.updateCalendar);
-            console.log('$scope.updateCalendar.selectedIndex ' + $scope.updateCalendar.selectedIndex);
-            var themonth=parseInt($scope.updateCalendar.selectedIndex);
-            var calendarstr=buildCal(themonth, curyear, "main", "month", "daysofweek", "days", 0)
-            if (dropDown) {
-                var main = document.querySelector('.main:last-of-type');
-                main.remove();
-                document.getElementById("calendar-space").innerHTML=calendarstr;
-            }
+            var test = document.getElementById("calendar-space");
+            console.log('test ' + test);
+            console.dir('Object.keys(test) ' + Object.keys(test));
+
+            // var themonth=parseInt($scope.updateCalendar.selectedIndex);
+            // var calendarstr=buildCal(themonth, curyear, "main", "month", "daysofweek", "days", 0)
+            // if (dropDown) {
+            //     var main = document.querySelector('.main:last-of-type');
+            //     main.remove();
+            //     document.getElementById("calendar-space").innerHTML=calendarstr;
+            // }
         }
     }
 
-    $scope.calendar = '<option value="curmonth-1" selected="yes">Current Month</option>'
+    // dropDown.innerHTML="<option value='curmonth-1' selected='yes'>Current Month</option>";
 
-    dropDown.innerHTML="<option value='curmonth-1' selected='yes'>Current Month</option>";
+    $scope.listOfOptions = [];
 
-    var months = "<option value='+i+'>'+themonths[i]+' '+curyear+'</option>";
+    // var months = "<option value='+i+'>'+themonths[i]+' '+curyear+'</option>";
     var i;
     for (i=0; i<12; i++) {//display option for 12 months of the year
-        var opt = document.createElement('option');
-        opt.innerHTML = themonths[i] + curyear;
-        var attOne = document.createAttribute('value');
-        attOne.value = i;
-        dropDown.appendChild(opt);
+        var opt = themonths[i] + curyear;
+        // var attOne = document.createAttribute('value');
+        // attOne.value = i;
+        // dropDown.appendChild(opt);
+
+        $scope.listOfOptions.push(opt);
     }
 
     document.getElementById("calendar-space").innerHTML=buildCal(curmonth, curyear, "main", "month", "daysofweek", "days", 0);
+
+    // $scope.listOfOptions = ['One', 'Two', 'Three'];
+    //
+    // $scope.selectedItemChanged = function(){
+    //     $scope.calculatedValue = 'You selected number ' + $scope.selectedItem;
+    // }
 
 });
