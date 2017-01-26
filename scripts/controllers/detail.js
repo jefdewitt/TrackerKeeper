@@ -15,7 +15,6 @@ angular.module('angularApp')
     $scope.timeObject = $scope.Detail.timeRepo;
 
     function buildCal(m, y, cM, cH, cDW, cD, brdr){
-            console.log('000000');
         var mn=['January','February','March','April','May','June','July','August','September','October','November','December'];
         var dim=[31,0,31,30,31,30,31,31,30,31,30,31];
 
@@ -51,23 +50,21 @@ angular.module('angularApp')
     var dropDown = document.getElementById("calendar-menu");
     var option = dropDown.options[dropDown.selectedIndex];
 
-    console.log('1111111');
     $scope.updateCalendar = function(theselection){
         if ( dropDown.selectedIndex > 0 ) {
-            console.log('22222');
-
             console.log('dropDown.selectedIndex ' + dropDown.selectedIndex);
             var test = document.getElementById("calendar-space");
             console.log('test ' + test);
             console.dir('Object.keys(test) ' + Object.keys(test));
 
-            // var themonth=parseInt($scope.updateCalendar.selectedIndex);
-            // var calendarstr=buildCal(themonth, curyear, "main", "month", "daysofweek", "days", 0)
-            // if (dropDown) {
-            //     var main = document.querySelector('.main:last-of-type');
+            var themonth=parseInt(dropDown.selectedIndex);
+            console.log('themonth ' + themonth);
+            var calendarstr=buildCal(themonth, curyear, "main", "month", "daysofweek", "days", 0)
+            if (dropDown) {
+                var main = document.querySelector('.main:last-of-type');
             //     main.remove();
-            //     document.getElementById("calendar-space").innerHTML=calendarstr;
-            // }
+                document.getElementById("calendar-space").innerHTML=calendarstr;
+            }
         }
     }
 
