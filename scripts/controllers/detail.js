@@ -15,29 +15,38 @@ angular.module('angularApp')
     $scope.timeObject = $scope.Detail.timeRepo;
 
     function buildCal(m, y, cM, cH, cDW, cD, brdr){
-        var mn=['January','February','March','April','May','June','July','August','September','October','November','December'];
-        var dim=[31,0,31,30,31,30,31,31,30,31,30,31];
+        var twelveMonths=['January','February','March','April','May','June','July','August','September','October','November','December'];
+        var lastDayOfMonths=[31,0,31,30,31,30,31,31,30,31,30,31];
 
-        var oD = new Date(y, m-1, 1); //DD replaced line to fix date bug when current day is 31st
-        oD.od=oD.getDay()+1; //DD replaced line to fix date bug when current day is 31st
-
+        var firstDayOfYear = new Date(y, m-1, 1); //DD replaced line to fix date bug when current day is 31st
+        console.log('firstDayOfYear ' + firstDayOfYear);
+        firstDayOfYear.dayOne=firstDayOfYear.getDay()+1; //DD replaced line to fix date bug when current day is 31st
+        console.log('firstDayOfYear.dayOne ' + firstDayOfYear.dayOne);
         var todaydate=new Date() //DD added
         var scanfortoday=(y==todaydate.getFullYear() && m==todaydate.getMonth()+1)? todaydate.getDate() : 0 //DD added
 
-        dim[1]=(((oD.getFullYear()%100!=0)&&(oD.getFullYear()%4==0))||(oD.getFullYear()%400==0))?29:28;
-        var t='<div class="'+cM+'"><table class="'+cM+'" cols="7" cellpadding="0" border="'+brdr+'" cellspacing="0"><tr align="center">';
-        t+='<td colspan="7" align="center" class="'+cH+'">'+mn[m-1]+' - '+y+'</td></tr><tr align="center">';
+        lastDayOfMonths[1]=(((firstDayOfYear.getFullYear()%100!=0)&&(firstDayOfYear.getFullYear()%4==0))||(firstDayOfYear.getFullYear()%400==0))?29:28;
+        var table='<div class="'+cM+'"><table class="'+cM+'" cols="7" cellpadding="0" border="'+brdr+'" cellspacing="0"><tr align="center">';
+        table+='<td colspan="7" align="center" class="'+cH+'">'+twelveMonths[m-1]+' - '+y+'</td></tr><tr align="center">';
         var s;
-        for(s=0;s<7;s++)t+='<td class="'+cDW+'">'+"SMTWTFS".substr(s,1)+'</td>';
-        t+='</tr><tr align="center">';
+        for(s=0;s<7;s++)table+='<td class="'+cDW+'">'+"SMTWTFS".substr(s,1)+'</td>';
+        table+='</tr><tr align="center">';
         for(i=1;i<=42;i++){
-        var x=((i-oD.od>=0)&&(i-oD.od<dim[m-1]))? i-oD.od+1 : '&nbsp;';
-        if (x==scanfortoday) //DD added
-        x='<span id="today">'+x+'</span>' //DD added
-        t+='<td class="'+cD+'">'+x+'</td>';
-        if(((i)%7==0)&&(i<36))t+='</tr><tr align="center">';
+            var x=((i-firstDayOfYear.dayOne>=0)&&(i-firstDayOfYear.dayOne<lastDayOfMonths[m-1]))? i-firstDayOfYear.dayOne+1 : '&nbsp;';
+            if (x==scanfortoday) //DD added
+            x='<span id="today">'+x+'</span>' //DD added
+
+
+            var displayMonth = twelveMonths[m-1];
+            if (displayMonth < 10) { displayMonth = '0' + displayMonth; }
+            var displayDay = x;
+            if (displayDay < 10) { displayDay = '0' + displayDay; }
+
+
+            table+='<td id=" '+y+' - '+displayMonth+' - '+displayDay+' " class="'+cD+'">'+x+'</td>';
+            if(((i)%7==0)&&(i<36))table+='</tr><tr align="center">';
         }
-        return t+='</tr></table></div>';
+        return table+='</tr></table></div>';
     }
 
     var themonths=['January','February','March','April','May','June',
@@ -52,43 +61,25 @@ angular.module('angularApp')
 
     $scope.updateCalendar = function(theselection){
         if ( dropDown.selectedIndex > 0 ) {
-            console.log('dropDown.selectedIndex ' + dropDown.selectedIndex);
-            var test = document.getElementById("calendar-space");
-            console.log('test ' + test);
-            console.dir('Object.keys(test) ' + Object.keys(test));
-
             var themonth=parseInt(dropDown.selectedIndex);
-            console.log('themonth ' + themonth);
             var calendarstr=buildCal(themonth, curyear, "main", "month", "daysofweek", "days", 0)
             if (dropDown) {
                 var main = document.querySelector('.main:last-of-type');
-            //     main.remove();
                 document.getElementById("calendar-space").innerHTML=calendarstr;
             }
         }
     }
 
-    // dropDown.innerHTML="<option value='curmonth-1' selected='yes'>Current Month</option>";
 
     $scope.listOfOptions = [];
 
-    // var months = "<option value='+i+'>'+themonths[i]+' '+curyear+'</option>";
     var i;
     for (i=0; i<12; i++) {//display option for 12 months of the year
         var opt = themonths[i] + curyear;
-        // var attOne = document.createAttribute('value');
-        // attOne.value = i;
-        // dropDown.appendChild(opt);
 
         $scope.listOfOptions.push(opt);
     }
 
     document.getElementById("calendar-space").innerHTML=buildCal(curmonth, curyear, "main", "month", "daysofweek", "days", 0);
-
-    // $scope.listOfOptions = ['One', 'Two', 'Three'];
-    //
-    // $scope.selectedItemChanged = function(){
-    //     $scope.calculatedValue = 'You selected number ' + $scope.selectedItem;
-    // }
 
 });
