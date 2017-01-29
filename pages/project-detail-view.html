@@ -10,22 +10,6 @@
 
                 <h2>{{ Detail.name }}</h2>
 
-                <div>
-                    <h3 class="date">Date</h3><h3 class="time">Minutes</h3>
-                </div>
-
-                <ul class="detail__list" ng-repeat="time in timeObject track by $index">
-                    <li ng-click="loadData(project)">
-                        <span>{{ time.timeStamp }}</span>
-
-                        <div class="input__container">
-                            <label ng-click="picking = true" ng-hide="picking" ng-show="!picking" for="minutes">{{ time.minutes }}</label>
-                            <input type="number" ng-hide="!editing" ng-show="picking" ng-model="time.minutes" ng-change="field.edited = true"
-                            ng-blur="picking = false; saveNewMin()" ng-class="{'edited': field.edited}">
-                        </div>
-                    </li>
-                </ul>
-
             </div>
 
         </div>
@@ -41,11 +25,6 @@
 
             <div id="calendar-space"></div>
 
-            <!-- <select ng-options="option for option in listOfOptions"
-                    ng-model="selectedItem"
-                    ng-change="selectedItemChanged()">
-                    <option style="display:none" value="">select a type</option>
-            </select> -->
         </form>
     </div>
 

@@ -8,15 +8,6 @@
 
             <div class="field__container">
 
-                <!-- <ul class="projects__list">
-
-                    <li ng-click="loadData(); go('project-output-view');"><span>{{ ListItem.name }}</span><span>{{ totalAccumulatedPctg.toFixed(2) }}% completed</span></li>
-                    <li><a href=""></a>Project #2</li>
-                    <li ng-repeat="item in ListItem"></li>
-
-
-                </ul> -->
-
                 <ul class="projects__list" ng-repeat="project in projectObject track by $index">
                     <li ng-click="deleting||loadData(project); deleting||go('project-output-view')"><span>{{ project.name }}</span></br>
                         <div class="progress__bar">

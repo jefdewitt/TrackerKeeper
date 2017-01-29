@@ -38,6 +38,14 @@ angular.module('angularApp')
         $scope.ListItem.name = project.name;
         $scope.ListItem.hours = project.hours;
         $scope.ListItem.timeRepo = project.timeRepo;
+
+        angular.forEach($scope.$storage, function(index) {
+            if ( index.name === $scope.ListItem.name ) {
+                index.selected = true;
+            } else {
+                index.selected = false;
+            }
+        })
     }
 
     var count = 0;

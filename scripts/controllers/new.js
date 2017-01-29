@@ -17,12 +17,8 @@ angular.module('angularApp')
         this.name = name;
         this.hours = hours;
         this.timeRepo = [];
+        this.selected = false;
     }
-
-    console.log('Heres our scope.storage contents');
-    angular.forEach($scope.$storage, function(index) {
-        console.dir(index.name);
-    });
 
     $scope.$storage = $localStorage.project;
 

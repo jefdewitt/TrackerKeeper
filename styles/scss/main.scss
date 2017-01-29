@@ -122,11 +122,16 @@ nav {
     }
 }
 
-.main {
+section > .main {
     background: $dark-gray;
     border: 1px solid $lime-green;
     margin: 2rem;
+    max-width: 30rem;
     padding: 2rem;
+
+    @media screen and (min-width: 500px) {
+        margin: 2rem auto;
+    }
 
     p {
         font-size: 3vh;
@@ -134,7 +139,7 @@ nav {
         margin-bottom: 0;
 
         &:first-of-type {
-            margin-bottom: 1rem;
+            margin-bottom: 2rem;
         }
     }
 
@@ -198,14 +203,14 @@ nav {
         }
 
         input {
-            padding: 1em .5em;
+            padding: 1em 0em;
         }
 
         label {
             background: $white;
             color: $light-gray;
             padding: 1.1em .5em;
-            text-align: right;
+            text-align: center;
             width: 100%;
         }
 
@@ -333,16 +338,6 @@ tr {
         font-size: 3vh;
         padding: 0 .5em;
         text-align: center;
-        width: 25%;
-
-        &:first-of-type,
-        &:last-of-type {
-            font-size: 2vh;
-        }
-
-        &:last-of-type {
-            //text-align: left;
-        }
     }
 }
 
@@ -365,26 +360,7 @@ li {
 }
 
 .content__main--header {
-
     text-align: center;
-
-    // .row {
-    //     display: table;
-    //     margin-bottom: 1rem;
-    //     width: 100%;
-    //
-    //     h2 {
-    //         display: table-cell;
-    //
-    //         &:first-of-type {
-    //             text-align: left;
-    //         }
-    //
-    //         &:last-of-type {
-    //             text-align: right;
-    //         }
-    //     }
-    // }
 }
 
 p {
@@ -507,8 +483,19 @@ progress[value]::-webkit-progress-value {
     opacity: 1;
 }
 
+.main.output-view {
+
+    h2 {
+        margin-bottom: 1rem;
+
+        &:last-of-type {
+            font-size: 1.25em;
+        }
+    }
+}
+
 .output {
-    // background: $white;
+
     border-collapse: collapse;
     margin-bottom: 1em;
     position: relative;
@@ -516,39 +503,36 @@ progress[value]::-webkit-progress-value {
     width: calc(100% + 6rem);
 
     tr {
-        // background: $white;
+        td {
+            width: 25%;
+
+            &:first-of-type,
+            &:last-of-type {
+                font-size: 2vh;
+            }
+
+            &:first-of-type{
+                text-align: right;
+            }
+
+            &:last-of-type {
+                text-align: left;
+            }
+        }
     }
 }
 
-.detail--view {
-    .main {
-      width:200px;
-      border:1px solid black;
+.main.detail-view {
+    margin: 2rem 2rem 6rem;
+
+    @media screen and (min-width: 500px) {
+        margin: 2rem auto 6rem;
     }
 
-    .month {
-      background-color:black;
-      font:bold 12px sans-serif;
-      color:white;
-    }
-
-    .daysofweek {
-      background-color:gray;
-      font:bold 12px sans-serif;
-      color:white;
-    }
-
-    .days {
-      font-size: 12px;
-      font-family:sans-serif;
-      color:black;
-      background-color: lightyellow;
-      padding: 2px;
-    }
-
-    .days #today{
-      font-weight: bold;
-      color: red;
+    form {
+        position: relative;
+            left: -3rem;
+        width: calc(100% + 6rem);
     }
 }
 
@@ -557,6 +541,7 @@ progress[value]::-webkit-progress-value {
     .main {
         margin: 0;
         padding: 0;
+        width: 100%;
     }
 
     table {
@@ -564,7 +549,35 @@ progress[value]::-webkit-progress-value {
     }
 }
 
+td span {
+    background: #ccc;
+    display: block;
+    font-size: 2vh;
+    padding: .1em .25em;
+    position: absolute;
+        left: 50%;
+        transform: translatex(-50%);
+}
 
+span.today {
+    background: transparent;
+    color: red;
+    font-size: 3vh;
+    position: initial;
+        transform: none;
+}
+
+#calendar-space {
+    tr {
+        &:not(:first-of-type) {
+            td {
+                display: inline-block;
+                position: relative;
+                width: 14.28%;
+            }
+        }
+    }
+}
 
 
 

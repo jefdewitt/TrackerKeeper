@@ -73,31 +73,35 @@ nav {
   .content__main h1, .content__main h2, .content__main h3, .content__main h4, .content__main h5, .content__main h6 {
     text-align: center; }
 
-.main {
+section > .main {
   background: #424242;
   border: 1px solid #B2FFB2;
   margin: 2rem;
+  max-width: 30rem;
   padding: 2rem; }
-  .main p {
+  @media screen and (min-width: 500px) {
+    section > .main {
+      margin: 2rem auto; } }
+  section > .main p {
     font-size: 3vh;
     line-height: 1.5;
     margin-bottom: 0; }
-    .main p:first-of-type {
-      margin-bottom: 1rem; }
-  .main button {
+    section > .main p:first-of-type {
+      margin-bottom: 2rem; }
+  section > .main button {
     position: relative;
     left: -3rem;
     width: calc(100% + 6rem); }
-    .main button:first-of-type {
+    section > .main button:first-of-type {
       margin-bottom: 2rem; }
-  .main .triple button {
+  section > .main .triple button {
     display: table-cell;
     margin-bottom: 0;
     width: 33%; }
-  .main.output-view {
+  section > .main.output-view {
     padding: 2rem 2rem 0;
     margin-bottom: 4em; }
-  .main.list-view {
+  section > .main.list-view {
     padding: 2rem 2rem 0;
     margin-bottom: 4em;
     overflow: hidden; }
@@ -119,12 +123,12 @@ nav {
     top: 50%;
     transform: translatey(-50%); }
   .form__input .input__container input {
-    padding: 1em .5em; }
+    padding: 1em 0em; }
   .form__input .input__container label {
     background: #fff;
     color: #aaa;
     padding: 1.1em .5em;
-    text-align: right;
+    text-align: center;
     width: 100%; }
   .form__input .input__container h3 {
     padding: 1em .5em;
@@ -194,10 +198,7 @@ tr {
     color: #333;
     font-size: 3vh;
     padding: 0 .5em;
-    text-align: center;
-    width: 25%; }
-    tr > td:first-of-type, tr > td:last-of-type {
-      font-size: 2vh; }
+    text-align: center; }
 
 thead th {
   font-size: 3vh; }
@@ -291,38 +292,62 @@ progress[value]::-webkit-progress-value {
 .slide .button--delete {
   opacity: 1; }
 
+.main.output-view h2 {
+  margin-bottom: 1rem; }
+  .main.output-view h2:last-of-type {
+    font-size: 1.25em; }
+
 .output {
   border-collapse: collapse;
   margin-bottom: 1em;
   position: relative;
   left: -3rem;
   width: calc(100% + 6rem); }
+  .output tr td {
+    width: 25%; }
+    .output tr td:first-of-type, .output tr td:last-of-type {
+      font-size: 2vh; }
+    .output tr td:first-of-type {
+      text-align: right; }
+    .output tr td:last-of-type {
+      text-align: left; }
 
-.detail--view .main {
-  width: 200px;
-  border: 1px solid black; }
-.detail--view .month {
-  background-color: black;
-  font: bold 12px sans-serif;
-  color: white; }
-.detail--view .daysofweek {
-  background-color: gray;
-  font: bold 12px sans-serif;
-  color: white; }
-.detail--view .days {
-  font-size: 12px;
-  font-family: sans-serif;
-  color: black;
-  background-color: lightyellow;
-  padding: 2px; }
-.detail--view .days #today {
-  font-weight: bold;
-  color: red; }
+.main.detail-view {
+  margin: 2rem 2rem 6rem; }
+  @media screen and (min-width: 500px) {
+    .main.detail-view {
+      margin: 2rem auto 6rem; } }
+  .main.detail-view form {
+    position: relative;
+    left: -3rem;
+    width: calc(100% + 6rem); }
 
 #calendar-space .main {
   margin: 0;
-  padding: 0; }
+  padding: 0;
+  width: 100%; }
 #calendar-space table {
   margin: 2em; }
+
+td span {
+  background: #ccc;
+  display: block;
+  font-size: 2vh;
+  padding: .1em .25em;
+  position: absolute;
+  left: 50%;
+  transform: translatex(-50%); }
+
+span.today {
+  background: transparent;
+  color: red;
+  font-size: 3vh;
+  position: initial;
+  transform: none; }
+
+#calendar-space tr:not(:first-of-type) td {
+  display: inline-block;
+  position: relative;
+  width: 14.28%; }
 
 /*# sourceMappingURL=style.css.map */

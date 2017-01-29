@@ -12,6 +12,14 @@ angular.module('angularApp')
 
     $scope.$storage = $localStorage.project;
 
+    angular.forEach($scope.$storage, function(index) {
+        if( index.selected == true ) {
+            $scope.Detail = index;
+        } else {
+            index.selected = false;
+        }
+    })
+
     $scope.timeObject = $scope.Detail.timeRepo;
 
     var twelveMonths=['January','February','March','April','May','June','July','August','September','October','November','December'];
@@ -33,11 +41,11 @@ angular.module('angularApp')
         for(i=1;i<=42;i++){
             var x=((i-firstDayOfYear.dayOne>=0)&&(i-firstDayOfYear.dayOne<lastDayOfMonths[m-1]))? i-firstDayOfYear.dayOne+1 : '&nbsp;';
             if (x==scanForToday) //DD added
-            x='<span id="today">'+x+'</span>' //DD added
+            x='<span class="today">'+x+'</span>' //DD added
 
             var displayMonth = m;
             if (displayMonth < 10) { displayMonth = '0' + displayMonth; }
-            var displayDay = x;
+            var displayDay = ((i-firstDayOfYear.dayOne>=0)&&(i-firstDayOfYear.dayOne<lastDayOfMonths[m-1]))? i-firstDayOfYear.dayOne+1 : '&nbsp;';
             if (displayDay < 10) { displayDay = '0' + displayDay; }
 
             table+='<td id="'+y+'-'+displayMonth+'-'+displayDay+'" class="'+cD+'">'+x+'</td>';
@@ -75,55 +83,16 @@ angular.module('angularApp')
 
     document.getElementById("calendar-space").innerHTML=buildCal(curmonth, curyear, "main", "month", "daysofweek", "days", 0);
 
-    // var iDArray = Array.prototype.slice.call(document.querySelectorAll("td[id^='20']"));
-    //
-    // console.log(iDArray);
-
-    // var dateId = document.getElementsByTagName('td').id;
-    // console.log(dateId);
-    //
-    // var elemid = document.getElementById("td[id^='20']").id;
-    // console.log(elemid);
-
-    console.log('$scope.Detail.timeRepo ' + $scope.Detail.timeRepo);
-
     angular.forEach($scope.Detail.timeRepo, function(index) {
-        console.log(index.timeStamp);
-        console.log('index.minutes ' + index.minutes);
+
         var dataCell = document.getElementById(index.timeStamp);
-        console.log('dataCell ' + dataCell);
         var dataCellId = dataCell.id;
-        console.log('dataCellId ' + dataCellId);
 
-        if( dataCell )
-          {
-              var para = document.createElement("span");
-              var node = document.createTextNode(index.minutes);
-              para.appendChild(node);
-              dataCell.appendChild(para);
-            //   dataCell.append(index.minutes);
-              console.log('we have a winner');
-          }
-
-
-        // var dateId = document.getElementsByTagName('td').id;
-        // console.log(dateId);
-        // if (index.timeStamp)
-        //
-        // angular.forEach('iDArray', function(index2) {
-        //     console.log('index2 ' + index2);
-        //     // if timeStamp and id match
-        //     if (index1.timeStamp === index2.id) {
-        //         console.log('index2.id ' + index2.id);
-        //         console.log('index2 ' + index2);
-        //         console.log('bingo motherfuckers');
-        //         // append the index.minutes to the td with that id
-        //         var dateMatch = document.querySelector(index2);
-        //         dateMatch.innerHTML(index1.timeStamp);
-        //     }
-        // })
+        if( dataCell ){
+            var para = document.createElement("span");
+            var node = document.createTextNode(index.minutes.toFixed(0) + 'min');
+            para.appendChild(node);
+            dataCell.appendChild(para);
+        }
     })
-
-
-
 });

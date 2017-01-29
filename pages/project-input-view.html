@@ -16,7 +16,7 @@
                 <div class="form__input--wrapper">
 
                     <div class="input__container">
-                        <h3>Timer</h3>
+                        <!-- <h3>Timer</h3> -->
                         <label ng-click="resetTimerWithInterval(); editing = true; working = false;" ng-hide="editing" ng-show="working" for="time">{{timerWithInterval | hhmmss}}</label>
                         <input ng-click="resetTimerWithInterval();" ng-model="timer" ng-hide="working" ng-show="editing" type="number" name="timeInput" id="time" placeholder="Enter time in min">
                     </div>
