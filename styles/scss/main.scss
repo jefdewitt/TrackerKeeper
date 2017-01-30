@@ -95,7 +95,7 @@ nav {
     &.triple button {
         display: table-cell;
         margin-bottom: 0;
-        width: 33%;
+        width: 33.3%;
     }
 }
 
@@ -402,8 +402,6 @@ p {
 }
 
 progress {
-    // -webkit-animation: animate-stripes 5s linear infinite;
-    //         animation: animate-stripes 5s linear infinite;
     border-radius: 2px;
     appearance: none;
     -webkit-appearance: none;
@@ -483,14 +481,11 @@ progress[value]::-webkit-progress-value {
     opacity: 1;
 }
 
-.main.output-view {
+h2 {
+    margin-bottom: 1rem;
 
-    h2 {
-        margin-bottom: 1rem;
-
-        &:last-of-type {
-            font-size: 1.25em;
-        }
+    &.hours {
+        font-size: 1.25em;
     }
 }
 

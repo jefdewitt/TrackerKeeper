@@ -54,7 +54,7 @@ nav {
   nav.triple button {
     display: table-cell;
     margin-bottom: 0;
-    width: 33%; }
+    width: 33.3%; }
 
 .body__inner {
   background: #666;
@@ -292,9 +292,9 @@ progress[value]::-webkit-progress-value {
 .slide .button--delete {
   opacity: 1; }
 
-.main.output-view h2 {
+h2 {
   margin-bottom: 1rem; }
-  .main.output-view h2:last-of-type {
+  h2.hours {
     font-size: 1.25em; }
 
 .output {

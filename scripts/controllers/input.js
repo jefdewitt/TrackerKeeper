@@ -168,7 +168,7 @@ angular.module('angularApp')
                 $scope.saveNewData();
                 $scope.go('project-output-view');
             } else {
-                alert('A project must be selected and the time entered must be greater than zero.')
+                alert('The time entered must be greater than zero.')
             }
 
         }

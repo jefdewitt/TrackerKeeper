@@ -36,6 +36,15 @@ angular.module('angularApp')
         $scope.New.hours = newGoal.hours;
         $scope.New.timeRepo = [];
 
+        angular.forEach($scope.$storage, function(index) {
+            console.log('index.name ' + index.name);
+            if ( index.name === $scope.New.name ) {
+                index.selected = true;
+            } else {
+                index.selected = false;
+            }
+        })
+
         // we set our localStorage object to match our $scope.$storage object
         $localStorage.project = $scope.$storage;
 
