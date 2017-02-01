@@ -13,7 +13,7 @@ angular.module('angularApp')
     $scope.$storage = $localStorage.project;
 
     angular.forEach($scope.$storage, function(index) {
-        if( index.selected == true ) {
+        if( index.selected === true ) {
             $scope.Detail = index;
         } else {
             index.selected = false;
@@ -100,8 +100,10 @@ angular.module('angularApp')
 
     angular.forEach($scope.Detail.timeRepo, function(index) {
 
-        var dataCell = document.getElementById(index.timeStamp);
-        var dataCellId = dataCell.id;
+        if ( document.getElementById(index.timeStamp) ) {
+            var dataCell = document.getElementById(index.timeStamp);
+            var dataCellId = dataCell.id;
+        }
 
         if( dataCell ){
             var para = document.createElement("span");
