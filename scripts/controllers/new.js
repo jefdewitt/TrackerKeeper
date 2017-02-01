@@ -17,7 +17,7 @@ angular.module('angularApp')
         this.name = name;
         this.hours = hours;
         this.timeRepo = [];
-        this.selected = false;
+        this.selected = true;
     }
 
     $scope.$storage = $localStorage.project;
@@ -30,6 +30,14 @@ angular.module('angularApp')
 
         // add the new project object to storage
         $scope.$storage.push(newGoal);
+
+        angular.forEach($scope.$storage, function(index) {
+            if( index.selected === true ) {
+                $scope.New = index;
+            } else {
+                index.selected = false;
+            }
+        })
 
         // we match the props of our shared object with project object
         $scope.New.name = newGoal.name;

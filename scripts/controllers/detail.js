@@ -13,7 +13,7 @@ angular.module('angularApp')
     $scope.$storage = $localStorage.project;
 
     angular.forEach($scope.$storage, function(index) {
-        if( index.selected == true ) {
+        if( index.selected === true ) {
             $scope.Detail = index;
         } else {
             index.selected = false;
