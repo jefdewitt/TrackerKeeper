@@ -100,6 +100,7 @@ angular.module('angularApp')
 
     angular.forEach($scope.Detail.timeRepo, function(index) {
 
+        // error handling for new months
         if ( document.getElementById(index.timeStamp) ) {
             var dataCell = document.getElementById(index.timeStamp);
             var dataCellId = dataCell.id;

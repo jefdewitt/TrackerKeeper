@@ -31,33 +31,17 @@ angular.module('angularApp')
     var year = dateObj.getFullYear();
     var today = year + "-" + month + "-" + day;
 
-    // get the info of the most recent item pushed to storage
-    var arrayCopy = $scope.Output.timeRepo.slice();
-    var mostRecentObject = arrayCopy.pop();
-    if ( mostRecentObject === undefined ) {
-        var mostRecentDay = 0;
-        var mostRecentMinutes = 0;
-    } else {
-        var mostRecentDay = mostRecentObject.timeStamp;
-        var mostRecentMinutes = mostRecentObject.minutes;
-    }
-
-    // compare today's date to the date of the last item in our array
-    if ( mostRecentDay === today ) {
-    // convert today's time entry into hours
-        $scope.todaysTime = mostRecentMinutes / 60;
-    } else {
-        $scope.todaysTime = 0;
-    }
-
-    // compare today's date to the date of the last item in our array
-    if ( mostRecentDay === today ) {
-    // find today's time entry as a percentage of the whole project
-        $scope.todaysPctg = ( mostRecentMinutes * 100 ) / $scope.goalTimeInMin;
-    } else {
-        $scope.todaysPctg = 0;
-    }
-
+    angular.forEach($scope.Output.timeRepo, function(index) {
+        // compare today's date to the date of the last item in our array
+        if ( index.timeStamp === today ) {
+            // convert today's time entry into hours
+            $scope.todaysTime = index.minutes / 60;
+            $scope.todaysPctg = ( index.minutes * 100 ) / $scope.goalTimeInMin;
+        } else {
+            $scope.todaysTime = 0;
+            $scope.todaysPctg = 0;
+        }
+    });
 
     // we use map to grab object properties from within arrays -- SO STOKED!!!
     $scope.arrayMinutes = $scope.Output.timeRepo.map(function(object) {

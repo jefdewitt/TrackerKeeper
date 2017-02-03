@@ -37,7 +37,6 @@ angular.module('angularApp')
         $scope.New.timeRepo = [];
 
         angular.forEach($scope.$storage, function(index) {
-            console.log('index.name ' + index.name);
             if ( index.name === $scope.New.name ) {
                 index.selected = true;
             } else {
