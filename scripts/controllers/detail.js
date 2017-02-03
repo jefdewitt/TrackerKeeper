@@ -100,8 +100,11 @@ angular.module('angularApp')
 
     angular.forEach($scope.Detail.timeRepo, function(index) {
 
-        var dataCell = document.getElementById(index.timeStamp);
-        var dataCellId = dataCell.id;
+        // error handling for new months
+        if ( document.getElementById(index.timeStamp) ) {
+            var dataCell = document.getElementById(index.timeStamp);
+            var dataCellId = dataCell.id;
+        }
 
         if( dataCell ){
             var para = document.createElement("span");

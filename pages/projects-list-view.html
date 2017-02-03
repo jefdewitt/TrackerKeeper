@@ -11,10 +11,10 @@
             <div class="field__container">
 
                 <ul class="projects__list" ng-repeat="project in projectObject track by $index">
-                    <li ng-click="deleting||loadData(project); deleting||go('project-output-view')"><span>{{ project.name }}</span></br>
+                    <li ng-click="deleting||loadData(project); deleting||go('project-output-view')"><span>{[{project.name }]}</span></br>
                         <div class="progress__bar">
-                            <progress max="100" value="{{ pctgCompleted(project) }}"></progress>
-                            <span class="percent">{{ pctgCompleted(project) }}% done</span>
+                            <progress max="100" value="{[{pctgCompleted(project) }]}"></progress>
+                            <span class="percent">{[{pctgCompleted(project) }]}% done</span>
                         </div>
                         <span class='button--delete' ng-click="deleteTrack(project)">x</span>
                     </li>

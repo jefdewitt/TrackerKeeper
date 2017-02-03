@@ -30,16 +30,16 @@ angular.module('angularApp')
         return this.totalAccumulatedPctg.toFixed(2);
     }
 
-    $scope.$storage = $localStorage.project;
+    $scope.$storage = $localStorage;
 
-    $scope.projectObject = $scope.$storage;
+    $scope.projectObject = $scope.$storage.project;
 
     $scope.loadData = function(project) {
         $scope.ListItem.name = project.name;
         $scope.ListItem.hours = project.hours;
         $scope.ListItem.timeRepo = project.timeRepo;
 
-        angular.forEach($scope.$storage, function(index) {
+        angular.forEach($scope.$storage.project, function(index) {
             if ( index.name === $scope.ListItem.name ) {
                 index.selected = true;
             } else {

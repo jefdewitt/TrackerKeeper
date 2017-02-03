@@ -7,8 +7,8 @@
     <div class="main output-view">
         <div class="">
             <div class="content__main--header">
-                <h2>{{ Output.name }}</h2>
-                <h2 class="hours">{{ Output.hours }} hours</h2>
+                <h2>{[{Output.name }]}</h2>
+                <h2 class="hours">{[{Output.hours }]} hours</h2>
             </div>
 
             <div class="field__container">
@@ -25,56 +25,56 @@
                     <tbody>
                         <tr>
                             <td>today</td>
-                            <td>{{ todaysTime.toFixed(2) }}</td>
-                            <td>{{ todaysPctg.toFixed(2) }}%</td>
+                            <td>{[{todaysTime.toFixed(2) }]}</td>
+                            <td>{[{todaysPctg.toFixed(2) }]}%</td>
                             <td></td>
                         </tr>
                         <tr>
                             <td>week total</td>
-                            <td>{{ weekTotalHours.toFixed(2) }}</td>
-                            <td>{{ weekTotalPctg.toFixed(2) }}%</td>
+                            <td>{[{weekTotalHours.toFixed(2) }]}</td>
+                            <td>{[{weekTotalPctg.toFixed(2) }]}%</td>
                             <td></td>
                         </tr>
                         <tr>
                             <td></td>
-                            <td>{{ weekAvg.toFixed(2) }}</td>
-                            <td>{{ weekDailyAvgPctg.toFixed(2) }}%</td>
+                            <td>{[{weekAvg.toFixed(2) }]}</td>
+                            <td>{[{weekDailyAvgPctg.toFixed(2) }]}%</td>
                             <td>daily avg per week</td>
                         </tr>
                         <tr>
                             <td>month total</td>
-                            <td>{{ monthTotalHours.toFixed(2) }}</td>
-                            <td>{{ monthTotalPctg.toFixed(2) }}%</td>
+                            <td>{[{monthTotalHours.toFixed(2) }]}</td>
+                            <td>{[{monthTotalPctg.toFixed(2) }]}%</td>
                             <td></td>
                         </tr>
                         <tr>
                             <td></td>
-                            <td>{{ monthAvg.toFixed(2) }}</td>
-                            <td>{{ monthDailyAvgPctg.toFixed(2) }}%</td>
+                            <td>{[{monthAvg.toFixed(2) }]}</td>
+                            <td>{[{monthDailyAvgPctg.toFixed(2) }]}%</td>
                             <td>daily avg per month</td>
                         </tr>
                         <tr>
                             <td>year total</td>
-                            <td>{{ yearTotalHours.toFixed(2) }}</td>
-                            <td>{{ yearTotalPctg.toFixed(2) }}%</td>
+                            <td>{[{yearTotalHours.toFixed(2) }]}</td>
+                            <td>{[{yearTotalPctg.toFixed(2) }]}%</td>
                             <td></td>
                         </tr>
                         <tr>
                             <td></td>
-                            <td>{{ yearAvg.toFixed(2) }}</td>
-                            <td>{{ yearDailyAvgPctg.toFixed(2) }}%</td>
+                            <td>{[{yearAvg.toFixed(2) }]}</td>
+                            <td>{[{yearDailyAvgPctg.toFixed(2) }]}%</td>
                             <td>daily avg per year</td>
                         </tr>
                         <tr>
                             <td>total accumulated hours</td>
-                            <td>{{ totalAccumulatedHours.toFixed(2) }}</td>
+                            <td>{[{totalAccumulatedHours.toFixed(2) }]}</td>
                             <td></td>
                             <td></td>
                         </tr>
                         <tr>
                             <td></td>
                             <td></td>
-                            <td>{{ totalAccumulatedPctg.toFixed(2) }}%</td>
+                            <td>{[{totalAccumulatedPctg.toFixed(2) }]}%</td>
                             <td>% toward completion</td>
                         </tr>
                     </tbody>

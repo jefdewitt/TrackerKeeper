@@ -19,8 +19,4 @@ angular.module('angularApp')
         console.dir(index.name);
     });
 
-    // $scope.clearObject = function(){
-    //
-    // }
-
 });

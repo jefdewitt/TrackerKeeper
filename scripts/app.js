@@ -9,6 +9,10 @@
  */
 angular.module('angularApp', ['ngRoute', 'ui.router', 'ngStorage'])
 
+.config(function($interpolateProvider){
+    $interpolateProvider.startSymbol('{[{').endSymbol('}]}');
+})
+
 // configure our routes
 .config(function($routeProvider) {
      $routeProvider
@@ -55,6 +59,13 @@ angular.module('angularApp', ['ngRoute', 'ui.router', 'ngStorage'])
     return { GoalToBeTracked: '' };
 })
 
+/**
+ * This code block would change our interpolation characters. Handy if building
+ * on top of a templating engine, i.e. Jekyll.
+ */
+// angular.module('angularApp', []).config(function($interpolateProvider){
+//     $interpolateProvider.startSymbol('{[{').endSymbol('}]}');
+// })
 
 // .config(function config($stateProvider) {
 //
@@ -76,10 +87,3 @@ angular.module('angularApp', ['ngRoute', 'ui.router', 'ngStorage'])
 //         templateuUrl:'pages/project-output-view.html'
 //     })
 // });
-/**
- * This code block would change our interpolation characters. Handy if building
- * on top of a templating engine, i.e. Jekyll.
- */
-// angular.module('angularApp', []).config(function($interpolateProvider){
-//     $interpolateProvider.startSymbol('{[{').endSymbol('}]}');
-// })

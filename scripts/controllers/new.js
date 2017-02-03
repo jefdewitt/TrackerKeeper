@@ -20,7 +20,7 @@ angular.module('angularApp')
         this.selected = false;
     }
 
-    $scope.$storage = $localStorage.project;
+    $scope.$storage = $localStorage;
 
     $scope.saveGoal = function(){
 
@@ -29,7 +29,7 @@ angular.module('angularApp')
         var newGoal = new Goal( $scope.formObject.name, $scope.formObject.hours );
 
         // add the new project object to storage
-        $scope.$storage.push(newGoal);
+        $scope.$storage.project.push(newGoal);
 
         // we match the props of our shared object with project object
         $scope.New.name = newGoal.name;
@@ -37,7 +37,6 @@ angular.module('angularApp')
         $scope.New.timeRepo = [];
 
         angular.forEach($scope.$storage, function(index) {
-            console.log('index.name ' + index.name);
             if ( index.name === $scope.New.name ) {
                 index.selected = true;
             } else {
@@ -46,7 +45,7 @@ angular.module('angularApp')
         })
 
         // we set our localStorage object to match our $scope.$storage object
-        $localStorage.project = $scope.$storage;
+        $localStorage.project = $scope.$storage.project;
 
         // here we clear the form
         $scope.formObject = {
