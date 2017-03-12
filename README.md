@@ -13,7 +13,7 @@ I created Tracker Keeper as a means to chart my progress toward specific goals, 
 
 # Installation
 
-Go to [https://angularjs.org/](https://angularjs.org/) to get a fresh AngularJS download or use `NPM`. It's a best practice to use the same versions when available. So, if you're using AngularJS 1.2.13, try using ng modules that are version 1.2.13. The syntax for that is `npm install <module-name>@1.2.13, for example.
+Go to [https://angularjs.org/](https://angularjs.org/) to get a fresh AngularJS download or use `NPM`. It's a best practice to use the same versions when available. So, if you're using AngularJS 1.2.13, try using ng modules that are version 1.2.13. The syntax for that is `npm install <module-name>@1.2.13`, for example.
 
 ### NPM
 
