@@ -1,4 +1,4 @@
-# trackerkeeper
+# Tracker Keeper
 
 Tracker Keeper is a goal management tool written in AngularJS. It's a single page application that I'm currently hosting on my portfolio site at [http://jefdewitt.com/trackerkeeper/](http://jefdewitt.com/trackerkeeper/#/). Since this AngularJS app was built on a Jekyll framework there are some idiosyncrasies to it, which I'll point out below.
 
