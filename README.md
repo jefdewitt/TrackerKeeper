@@ -48,7 +48,7 @@ angular.module('angularApp', ['ngRoute', 'ngStorage'])
 ## TODO
 
 - Refine the UI
-_ Update to hybrid app via Ionic
+- Update to hybrid app via Ionic
 
 ## Screenshot
 
