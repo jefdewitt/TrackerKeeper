@@ -37,7 +37,7 @@ npm install ngstorage
 
 # Screenshot
 
-![Tracker Keeper app images](trackerkeeper.jpg?raw=true "Tracker Keeper app images")
+![Tracker Keeper app images](/tracker-keeper.jpg?raw=true "Tracker Keeper app images")
 
 ## Comments
 
