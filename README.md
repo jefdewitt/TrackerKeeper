@@ -33,9 +33,24 @@ npm install angular-animate
 npm install ngstorage
 ```
 
-## 
+## Updated Interpolation Characters
 
-# Screenshot
+Because the version of this app on my portfolio site sits atop Jekyll software, I ran into an issue with interpolation characters. AngularJS and the TWIG templating engine that powers Jekyll both use `{{ }}` characters for declaring statements. TWIG was effectively cancelling out Angular statements and the result was empty white space. The solution I implemented was adding a config to the `app.js` file, changing the characters to `{[{ }]}`.
+
+```javascript
+angular.module('angularApp', ['ngRoute', 'ngStorage'])
+
+.config(function($interpolateProvider){
+    $interpolateProvider.startSymbol('{[{').endSymbol('}]}');
+})
+```
+
+## TODO
+
+- Refine the UI
+_ Update to hybrid app via Ionic
+
+## Screenshot
 
 ![Tracker Keeper app images](/tracker-keeper.jpg?raw=true "Tracker Keeper app images")
 
