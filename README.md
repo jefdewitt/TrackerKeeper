@@ -33,6 +33,16 @@ npm install angular-animate
 npm install ngstorage
 ```
 
+## Table Of Contents
+
+- [Updated Interpolation Characters](#updated-interpolation-characters)
+- [$scope](#$scope)
+- [Dependency Injection](#dependency-injection)
+- [Directives](#directives)
+- [TODO](#todo)
+- [Screeshot](#screeshot)
+- [Comments](#comments)
+
 ## Updated Interpolation Characters
 
 Because the version of this app on my portfolio site sits atop Jekyll software, I ran into an issue with interpolation characters. AngularJS and the TWIG templating engine that powers Jekyll both use `{{ }}` characters for declaring statements. TWIG was effectively cancelling out Angular statements and the result was empty white space. The solution I implemented was adding a config to the `app.js` file, changing the characters to `{[{ }]}`.
@@ -49,7 +59,11 @@ angular.module('angularApp', ['ngRoute', 'ngStorage'])
 
 `$scope` is an Angular object used to tell an application what part of a template a controller applies to.
 
-## Directives Used
+## Dependency Injection
+
+`Services` are used to supply application logic across the entire application. Whereas a `controller` is confined by `$scope` to a portion of a template, `services` can be used throughout an application by way of `dependency injection`.
+
+## Directives
 
 A directive is an element or an element attribute. Some directives I used here are:
 
