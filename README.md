@@ -54,6 +54,7 @@ angular.module('angularApp', ['ngRoute', 'ngStorage'])
 A directive is an element or an element attribute. Some directives I used here are:
 
 `ng-click` - Used on any element to capturea click event.
+
              Example usage `ng-click="editing"`
 
 `ng-blur` - Similar to jQuery's `.blur()` method. It removes focus from an element.
