@@ -55,13 +55,19 @@ A directive is an element or an element attribute. Some directives I used here a
 
 `ng-click` - Used on any element to capturea click event.
 
-             Example usage `ng-click="editing"`
+            Example usage <a href="" ng-click="editing">Enter</a>
 
 `ng-blur` - Similar to jQuery's `.blur()` method. It removes focus from an element.
-            Example usage `<label ng-blur="editing"></label>`
+
+            Example usage <label ng-blur="editing"></label>
 
 `ng-show` - Opposite of `ng-show`.
-            Example usage `<input ng-show="editing">`
+
+            Example usage <input ng-show="editing">
+             
+`ng-class` - Adds a class indicated by an object key when the value of the object evaluates to true.
+
+            Example usage <div ng-class="{'editing-item': editing}"></div>
 
 ## TODO
 
