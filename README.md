@@ -67,7 +67,7 @@ A directive is an element or an element attribute. Some directives I used here a
              
 `ng-class` - Takes an object as an attribute. Adds the object key as a class to the element when the value of that object evaluates to true.
 
-            Example usage <div ng-class="{'editing-item': editing}"></div>
+            Example usage <div ng-class="{'editing-item': editing, 'edited': item.edited}"></div>
             
 `ng-repeat` - Loops thru a JavaScript array or object. The syntax is `someItem in someIterable`. Every item in `ng-repeat` has its own `$scope`.
 
