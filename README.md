@@ -45,6 +45,23 @@ angular.module('angularApp', ['ngRoute', 'ngStorage'])
 })
 ```
 
+## $scope
+
+`$scope` is an Angular object used to tell an application what part of a template a controller applies to.
+
+## Directives Used
+
+A directive is an element or an element attribute. Some directives I used here are:
+
+`ng-click` - Used on any element to capturea click event.
+             Example usage `ng-click="editing"`
+
+`ng-blur` - Similar to jQuery's `.blur()` method. It removes focus from an element.
+            Example usage `<label ng-blur="editing"></label>`
+
+`ng-show` - Opposite of `ng-show`.
+            Example usage `<input ng-show="editing">`
+
 ## TODO
 
 - Refine the UI
