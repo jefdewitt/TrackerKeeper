@@ -61,11 +61,11 @@ A directive is an element or an element attribute. Some directives I used here a
 
             Example usage <label ng-blur="editing"></label>
 
-`ng-show` - Opposite of `ng-show`.
+`ng-show` - Hides an element until the attribute evaluates to true `ng-show`.
 
             Example usage <input ng-show="editing">
              
-`ng-class` - Adds a class indicated by an object key when the value of the object evaluates to true.
+`ng-class` - Takes an object as an attribute. Adds the object key as a class to the element when the value of that object evaluates to true.
 
             Example usage <div ng-class="{'editing-item': editing}"></div>
 
