@@ -59,7 +59,7 @@ A directive is an element or an element attribute. Some directives I used here a
 
 `ng-blur` - Fires when an element loses focus.
 
-            Example usage <label ng-blur="editing"></label>
+            Example usage <label ng-blur="editing = false"></label>
 
 `ng-show` - Hides an element until the attribute evaluates to true `ng-show`.
 
@@ -72,6 +72,10 @@ A directive is an element or an element attribute. Some directives I used here a
 `ng-repeat` - Loops thru a JavaScript array or object. The syntax is `someItem in someIterable`. Every item in `ng-repeat` has its own `$scope`.
 
             Example usage <div ng-repeat="item in items"></div>
+            
+`ng-change` - Fires off when the value of an input changes.
+
+            Example usage <input ng-change="item.edited = true">
 
 ## TODO
 
