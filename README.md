@@ -57,7 +57,7 @@ A directive is an element or an element attribute. Some directives I used here a
 
             Example usage <a href="" ng-click="editing">Enter</a>
 
-`ng-blur` - Similar to jQuery's `.blur()` method. It removes focus from an element.
+`ng-blur` - Fires when an element loses focus.
 
             Example usage <label ng-blur="editing"></label>
 
