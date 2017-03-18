@@ -36,7 +36,7 @@ npm install ngstorage
 ## Table Of Contents
 
 - [Updated Interpolation Characters](#updated-interpolation-characters)
-- [$scope](#$scope)
+- [$scope](#scope)
 - [Dependency Injection](#dependency-injection)
 - [Directives](#directives)
 - [TODO](#todo)
