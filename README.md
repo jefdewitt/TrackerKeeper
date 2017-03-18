@@ -69,7 +69,7 @@ A directive is an element or an element attribute. Some directives I used here a
 
             Example usage <div ng-class="{'editing-item': editing}"></div>
             
-`ng-repeat` - Loops thru a JavaScript array or object. The syntax is `someItem in someIterable`.
+`ng-repeat` - Loops thru a JavaScript array or object. The syntax is `someItem in someIterable`. Every item in `ng-repeat` has its own `$scope`.
 
             Example usage <div ng-repeat="item in items"></div>
 
