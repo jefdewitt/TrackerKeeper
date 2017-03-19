@@ -69,7 +69,7 @@ A directive is an element or an element attribute. Some directives I used here a
 
 `ng-click` - Used on any element to capturea click event.
 
-            Example usage <a href="" ng-click="editing">Enter</a>
+            Example usage <input ng-click="editing">
 
 `ng-blur` - Fires when an element loses focus.
 
@@ -83,13 +83,25 @@ A directive is an element or an element attribute. Some directives I used here a
 
             Example usage <div ng-class="{'editing-item': editing, 'edited': item.edited}"></div>
             
+`ng-change` - Fires off when the value of an input changes.
+
+            Example usage <input ng-change="item.edited = true">
+            
 `ng-repeat` - Loops thru a JavaScript array or object. The syntax is `someItem in someIterable`. Every item in `ng-repeat` has its own `$scope`.
 
             Example usage <div ng-repeat="item in items"></div>
             
-`ng-change` - Fires off when the value of an input changes.
+A variable available to `ng-repeat` elements is `$index`. As you might have guessed, it represents the index of the element within the `ng-repeat` array or object.
 
-            Example usage <input ng-change="item.edited = true">
+            Example usage in the template:
+            
+                    <a href="" ng-click="deleteItem(item, $index)"></a>
+            
+            Example usage in the controller:
+            
+                    $scope.deleteItem = function(item, $index) {
+                        $scope.items.splice($index, 1);
+                    };
 
 ## TODO
 
