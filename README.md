@@ -35,6 +35,7 @@ npm install ngstorage
 
 ## Table Of Contents
 
+- [CORS Fix](#cors-fix)
 - [Updated Interpolation Characters](#updated-interpolation-characters)
 - [$scope](#scope)
 - [Dependency Injection](#dependency-injection)
@@ -42,6 +43,30 @@ npm install ngstorage
 - [TODO](#todo)
 - [Screeshot](#screeshot)
 - [Comments](#comments)
+
+## CORS Fix
+
+Sited from the Wikipedia article on [cross-origin resource sharing](https://en.wikipedia.org/wiki/Cross-origin_resource_sharing), CORS is a mechanism that allows restricted resources (e.g. fonts) on a web page to be requested from another domain outside the domain from which the first resource was served. Local Angular development may cause the browser to freak out and throw this error. I got your back. Install the node package `http-server` via,
+
+```bash
+npm install http-server -g
+```
+
+Then run...
+
+```bash
+http-server
+```
+
+...to spin up a local server that you can develop your app with. After starting the server you'll get info on your local development URL that'll look like this:
+
+```bash
+Starting up http-server, serving ./
+Available on:
+  http://127.0.0.1:8080
+  http://192.168.2.2:8080
+Hit CTRL-C to stop the server
+```
 
 ## Updated Interpolation Characters
 
