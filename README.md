@@ -64,7 +64,7 @@ angular.module('angularApp', ['ngRoute', 'ngStorage'])
 `Services` are used to supply application logic across the entire application. Whereas a `controller` is confined by `$scope` to a portion of a template, `services` can be used throughout an application by way of `dependency injection`. `Dependency injection` is just a fancy way of saying that a method's dependencies must be listed as arguments for that method. Multiple `controllers` can use a `service` as long as they define the `service` as a dependency.
 
 ```javascript
-.service('dataService`, function($http) {
+.service('dataService', function($http) {
     // Service logic goes here.
 })
 ```
