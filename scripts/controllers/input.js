@@ -11,9 +11,9 @@ angular.module('angularApp')
 
     $scope.Input = goalToBeTracked;
 
-    $scope.$storage = $localStorage.project;
+    $scope.$storage = $localStorage;
 
-    angular.forEach($scope.$storage, function(index) {
+    angular.forEach($scope.$storage.project, function(index) {
         if( index.selected === true ) {
             $scope.Input = index;
         } else {
@@ -53,7 +53,7 @@ angular.module('angularApp')
             // store the actual object properties in the timeRepo array
             $scope.newTime.minutes = Math.ceil($scope.timerWithInterval / 60);
 
-            angular.forEach($scope.$storage, function(index) {
+            angular.forEach($scope.$storage.project, function(index) {
 
                 if (index.name === $scope.Input.name) {
                     index.timeRepo.push($scope.newTime);
@@ -89,8 +89,7 @@ angular.module('angularApp')
             // store the actual object properties in the array item object
             $scope.newTime.minutes = $scope.timer;
 
-            angular.forEach($scope.$storage, function(index) {
-
+            angular.forEach($scope.$storage.project, function(index) {
                 if (index.name === $scope.Input.name) {
                     index.timeRepo.push($scope.newTime);
                     index.selected = true;
@@ -122,7 +121,8 @@ angular.module('angularApp')
             $scope.timer = '';
         }
 
-        $localStorage.project = $scope.$storage;
+        // we set our localStorage object to match our $scope.$storage object
+        $localStorage.project = $scope.$storage.project;
     }
 
 
@@ -168,7 +168,7 @@ angular.module('angularApp')
                 $scope.saveNewData();
                 $scope.go('project-output-view');
             } else {
-                alert('A project must be selected and the time entered must be greater than zero.')
+                alert('The time entered must be greater than zero.')
             }
 
         }

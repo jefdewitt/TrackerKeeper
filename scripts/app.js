@@ -1,13 +1,19 @@
 /**
- * Creates our module (AngularJS app) - note the empty array brackets. Also,
- * this file is mainly used for configuration. It can but shouldn't be used for
- * containing controllers, directives, or services.
+ * Creates our module (AngularJS app) - note the array. Including an array as
+ * the second argument in the module method tells Angular to create this module
+ * and not to go looking elsewhere for it. Also, this file is mainly used for
+ * configuration. It can but shouldn't be used for containing controllers,
+ * directives, or services.
  *
  * Updated 12.11.16 -- added ngRoute for all our routing needs. Following
  * tutorial for adding views found @:
  * https://scotch.io/tutorials/single-page-apps-with-angularjs-routing-and-templating
  */
-angular.module('angularApp', ['ngRoute', 'ui.router', 'ngStorage'])
+angular.module('angularApp', ['ngRoute', 'ui.router', 'ngStorage', 'ngTouch'])
+
+.config(function($interpolateProvider){
+    $interpolateProvider.startSymbol('{[{').endSymbol('}]}');
+})
 
 // configure our routes
 .config(function($routeProvider) {
@@ -54,32 +60,3 @@ angular.module('angularApp', ['ngRoute', 'ui.router', 'ngStorage'])
 .factory('GoalToBeTracked', function(){
     return { GoalToBeTracked: '' };
 })
-
-
-// .config(function config($stateProvider) {
-//
-//     $stateProvider.state('home', {
-//         url:'/home-view',
-//         controller:'homeCtrl as home',
-//         templateuUrl:'pages/home-view.html'
-//     })
-//
-//     $stateProvider.state('first', {
-//         url:'/new-project-view',
-//         controller:'newCtrl as first',
-//         templateuUrl:'pages/new-project-view.html'
-//     })
-//
-//     $stateProvider.state('second', {
-//         url:'/project-output-view',
-//         controller:'outputCtrl as second',
-//         templateuUrl:'pages/project-output-view.html'
-//     })
-// });
-/**
- * This code block would change our interpolation characters. Handy if building
- * on top of a templating engine, i.e. Jekyll.
- */
-// angular.module('angularApp', []).config(function($interpolateProvider){
-//     $interpolateProvider.startSymbol('{[{').endSymbol('}]}');
-// })

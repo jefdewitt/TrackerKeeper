@@ -1,0 +1,76 @@
+
+.projects__list {
+
+    li {
+        position: relative;
+        transition: all .5s ease;
+        width: 100%;
+
+        &.slide {
+            width: 85%;
+        }
+    }
+
+    span {
+        display: inline-block;
+        margin-bottom: .5em;
+        // font-size: 1.25rem;
+
+        @media screen and (min-width: 768px) {
+            // font-size: 1.5rem;
+        }
+    }
+
+    span:nth-of-type(2) {
+        float: right;
+    }
+}
+
+.main.list-view {
+
+    > .list__wrap {
+        overflow: hidden;
+        width: 100%;
+    }
+}
+
+.progress__bar {
+    // min-width: 16em;
+    position: relative;
+
+    @media screen and (min-width: 500px) {
+        // font-size: 1.5rem;
+    }
+
+    .percent {
+        position: absolute;
+            right: 2%;
+            top: 50%;
+            transform: translatey(-50%);
+        text-shadow: 2px 2px 5px #000;
+    }
+}
+
+.slide .progress__bar {
+    // min-width: 12em;
+}
+
+progress {
+    border-radius: 2px;
+    appearance: none;
+    -webkit-appearance: none;
+    display: block;
+    margin: auto;
+    width: 100%;
+}
+
+progress[value]::-webkit-progress-bar {
+    background: rgba(255,255,255,.4);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.25) inset;
+}
+
+progress[value]::-webkit-progress-value {
+    background: rgba(255,255,255,.6);
+    border-radius: 2px;
+    background-size: 35px 20px, 100% 100%, 100% 100%;
+}

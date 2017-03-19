@@ -68,6 +68,21 @@ angular.module('angularApp')
             if (dropDown) {
                 var main = document.querySelector('.main:last-of-type');
                 document.getElementById("calendar-space").innerHTML=calendarstr;
+
+                angular.forEach($scope.Detail.timeRepo, function(index) {
+
+                    if ( document.getElementById(index.timeStamp) != null ) {
+                        var dataCell = document.getElementById(index.timeStamp);
+                        var dataCellId = dataCell.id;
+                    }
+
+                    if( dataCell ){
+                        var para = document.createElement("span");
+                        var node = document.createTextNode(index.minutes.toFixed(0) + 'min');
+                        para.appendChild(node);
+                        dataCell.appendChild(para);
+                    }
+                })
             }
         }
     }
@@ -85,12 +100,17 @@ angular.module('angularApp')
 
     angular.forEach($scope.Detail.timeRepo, function(index) {
 
-        var dataCell = document.getElementById(index.timeStamp);
-        var dataCellId = dataCell.id;
+        // error handling for new months
+        if ( document.getElementById(index.timeStamp) ) {
+            var dataCell = document.getElementById(index.timeStamp);
+            var dataCellId = dataCell.id;
+        }
 
         if( dataCell ){
+            console.log('00000');
             var para = document.createElement("span");
             var node = document.createTextNode(index.minutes.toFixed(0) + 'min');
+            para.classList.add("minutes");
             para.appendChild(node);
             dataCell.appendChild(para);
         }
