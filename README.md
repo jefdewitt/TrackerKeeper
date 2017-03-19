@@ -108,6 +108,8 @@ The example above shows the 'dataService' `service` being injected into the 'mai
 
 A directive is an element or an element attribute. Some directives I used here are:
 
+`ng-app` - Indicates which part of the page (all or part, up to you) is the root of the Angular application. Angular reads the HTML within that root and compiles it into an internal representation. This reading and compiling is the `bootstrapping` process.
+
 `ng-click` - Used on any element to capturea click event.
 
             Example usage <input ng-click="editing">
