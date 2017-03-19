@@ -112,7 +112,9 @@ A directive is an Angular element or an element attribute. Some directives I use
 
             Example usage <body ng-app="angularApp" class="app__body">
             
-            This ng-app argument directly matches the module name angular.module('angularApp', [])
+The ng-app argument directly matches the module name, 
+
+            Example angular.module('angularApp', [])
 
 `ng-click` - Used on any element to capturea click event.
 
