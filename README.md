@@ -69,7 +69,15 @@ angular.module('angularApp', ['ngRoute', 'ngStorage'])
 })
 ```
 
-In the example above, the `$http` is a built-in Angular method. These built in methods are called `providers`. This is a perfect example of `dependency injection`.
+In the `service` example, the `$http` is a built-in Angular method. These built in methods are called `providers`. This is a perfect example of `dependency injection`.
+
+```javascript
+.controller ('mainCtrl', function($scope, dataService) {
+    // Controller logic goes here
+})
+```
+
+The example above shows the 'dataService' `service` being injected into the `controller`.
 
 ## Directives
 
