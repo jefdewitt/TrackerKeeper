@@ -43,7 +43,16 @@
 
         <script src="scripts/all-in-one.js" type="text/javascript"></script>
 
-        <input type="text" ng-model="color">
+        <form>
+            <label>Color Input</label>
+            <input type="text" ng-model="color">
+        </form>
+
+        <form ng-controller="secondCtrl">
+            <label>$emit Input</label>
+            <input type="text" ng-model="share">
+            <button ng-click="send(share)">Submit</button>
+        </form>
 
         <!-- <script src="scripts/app.js" type="text/javascript"></script>
 

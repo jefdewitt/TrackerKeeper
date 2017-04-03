@@ -36,10 +36,21 @@ angular.module('testApp', [])
 .controller('firstCtrl', function($scope, sharedObject) {
     $scope.message = "the first controller!";
     $scope.message = sharedObject.message;
+
+    // Receive data from out broadcast event in horse-list-controller.js.
+      $scope.$on('myCustomEvent', function (share) {
+          console.log(share.currentScope.$$listeners.myCustomEvent[0]);
+      })
 })
 
-.controller('secondCtrl', function($scope, sharedObject) {
+.controller('secondCtrl', function($scope, sharedObject, $rootScope) {
     $scope.message = "the second controller!";
+
+    $scope.send = function(share) {
+
+        // Broadcast, or make horse object data available, to other controllers.
+        $rootScope.$broadcast('myCustomEvent', share);
+    }
 })
 
 .service('sharedObject', function() {
