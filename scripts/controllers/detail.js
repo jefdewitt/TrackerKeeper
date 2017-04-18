@@ -80,8 +80,8 @@ angular.module('angularApp')
                         var para = document.createElement("span");
                         // var node = document.createTextNode(index.minutes.toFixed(0) + 'min');
 
-                        var newElement = $compile( "<div calendar-date></div>" )( $scope );
-                        dataCell.append( newElement );
+                        // var newElement = $compile( "<div calendar-date></div>" )( $scope );
+                        // dataCell.append( newElement );
                         console.log('00000000000000000000000');
 
                         para.appendChild(node);
