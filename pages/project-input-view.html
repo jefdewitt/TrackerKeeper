@@ -1,21 +1,43 @@
-<!--
-    Project Input
--->
+
 <section class="content__main">
 
-    <div class="input__container">
-        <label ng-click="editing = true; hide = false;" ng-hide="editing" for="time">{{time}}</label>
-        <input ng-click="editing = true" ng-blur="editing = false; hide = true;" ng-hide="hide" ng-model="time" type="text" name="name" id="time" placeholder="Manually input time here.">
-    </div>
+    <div class="main input-view">
+        <div class="">
+            <div class="content__main--header">
+                <h2>{[{Input.name }]}</h2>
+                <h2 class="hours">{[{Input.hours }]} hours</h2>
+                <p>Enter time in minutes or just press the start button to use the built-in stopwatch. To choose a different date press the date button.</p>
+            </div>
 
-    <div class="action double">
-        <a href="" class="button">Stopwatch</a>
-        <a href="" class="button">Reset</a>
-    </div>
+            <form name="inputTimeForm" class="form__input" novalidate>
 
-    <div class="">
-        <a href="#project-output-view" class="button">Confirm Time</a>
-        <a href="#project-output-view" class="button">Go Back</a>
+                <div class="form__input--wrapper">
+
+                    <div class="input__container">
+                        <label ng-click="resetTimerWithInterval(); editing = true; working = false;" ng-hide="editing" ng-show="working" for="time">{[{timerWithInterval | hhmmss}]}</label>
+                        <input ng-click="resetTimerWithInterval();" ng-model="timer" ng-hide="working" ng-show="editing" type="number" name="timeInput" id="time" placeholder="minutes">
+                    </div>
+
+                    <div class="input__container">
+                        <label ng-click="picking = true" ng-hide="picking" for="date">date</label>
+                        <input type="date" ng-hide="!picking" ng-show="picking" ng-model="date">
+                    </div>
+
+                </div>
+
+                <div class="action triple">
+                    <button ng-click="startTimerWithInterval(); active = true; editing = false; working = true; timeInput = ''" class="button">Start</button>
+                    <button ng-click="stopTimerWithInterval(); working = true;" class="button">Stop</button>
+                    <button ng-click="resetTimerWithInterval(); timeInput = ''; working = true;" class="button">Reset</a>
+                </div>
+
+            </form>
+        </div>
     </div>
 
 </section>
+
+<nav class="">
+    <button ng-click="go('projects-list-view')"class="button">Tracks</button>
+    <button ng-disabled="inputTimeForm.$invalid" ng-click="confirmTime();" class="button">Confirm</button>
+</nav>

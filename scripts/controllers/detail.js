@@ -84,7 +84,6 @@ angular.module('angularApp')
                         dataCell.append( newElement );
                         console.log('00000000000000000000000');
 
-
                         para.appendChild(node);
                         dataCell.appendChild(para);
                     }

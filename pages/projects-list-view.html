@@ -1,21 +1,32 @@
-<!--
-    Projects List
--->
+
 <section class="content__main">
 
-    <ul class="">
+    <div class="main list-view">
+        <div class="list__wrap">
 
-        <li><a href=""></a>Project #1</li>
-        <li><a href=""></a>Project #2</li>
-        <li><a href=""></a>Project #3</li>
-        <li><a href=""></a>Project #4</li>
-        <li><a href=""></a>Project #5</li>
-        <li><a href=""></a>Project #6</li>
+            <h2>Tracks</h2>
 
-    </ul>
+            <div class="field__container">
 
-    <div class="action">
-        <a href="/" class="button">Start Over</a>
+                <ul class="projects__list" ng-repeat="project in projectObject track by $index">
+                    <li ng-click="deleting||loadData(project); deleting||go('project-output-view')"><span>{[{project.name }]}</span></br>
+                        <div class="progress__bar">
+                            <progress max="100" value="{[{pctgCompleted(project) }]}"></progress>
+                            <span class="percent">{[{pctgCompleted(project) }]}% done</span>
+                        </div>
+                        <span class='button--delete' ng-click="deleteTrack(project)">x</span>
+                    </li>
+                </ul>
+
+            </div>
+
+        </div>
     </div>
 
 </section>
+
+<nav class="">
+    <button ng-click="go('/')" class="button">New</button>
+    <button class="button" ng-click="removeData(); deleting = true" ng-hide="deleting">Remove</button>
+    <button class="button" ng-click="restoreCount(); deleting = false;" ng-hide="!deleting">Done</button>
+</nav>

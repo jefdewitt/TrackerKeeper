@@ -8,12 +8,8 @@
 
 angular.module('angularApp')
 
-.service('project', function Project() {
+.service('goalToBeTracked', function goalToBeTracked() {
 
-    var project = this;
-
-    project.name = 'Default';
-
-    project.time = 'Default';
+    var goalToBeTracked = this;
 
 });

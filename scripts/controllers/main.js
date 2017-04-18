@@ -4,10 +4,6 @@ angular.module('angularApp')
 
 .controller('firstCtrl', function($scope, dataService) {
 
-    // $scope.learningNgChange = function() {
-    //     console.log('A change has occurred!');
-    // };
-
     $scope.addField = function() {
         var field = {name: "This is a new field."};
         $scope.fields.unshift(field);
