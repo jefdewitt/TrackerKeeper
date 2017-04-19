@@ -2,7 +2,7 @@
 
 angular.module('angularApp')
 
-.controller('detailCtlr', function ($scope, $location, $localStorage, goalToBeTracked) {
+.controller('detailCtlr', function ($scope, $location, $localStorage, goalToBeTracked, $compile) {
 
     $scope.go = function ( path ) {
         $location.path( path );
@@ -78,10 +78,12 @@ angular.module('angularApp')
 
                     if( dataCell ){
                         var para = document.createElement("span");
-                        // var node = document.createTextNode(index.minutes.toFixed(0) + 'min');
+                        var node = document.createTextNode(index.minutes.toFixed(0) + 'min');
 
-                        // var newElement = $compile( "<div calendar-date></div>" )( $scope );
-                        // dataCell.append( newElement );
+                        var content = "<calendar-date></calendar-date>";
+                        var compiled = $compile(content);
+                        dataCell.append(compiled(scope));
+                        // dataCell.append( content );
                         console.log('00000000000000000000000');
 
                         para.appendChild(node);
