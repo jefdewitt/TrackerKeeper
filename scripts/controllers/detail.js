@@ -80,11 +80,16 @@ angular.module('angularApp')
                         var para = document.createElement("span");
                         var node = document.createTextNode(index.minutes.toFixed(0) + 'min');
 
-                        var content = "<calendar-date></calendar-date>";
-                        var compiled = $compile(content);
-                        dataCell.append(compiled(scope));
+                        // var content = "<calendar-date></calendar-date>";
+                        // var compiled = $compile(content);
+                        // dataCell.append(compiled(scope));
                         // dataCell.append( content );
-                        console.log('00000000000000000000000');
+                        // console.log('00000000000000000000000');
+
+                        var newDirective = angular.element('<calendar-date></calendar-date>');
+                        para.append(newDirective);
+                        // $compile(newDirective.contents())($scope);
+                        console.log(newDirective);
 
                         para.appendChild(node);
                         dataCell.appendChild(para);
