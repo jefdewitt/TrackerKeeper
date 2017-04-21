@@ -63,21 +63,27 @@ angular.module('angularApp')
 
     window.onload = function() {
         var timeItemArray = Array.prototype.slice.call(angular.element(document.querySelectorAll("[class*='timestamp']")));
+        timeItemArray.toString();
         console.log(timeItemArray);
 
 
 
-        if (timeItemArray != null) {
+        // if (timeItemArray != null) {
             // angular.forEach(timeItemArray, function(index) {
             //     index.;
             // })
-        }
+        // }
 
             angular.forEach($scope.Detail.timeRepo, function(index) {
 
-                var test = angular.element(document.querySelector("[class*=" + index.timeStamp + "]"));
+                var test = Array.prototype.slice.call(angular.element(document.querySelector("[class*=timestamp-" + index.timeStamp + "]")));
 
-                console.log(test);
+                // var test2 = test[0].className;
+                // var test3 = test2.split('timestamp-');
+                // var test4 = test3[1];
+                //
+                //
+                // console.log(test4);
 
                 // if ( index.timeStamp === test ) {
                 //     var dataCell = document.getElementById(index.timeStamp);
@@ -98,12 +104,22 @@ angular.module('angularApp')
 
                 angular.forEach($scope.Detail.timeRepo, function(index) {
 
-                    if ( document.getElementById(index.timeStamp) != null ) {
-                        var dataCell = document.getElementById(index.timeStamp);
-                        var dataCellId = dataCell.id;
+                  var timeClass = angular.element(document.querySelector("[class*=timestamp-" + index.timeStamp + "]"));
+                  var timeClassName = timeClass[0].className;
+                  var timeSplit = timeClassName.split('timestamp-');
+                  var timeDate = timeSplit[1];
+                  console.log(timeDate);
 
-
+                    if ( document.getElementById(index.timeStamp) != null && (index.timeStamp === timeDate) ) {
+                        // var dataCell = document.getElementById(index.timeStamp);
+                        // console.log(dataCell);
+                        // var dataCellId = dataCell.id;
+                        //
+                        // index.timeStamp ===
+                        console.log('match');
                     }
+
+
 
                     if ( dataCell ){
                         var para = document.createElement("span");
@@ -112,7 +128,7 @@ angular.module('angularApp')
                         // var content = angular.element("<calendar-date></calendar-date>");
                         // var newContent = content.html("<calendar-date></calendar-date>");
                         // var compiled = $compile(newContent.contents());
-                        dataCell.append(compiled($scope));
+                        // dataCell.append(compiled($scope));
 
 
                         // dataCell.append( content );
