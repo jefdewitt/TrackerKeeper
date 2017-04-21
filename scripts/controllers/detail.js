@@ -65,27 +65,28 @@ angular.module('angularApp')
         var timeItemArray = Array.prototype.slice.call(angular.element(document.querySelectorAll("[class*='timestamp']")));
         console.log(timeItemArray);
 
+
+
+        if (timeItemArray != null) {
+            // angular.forEach(timeItemArray, function(index) {
+            //     index.;
+            // })
+        }
+
+            angular.forEach($scope.Detail.timeRepo, function(index) {
+
+                var test = angular.element(document.querySelector("[class*=" + index.timeStamp + "]"));
+
+                console.log(test);
+
+                // if ( index.timeStamp === test ) {
+                //     var dataCell = document.getElementById(index.timeStamp);
+                //     var dataCellId = dataCell.id;
+                //
+                //
+                // }
+        })
     };
-
-    if (timeItemArray != null) {
-        // angular.forEach(timeItemArray, function(index) {
-        //     index.;
-        // })
-    }
-
-        angular.forEach($scope.Detail.timeRepo, function(index) {
-
-            var test = angular.element(document.querySelector("[class*=' + index + ']");
-
-            console.log(test);
-
-            // if ( index.timeStamp === test ) {
-            //     var dataCell = document.getElementById(index.timeStamp);
-            //     var dataCellId = dataCell.id;
-            //
-            //
-            // }
-    })
 
     $scope.updateCalendar = function(theselection){
         if ( dropDown.selectedIndex > 0 ) {
