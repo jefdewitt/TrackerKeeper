@@ -1,6 +1,7 @@
 <style type="text/css">
   .time__item {
     position: relative;
+    /*display: none;*/
   }
   .time__item li {
     position: absolute;
@@ -30,7 +31,7 @@
             <div id="calendar-space"></div>
 
             <ul>
-              <li class="time__item {[{time.timeStamp }]}" ng-repeat="time in timeObject" style="position: relative; margin-bottom: 1em; display: block; min-height: 1em;">
+              <li class="time__item timestamp-{[{ time.timeStamp }]}" ng-repeat="time in timeObject" style="position: relative; margin-bottom: 1em; display: block; min-height: 1em;">
                 <label ng-click="editing = true; working = false;" ng-hide="editing" ng-show="working" for="time" style="position: absolute; color: black; z-index: 1;"></label>
                 <input ng-model="time.minutes" name="time" ng-hide="working" ng-show="editing" type="number" id="detail-time" style="position: absolute;">
                 <p>{[{ time }]}</p>

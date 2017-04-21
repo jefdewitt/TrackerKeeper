@@ -61,6 +61,32 @@ angular.module('angularApp')
     var dropDown = document.getElementById("calendar-menu");
     var option = dropDown.options[dropDown.selectedIndex];
 
+    window.onload = function() {
+        var timeItemArray = Array.prototype.slice.call(angular.element(document.querySelectorAll("[class*='timestamp']")));
+        console.log(timeItemArray);
+
+    };
+
+    if (timeItemArray != null) {
+        // angular.forEach(timeItemArray, function(index) {
+        //     index.;
+        // })
+    }
+
+        angular.forEach($scope.Detail.timeRepo, function(index) {
+
+            var test = angular.element(document.querySelector("[class*=' + index + ']");
+
+            console.log(test);
+
+            // if ( index.timeStamp === test ) {
+            //     var dataCell = document.getElementById(index.timeStamp);
+            //     var dataCellId = dataCell.id;
+            //
+            //
+            // }
+    })
+
     $scope.updateCalendar = function(theselection){
         if ( dropDown.selectedIndex > 0 ) {
             var themonth=parseInt(dropDown.selectedIndex);
@@ -74,11 +100,23 @@ angular.module('angularApp')
                     if ( document.getElementById(index.timeStamp) != null ) {
                         var dataCell = document.getElementById(index.timeStamp);
                         var dataCellId = dataCell.id;
+
+
                     }
 
-                    if( dataCell ){
+                    if ( dataCell ){
                         var para = document.createElement("span");
                         var node = document.createTextNode(index.minutes.toFixed(0) + 'min');
+
+                        // var content = angular.element("<calendar-date></calendar-date>");
+                        // var newContent = content.html("<calendar-date></calendar-date>");
+                        // var compiled = $compile(newContent.contents());
+                        dataCell.append(compiled($scope));
+
+
+                        // dataCell.append( content );
+                        // console.dir(compiled);
+
                         para.appendChild(node);
                         dataCell.appendChild(para);
                     }
@@ -107,6 +145,7 @@ angular.module('angularApp')
         }
 
         if( dataCell ){
+            console.log('00000');
             var para = document.createElement("span");
             var node = document.createTextNode(index.minutes.toFixed(0) + 'min');
             para.classList.add("minutes");

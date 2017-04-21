@@ -2,7 +2,7 @@
 
 angular.module('angularApp')
 
-.directive('calendarDate', function() {
+.directive('calendarDate', function($scope, $localStorage, goalToBeTracked, $compile) {
   function linkFunction($scope, elem, attrs) {
       elem.bind('click', function() {
           console.log('Click detected!!!!!!!');
