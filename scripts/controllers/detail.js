@@ -2,7 +2,7 @@
 
 angular.module('angularApp')
 
-.controller('detailCtlr', function ($scope, $location, $localStorage, goalToBeTracked, $compile) {
+.controller('detailCtlr', function ($scope, $location, $localStorage, goalToBeTracked, $compile, $rootScope) {
 
     $scope.go = function ( path ) {
         $location.path( path );
@@ -21,6 +21,7 @@ angular.module('angularApp')
     })
 
     $scope.timeObject = $scope.Detail.timeRepo;
+    console.info($scope.timeObject);
 
     var twelveMonths=['January','February','March','April','May','June','July','August','September','October','November','December'];
 
@@ -61,39 +62,6 @@ angular.module('angularApp')
     var dropDown = document.getElementById("calendar-menu");
     var option = dropDown.options[dropDown.selectedIndex];
 
-    window.onload = function() {
-        var timeItemArray = Array.prototype.slice.call(angular.element(document.querySelectorAll("[class*='timestamp']")));
-        timeItemArray.toString();
-        console.log(timeItemArray);
-
-
-
-        // if (timeItemArray != null) {
-            // angular.forEach(timeItemArray, function(index) {
-            //     index.;
-            // })
-        // }
-
-            angular.forEach($scope.Detail.timeRepo, function(index) {
-
-                var test = Array.prototype.slice.call(angular.element(document.querySelector("[class*=timestamp-" + index.timeStamp + "]")));
-
-                // var test2 = test[0].className;
-                // var test3 = test2.split('timestamp-');
-                // var test4 = test3[1];
-                //
-                //
-                // console.log(test4);
-
-                // if ( index.timeStamp === test ) {
-                //     var dataCell = document.getElementById(index.timeStamp);
-                //     var dataCellId = dataCell.id;
-                //
-                //
-                // }
-        })
-    };
-
     $scope.updateCalendar = function(theselection){
         if ( dropDown.selectedIndex > 0 ) {
             var themonth=parseInt(dropDown.selectedIndex);
@@ -102,44 +70,44 @@ angular.module('angularApp')
                 var main = document.querySelector('.main:last-of-type');
                 document.getElementById("calendar-space").innerHTML=calendarstr;
 
+                var count = 0;
+
                 angular.forEach($scope.Detail.timeRepo, function(index) {
 
-                  var timeClass = angular.element(document.querySelector("[class*=timestamp-" + index.timeStamp + "]"));
-                  var timeClassName = timeClass[0].className;
-                  var timeSplit = timeClassName.split('timestamp-');
-                  var timeDate = timeSplit[1];
-                  console.log(timeDate);
+                    $scope.minutes = index.minutes;
 
-                    if ( document.getElementById(index.timeStamp) != null && (index.timeStamp === timeDate) ) {
-                        // var dataCell = document.getElementById(index.timeStamp);
-                        // console.log(dataCell);
-                        // var dataCellId = dataCell.id;
-                        //
-                        // index.timeStamp ===
-                        console.log('match');
+                    count++;
+
+                    console.log('$scope.minutes ' + $scope.minutes);
+
+                    var dataCell = document.getElementById(index.timeStamp);
+                    var timeSpan = document.createElement("span");
+                    timeSpan.setAttribute('class', 'index-' + index.timeStamp + '');
+                    dataCell.appendChild(timeSpan);
+
+                    timeSpan.innerHTML = '<input class="time__item--input timestamp-'{[{ time.timeStamp }]}'" ng-model="minutes" ng-change="setCnt()" name="time" ng-hide="working" ng-show="editing" type="number" id="detail-time" style="position: absolute; width: 4em; color: red;">';
+
+                    $scope.activateView = function(ele) {
+                        // console.log('activateView');
+                        $compile(ele)($scope);
+                        $scope.$digest();
+                    };
+
+                    $scope.setCnt = function() {
+                        console.log('setCnt');
+                        var e1 = document.querySelector('[class*="index-"]');
+                        var mController = angular.element(document.getElementById("calendar-space"));
+                        mController.scope().activateView(e1);
                     }
 
-
-
-                    if ( dataCell ){
-                        var para = document.createElement("span");
-                        var node = document.createTextNode(index.minutes.toFixed(0) + 'min');
-
-                        // var content = angular.element("<calendar-date></calendar-date>");
-                        // var newContent = content.html("<calendar-date></calendar-date>");
-                        // var compiled = $compile(newContent.contents());
-                        // dataCell.append(compiled($scope));
-
-
-                        // dataCell.append( content );
-                        // console.dir(compiled);
-
-                        para.appendChild(node);
-                        dataCell.appendChild(para);
-                    }
+                    $scope.setCnt();
                 })
             }
         }
+    }
+
+    $scope.testFunc = function () {
+        console.log('Its hooked up');
     }
 
     $scope.listOfOptions = [];
@@ -165,9 +133,9 @@ angular.module('angularApp')
             console.log('00000');
             var para = document.createElement("span");
             var node = document.createTextNode(index.minutes.toFixed(0) + 'min');
-            para.classList.add("minutes");
-            para.appendChild(node);
-            dataCell.appendChild(para);
+            // para.classList.add("minutes");
+            // para.appendChild(node);
+            // dataCell.appendChild(para);
         }
     })
 });
