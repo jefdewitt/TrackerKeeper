@@ -21,16 +21,6 @@
 
             <div id="calendar-space"></div>
 
-            <ul>
-              <li id="timestamp-{[{ time.timeStamp }]}" class="time__item" ng-repeat="time in timeObject" style="position: relative; margin-bottom: 1em; display: block; min-height: 1em;">
-                <label class="time__item--label" ng-click="editing = true; working = false; testFunc();" ng-hide="editing" ng-show="working" for="time" style="position: absolute; color: black; z-index: 1;"></label>
-                <input class="time__item--input timestamp-{[{ time.timeStamp }]}" ng-model="time.minutes" name="time" ng-hide="working" ng-show="editing" type="number" id="detail-time" style="position: absolute; width: 4em; color: red;">
-              </li>
-            </ul>
-            <!-- <p>{[{ time.minutes }]}</p> -->
-
-            <!-- <calendar-date></calendar-date> -->
-
         </form>
 
         </div>

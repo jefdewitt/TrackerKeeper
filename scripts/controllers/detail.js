@@ -4,6 +4,7 @@ angular.module('angularApp')
 
 .controller('detailCtlr', function ($scope, $location, $localStorage, goalToBeTracked, $compile, $rootScope) {
 
+
     $scope.go = function ( path ) {
         $location.path( path );
     }
@@ -21,7 +22,6 @@ angular.module('angularApp')
     })
 
     $scope.timeObject = $scope.Detail.timeRepo;
-    console.info($scope.timeObject);
 
     var twelveMonths=['January','February','March','April','May','June','July','August','September','October','November','December'];
 
@@ -74,41 +74,35 @@ angular.module('angularApp')
 
                 angular.forEach($scope.Detail.timeRepo, function(index) {
 
-                    $scope.minutes = index.minutes;
-
-                    count++;
-
-                    console.log('$scope.minutes ' + $scope.minutes);
-
                     var dataCell = document.getElementById(index.timeStamp);
-                    var timeSpan = document.createElement("span");
-                    timeSpan.setAttribute('class', 'index-' + index.timeStamp + '');
-                    dataCell.appendChild(timeSpan);
 
-                    timeSpan.innerHTML = '<input class="time__item--input timestamp-'{[{ time.timeStamp }]}'" ng-model="minutes" ng-change="setCnt()" name="time" ng-hide="working" ng-show="editing" type="number" id="detail-time" style="position: absolute; width: 4em; color: red;">';
+                    if( dataCell ){
+                        var para = document.createElement("span");
+                        para.classList.add('timeStamp-' + index.timeStamp);
+                        para.setAttribute('ng-click', 'testFunc($event)');
+                        var node = document.createTextNode(index.minutes.toFixed(0) + 'min');
+                        para.appendChild(node);
+                        dataCell.appendChild(para);
+                    }
 
                     $scope.activateView = function(ele) {
-                        // console.log('activateView');
                         $compile(ele)($scope);
-                        $scope.$digest();
+                        $scope.$apply();
                     };
 
                     $scope.setCnt = function() {
-                        console.log('setCnt');
-                        var e1 = document.querySelector('[class*="index-"]');
+                        var e1 = document.querySelector('span.timeStamp-' + index.timeStamp);
                         var mController = angular.element(document.getElementById("calendar-space"));
                         mController.scope().activateView(e1);
                     }
 
                     $scope.setCnt();
+
                 })
             }
         }
     }
 
-    $scope.testFunc = function () {
-        console.log('Its hooked up');
-    }
 
     $scope.listOfOptions = [];
 
@@ -130,12 +124,46 @@ angular.module('angularApp')
         }
 
         if( dataCell ){
-            console.log('00000');
             var para = document.createElement("span");
+            para.classList.add('timeStamp-' + index.timeStamp);
+            para.setAttribute('ng-click', 'testFunc($event)');
             var node = document.createTextNode(index.minutes.toFixed(0) + 'min');
-            // para.classList.add("minutes");
-            // para.appendChild(node);
-            // dataCell.appendChild(para);
+            para.appendChild(node);
+            dataCell.appendChild(para);
         }
+
+        $scope.activateView = function(ele) {
+            $compile(ele)($scope);
+            $scope.$apply();
+        };
+
+        $scope.setCnt = function() {
+            var e1 = document.querySelector('span.timeStamp-' + index.timeStamp);
+            var mController = angular.element(document.getElementById("calendar-space"));
+            mController.scope().activateView(e1);
+        }
+
+        $scope.setCnt();
     })
+
+    // Here we grab the minutes clicked and send it over to the input controller
+    $scope.testFunc = function (e) {
+        // Grab the span clicked
+        var targetClass = e.target.classList;
+        // Focus on the timeStamp class for comparison
+        var classDate = targetClass[0].split('timeStamp-');
+
+        // A faster solution is a standard for loop -----------------
+        // var i for (i=0; i < $scope.Detail.timeRepo.length; i++) {};
+        angular.forEach($scope.Detail.timeRepo, function(index) {
+            if ( index.timeStamp === classDate[1]  ) {
+                index.edit = true;
+            }
+        })
+
+        // we set our localStorage object to match our $scope.$storage object
+        $localStorage.project = $scope.$storage;
+
+        $scope.go('project-input-view')
+    }
 });
